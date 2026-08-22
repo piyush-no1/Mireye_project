@@ -126,6 +126,23 @@ export const DataSourcesPanel: React.FC<Props> = ({ result }) => {
             data={result.telemetry} 
           />
         )}
+
+        <div style={{ marginTop: '32px', borderTop: '1px solid var(--border-color)', paddingTop: '24px' }}>
+          <h3 style={{ margin: '0 0 16px 0', fontSize: '18px', color: 'var(--text-primary)' }}>LLM Reasoning Payload</h3>
+          <SourceCard 
+            title="OpenAI Agent Prompt Data" 
+            description="The exact aggregated data payload sent to the OpenAI reasoning agent for scoring."
+            icon={<Server size={20} style={{ color: '#10b981' }} />}
+            data={{
+              query: result.query,
+              attains_status: result.attains_status || [],
+              polluters: result.polluters || [],
+              water_quality_samples: result.water_quality_samples || [],
+              land_risk_points: result.land_risk_points || [],
+              telemetry: result.telemetry || []
+            }}
+          />
+        </div>
       </div>
     </div>
   );

@@ -104,12 +104,18 @@ async def get_epa_attains_status(bbox: List[float]) -> List[Dict[str, Any]]:
                         raw_uses = au_item.get("useAttainments", [])
                         use_dict = {u.get("useName", "Unknown"): u.get("useAttainmentCodeName", "Unknown") for u in raw_uses} if raw_uses else {}
                         
+                        raw_params = au_item.get("parameters", [])
+                        simple_params = [{"name": p.get("parameterName", "Unknown"), "status": p.get("parameterStatusName", "Unknown")} for p in raw_params]
+                        
+                        raw_sources = au_item.get("probableSources", [])
+                        simple_sources = [{"name": s.get("sourceName", "Unknown")} for s in raw_sources]
+                        
                         results.append({
                             "assessment_unit_id": au_item.get("assessmentUnitIdentifier", "EPA-ATTAINS-AU"),
                             "overall_status": au_item.get("overallStatus", "Impaired"),
                             "use_attainment": use_dict,
-                            "parameters": au_item.get("parameters", []),
-                            "tmdl_projects": au_item.get("probableSources", [])
+                            "parameters": simple_params,
+                            "tmdl_projects": simple_sources
                         })
                         
         log_tool_call("get_epa_attains_status", inputs, time.time() - start_time, True)
