@@ -44,26 +44,83 @@ async def get_epa_attains_status(bbox: List[float]) -> List[Dict[str, Any]]:
         headers["api_key"] = settings.epa_attains_api_key
 
     try:
-        resp = await http_client.get(url, params={"bBox": bbox_str}, headers=headers, timeout_override=15.0)
-        c_type = resp.headers.get("content-type", "")
-        if resp.status_code == 200 and "json" in c_type:
-            data = resp.json()
-            items = data.get("items", [])
-            results = []
-            for item in items[:10]:
-                results.append({
-                    "assessment_unit_id": item.get("assessmentUnitIdentifier", "EPA-ATTAINS-AU"),
-                    "overall_status": item.get("overallStatus", "Impaired"),
-                    "use_attainment": item.get("useAttainment", {}),
-                    "parameters": item.get("parameters", []),
-                    "tmdl_projects": item.get("tmdlProjects", [])
-                })
-            if results:
-                log_tool_call("get_epa_attains_status", inputs, time.time() - start_time, True)
-                return results
+        # Step 1: Query ATTAINS MapServer by bounding box to find Assessment Unit IDs
+        map_url = "https://gispub.epa.gov/arcgis/rest/services/OW/ATTAINS_Assessment/MapServer/1/query"
+        map_params = {
+            "geometry": bbox_str,
+            "geometryType": "esriGeometryEnvelope",
+            "inSR": "4326",
+            "spatialRel": "esriSpatialRelIntersects",
+            "outFields": "assessmentunitidentifier,organizationid",
+            "returnGeometry": "false",
+            "f": "json"
+        }
+        
+        map_resp = await http_client.get(map_url, params=map_params, timeout_override=10.0)
+        map_data = map_resp.json()
+        
+        au_list = []
+        for feature in map_data.get("features", []):
+            au_id = feature.get("attributes", {}).get("assessmentunitidentifier")
+            org_id = feature.get("attributes", {}).get("organizationid")
+            if au_id and org_id and not any(a["au_id"] == au_id for a in au_list):
+                au_list.append({"au_id": au_id, "org_id": org_id})
+                
+        # Limit to 5 AUs to prevent huge API requests
+        au_list = au_list[:5]
+        
+        results = []
+        # Step 2: Query the Tabular API for each AU ID concurrently
+        assessments_url = f"{settings.epa_attains_base_url}/assessments"
+        import asyncio
+        
+        async def fetch_au(au_info):
+            api_params = {
+                "assessmentUnitIdentifier": au_info["au_id"],
+                "organizationId": au_info["org_id"]
+            }
+            if settings.epa_attains_api_key:
+                api_params["api_key"] = settings.epa_attains_api_key
+            
+            try:
+                # Reduce timeout to 5 seconds to fail fast
+                resp = await http_client.get(assessments_url, params=api_params, headers=headers, timeout_override=5.0)
+                if resp.status_code == 200:
+                    return resp.json()
+            except Exception:
+                pass
+            return None
+
+        # Gather all requests concurrently
+        tasks = [fetch_au(au_info) for au_info in au_list]
+        responses = await asyncio.gather(*tasks)
+        
+        for data in responses:
+            if data:
+                items = data.get("items", [])
+                for org_item in items:
+                    assessments = org_item.get("assessments", [])
+                    for au_item in assessments:
+                        raw_uses = au_item.get("useAttainments", [])
+                        use_dict = {u.get("useName", "Unknown"): u.get("useAttainmentCodeName", "Unknown") for u in raw_uses} if raw_uses else {}
+                        
+                        results.append({
+                            "assessment_unit_id": au_item.get("assessmentUnitIdentifier", "EPA-ATTAINS-AU"),
+                            "overall_status": au_item.get("overallStatus", "Impaired"),
+                            "use_attainment": use_dict,
+                            "parameters": au_item.get("parameters", []),
+                            "tmdl_projects": au_item.get("probableSources", [])
+                        })
+                        
+        log_tool_call("get_epa_attains_status", inputs, time.time() - start_time, True)
+        return results
     except Exception as e:
         logger.warning(f"EPA ATTAINS live response notice: {e}")
 
-    results = load_fixture_attains()
+    if settings.epa_attains_api_key == "mock-attains-key":
+        results = load_fixture_attains()
+        log_tool_call("get_epa_attains_status", inputs, time.time() - start_time, True)
+        return results
+
     log_tool_call("get_epa_attains_status", inputs, time.time() - start_time, True)
-    return results
+    return []

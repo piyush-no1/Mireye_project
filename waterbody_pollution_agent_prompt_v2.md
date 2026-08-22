@@ -363,7 +363,7 @@ USGS_NWIS_BASE_URL=https://waterservices.usgs.gov/nwis/iv
 EPA_WQP_BASE_URL=https://www.waterqualitydata.usgs.gov/data
 
 # ── EPA ATTAINS ──
-EPA_ATTAINS_BASE_URL=https://attains.epa.gov/attains-public/api
+EPA_ATTAINS_BASE_URL=https://api.epa.gov/attains
 
 # ── EPA ECHO (ICIS-NPDES) ──
 EPA_ECHO_BASE_URL=https://echodata.epa.gov/echo
@@ -401,7 +401,7 @@ class Settings(BaseSettings):
     usgs_nldi_base_url: str = "https://labs.waterdata.usgs.gov/api/nldi"
     usgs_nwis_base_url: str = "https://waterservices.usgs.gov/nwis/iv"
     epa_wqp_base_url: str = "https://www.waterqualitydata.usgs.gov/data"
-    epa_attains_base_url: str = "https://attains.epa.gov/attains-public/api"
+    epa_attains_base_url: str = "https://api.epa.gov/attains"
     epa_echo_base_url: str = "https://echodata.epa.gov/echo"
 
     http_timeout_seconds: int = 15
@@ -462,7 +462,7 @@ backend/data/outputs/*.json
 |---|---|---|---|---|
 | USGS NWIS (Water Telemetry) | `GET https://waterservices.usgs.gov/nwis/iv/` | `sites={gage_id}` or `bBox` | `00060` (discharge, cfs), `00065` (gage height, ft), `00010` (water temp, °C), `dateTime` | Physical flow volume/velocity for pollutant mass load calculations |
 | EPA Water Quality Portal (WQP) | `GET https://www.waterqualitydata.usgs.gov/data/Result/search` | `bBox={bbox}&mimeType=geojson` | `MonitoringLocationIdentifier`, `CharacteristicName` (pH, DO, Nitrates, PFAS, Lead), `ResultMeasureValue`, `ResultMeasure.MeasureUnitCode`, `ActivityStartDate` | Raw physical/chemical/biological lab sample results |
-| EPA ATTAINS (Clean Water Act) | `GET https://attains.epa.gov/attains-public/api/assessmentUnits` | `huc={huc8/huc12}` or `bBox` | `assessmentUnitIdentifier`, `overallStatus`, `useAttainment`, `parameters`, `tmdlProjects` | Legal/regulatory health status under CWA 303(d)/305(b) |
+| EPA ATTAINS (Clean Water Act) | `GET https://api.epa.gov/attains/assessments` | `assessmentUnitIdentifier`, `organizationId` | `assessmentUnitIdentifier`, `overallStatus`, `useAttainments`, `parameters`, `probableSources` | Legal/regulatory health status under CWA 303(d)/305(b) |
 | EPA ECHO (ICIS-NPDES) | `GET https://echodata.epa.gov/echo/cwa_rest_services.get_facility_info` | `output=JSON&p_c1={bbox}` | `SourceID`, `FacilityName`, `Latitude`, `Longitude`, `PermitStatus`, `EffluentExceedances`, `QuarterInNoncompliance` | Active point-source polluters and compliance violations |
 | Mireye Earth API | `POST https://api.mireye.com/v1/fetch` | Array of bank `(lat, lon)` points | `slope_degrees`, `elevation`, `lcms_class`, `tree_canopy_pct`, `ndvi_current`, `ndvi_change_5y`, `fema_flood_zone` | Riparian/catchment context: erosion vulnerability, buffer capacity, floodplain risk |
 

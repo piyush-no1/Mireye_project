@@ -55,6 +55,7 @@ class TelemetryData(BaseModel):
 class RiskSummary(BaseModel):
     overall_score: float = 0.0  # 0 to 100
     label: str = "Low Risk"
+    rating: str = "A"
     notes: str = ""
 
 class StageError(BaseModel):

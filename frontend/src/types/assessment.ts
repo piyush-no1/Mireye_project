@@ -62,6 +62,7 @@ export interface TelemetryData {
 export interface RiskSummary {
   overall_score: number;
   label: string;
+  rating: string;
   notes: string;
 }
 

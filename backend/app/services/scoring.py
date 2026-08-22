@@ -67,18 +67,23 @@ def compute_deterministic_risk_summary(
 
     if final_score < 25.0:
         label = "Low Risk"
+        rating = "A"
     elif final_score < 55.0:
         label = "Moderate Risk"
+        rating = "B"
     elif final_score < 80.0:
         label = "High Risk"
+        rating = "C"
     else:
         label = "Critical Risk"
+        rating = "F"
 
     notes = " ".join(notes_list) if notes_list else "No significant environmental hazard indicators detected."
 
     return {
         "overall_score": final_score,
         "label": label,
+        "rating": rating,
         "notes": notes,
         "scoring_engine": "deterministic_rules"
     }
@@ -117,7 +122,7 @@ async def reason_and_score_with_openai(
         "water quality chemistry, riparian bank slopes, tree canopy coverage, and streamflow telemetry). "
         "Perform deep environmental reasoning regarding pollution hazards, runoff risk, and ecological degradation. "
         "Return ONLY a valid JSON object with the following exact keys:\n"
-        '{"overall_score": float (0.0 to 100.0), "label": "Low Risk" | "Moderate Risk" | "High Risk" | "Critical Risk", "notes": "analytical reasoning summary string"}'
+        '{"overall_score": float (0.0 to 100.0), "label": "Low Risk" | "Moderate Risk" | "High Risk" | "Critical Risk", "rating": "A" | "B" | "C" | "D" | "F", "notes": "analytical reasoning summary string"}'
     )
 
     try:
@@ -143,6 +148,7 @@ async def reason_and_score_with_openai(
         parsed = json.loads(content)
         parsed["overall_score"] = float(parsed.get("overall_score", 0.0))
         parsed["label"] = str(parsed.get("label", "Moderate Risk"))
+        parsed["rating"] = str(parsed.get("rating", "C"))
         parsed["notes"] = str(parsed.get("notes", "Analytical reasoning complete."))
         parsed["scoring_engine"] = "openai_reasoning_agent"
 

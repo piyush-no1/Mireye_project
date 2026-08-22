@@ -18,7 +18,7 @@ class Settings(BaseSettings):
     usgs_nldi_base_url: str = "https://labs.waterdata.usgs.gov/api/nldi"
     usgs_nwis_base_url: str = "https://waterservices.usgs.gov/nwis/iv"
     epa_wqp_base_url: str = "https://www.waterqualitydata.usgs.gov/data"
-    epa_attains_base_url: str = "https://attains.epa.gov/attains-public/api"
+    epa_attains_base_url: str = "https://api.epa.gov/attains"
     epa_attains_api_key: str = ""
     epa_echo_base_url: str = "https://echodata.epa.gov/echo"
 
