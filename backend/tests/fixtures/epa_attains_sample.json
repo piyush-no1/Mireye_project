@@ -1,0 +1,17 @@
+[
+  {
+    "assessment_unit_id": "VAW-A03R_POT01A00",
+    "overall_status": "Impaired",
+    "use_attainment": {
+      "recreation": "Fully Supporting",
+      "aquatic_life": "Not Supporting"
+    },
+    "parameters": [
+      { "name": "Escherichia coli", "status": "Cause" },
+      { "name": "Polychlorinated biphenyls (PCBs)", "status": "Cause" }
+    ],
+    "tmdl_projects": [
+      { "id": "TMDL-9812", "name": "Potomac River Bacterial TMDL" }
+    ]
+  }
+]

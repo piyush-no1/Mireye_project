@@ -1,0 +1,24 @@
+[
+  {
+    "lat": 38.9950,
+    "lng": -77.2550,
+    "slope_degrees": 14.2,
+    "elevation": 52.3,
+    "lcms_class": "Deciduous Forest",
+    "tree_canopy_pct": 68.5,
+    "ndvi_current": 0.72,
+    "ndvi_change_5y": -0.04,
+    "fema_flood_zone": "AE"
+  },
+  {
+    "lat": 39.0000,
+    "lng": -77.2500,
+    "slope_degrees": 8.1,
+    "elevation": 48.0,
+    "lcms_class": "Developed Open Space",
+    "tree_canopy_pct": 34.0,
+    "ndvi_current": 0.51,
+    "ndvi_change_5y": -0.12,
+    "fema_flood_zone": "A"
+  }
+]

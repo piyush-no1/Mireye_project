@@ -1,0 +1,22 @@
+# env
+backend/.env
+frontend/.env
+
+# python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+.pytest_cache/
+
+# node
+node_modules/
+frontend/dist/
+
+# outputs
+backend/data/outputs/*.json
+!backend/data/outputs/.gitkeep
+
+# misc
+.DS_Store
+*.log

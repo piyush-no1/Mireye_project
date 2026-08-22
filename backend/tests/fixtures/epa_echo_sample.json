@@ -1,0 +1,20 @@
+[
+  {
+    "source_id": "VA0024988",
+    "facility_name": "Great Falls Wastewater Treatment Plant",
+    "lat": 38.995,
+    "lng": -77.248,
+    "permit_status": "Effective",
+    "effluent_exceedances": 2,
+    "quarters_in_noncompliance": 1
+  },
+  {
+    "source_id": "MD0051234",
+    "facility_name": "Potomac Industrial Park Outfall",
+    "lat": 39.002,
+    "lng": -77.242,
+    "permit_status": "Effective",
+    "effluent_exceedances": 0,
+    "quarters_in_noncompliance": 0
+  }
+]

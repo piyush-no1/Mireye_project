@@ -1,0 +1,25 @@
+{
+  "comid": "4567891",
+  "flowline_geojson": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [-77.2600, 38.9900],
+            [-77.2550, 38.9950],
+            [-77.2500, 39.0000],
+            [-77.2450, 39.0050],
+            [-77.2400, 39.0100]
+          ]
+        },
+        "properties": {
+          "comid": "4567891",
+          "gnis_name": "Potomac River"
+        }
+      }
+    ]
+  }
+}
