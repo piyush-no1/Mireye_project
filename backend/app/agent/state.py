@@ -4,6 +4,8 @@ from pydantic import BaseModel, Field
 class AssessmentState(BaseModel):
     run_id: str
     query: str
+    input_lat: Optional[float] = None
+    input_lng: Optional[float] = None
     status: str = "pending"
     error_message: Optional[str] = None
     resolved_location: Optional[Dict[str, Any]] = None

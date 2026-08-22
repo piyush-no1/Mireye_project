@@ -8,6 +8,21 @@ async def geocode_node(state: AssessmentState) -> AssessmentState:
     if state.status == "failed":
         return state
 
+    if state.input_lat is not None and state.input_lng is not None:
+        state.resolved_location = {
+            "matched_name": state.query if state.query else "Custom Map Selection",
+            "lat": state.input_lat,
+            "lng": state.input_lng
+        }
+        state.execution_log.append({
+            "stage": "Stage 1 — Intent Parsing & Geocoding",
+            "component": "geocode_location",
+            "status": "SUCCESS (Direct Coordinate Input)",
+            "resolved_location": state.resolved_location
+        })
+        log_diagnostic_event("Stage 1 — Geocoding", "geocode_location", "SUCCESS", state.resolved_location, run_id=state.run_id)
+        return state
+
     try:
         res = await geocode_location.ainvoke({"query": state.query})
         if not res or not res.get("lat") or not res.get("lng"):

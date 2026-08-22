@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { SearchBar } from '../components/SearchBar/SearchBar';
 import { MapView } from '../components/MapView/MapView';
 import { ResultsPanel } from '../components/ResultsPanel/ResultsPanel';
+import { DataSourcesPanel } from '../components/DataSourcesPanel';
 import { useCreateAssessment } from '../hooks/useCreateAssessment';
 import { useAssessmentPolling } from '../hooks/useAssessmentPolling';
 import { AlertCircle, HelpCircle, Loader2 } from 'lucide-react';
@@ -11,8 +12,8 @@ export const AssessmentPage: React.FC = () => {
   const createMutation = useCreateAssessment();
   const { status, error, isLoading, result } = useAssessmentPolling(activeRunId);
 
-  const handleSearch = (query: string) => {
-    createMutation.mutate(query, {
+  const handleSearch = (payload: { query: string; lat?: number; lng?: number }) => {
+    createMutation.mutate(payload, {
       onSuccess: (data) => {
         setActiveRunId(data.run_id);
       },
@@ -108,17 +109,23 @@ export const AssessmentPage: React.FC = () => {
 
       {/* Main split dashboard: Map + Results Panel */}
       {result && result.status === 'completed' && !isSearching && (
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'minmax(300px, 1fr) minmax(350px, 450px)',
-          gap: '24px',
-          flex: 1,
-          minHeight: '550px'
-        }}>
-          <MapView result={result} />
-          <ResultsPanel result={result} />
-        </div>
+        <>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'minmax(300px, 1fr) minmax(350px, 450px)',
+            gap: '24px',
+            flex: 1,
+            minHeight: '550px'
+          }}>
+            <MapView result={result} />
+            <ResultsPanel result={result} />
+          </div>
+          <div style={{ marginTop: '24px' }}>
+            <DataSourcesPanel result={result} />
+          </div>
+        </>
       )}
     </div>
   );
 };
+

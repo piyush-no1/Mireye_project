@@ -3,6 +3,6 @@ import { createAssessment } from '../api/assessments';
 
 export function useCreateAssessment() {
   return useMutation({
-    mutationFn: (query: string) => createAssessment(query),
+    mutationFn: (payload: { query: string; lat?: number; lng?: number }) => createAssessment(payload),
   });
 }

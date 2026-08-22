@@ -3,6 +3,8 @@ from pydantic import BaseModel
 
 class CreateAssessmentRequest(BaseModel):
     query: str
+    lat: Optional[float] = None
+    lng: Optional[float] = None
 
 class CreateAssessmentResponse(BaseModel):
     run_id: str

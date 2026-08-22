@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Search, Loader2, Compass } from 'lucide-react';
+import { Search, Loader2, Compass, MapPin } from 'lucide-react';
 import styles from './SearchBar.module.css';
+import { MapSelectorModal } from '../MapSelectorModal';
 
 interface SearchBarProps {
-  onSearch: (query: string) => void;
+  onSearch: (payload: { query: string; lat?: number; lng?: number }) => void;
   isLoading: boolean;
 }
 
@@ -17,19 +18,27 @@ const DEMO_EXAMPLES = [
 
 export const SearchBar: React.FC<SearchBarProps> = ({ onSearch, isLoading }) => {
   const [query, setQuery] = useState('');
+  const [isMapOpen, setIsMapOpen] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (query.trim() && !isLoading) {
-      onSearch(query.trim());
+      onSearch({ query: query.trim() });
     }
   };
 
   const handleChipClick = (example: string) => {
     if (!isLoading) {
       setQuery(example);
-      onSearch(example);
+      onSearch({ query: example });
     }
+  };
+
+  const handleMapConfirm = (lat: number, lng: number) => {
+    setIsMapOpen(false);
+    const mapQuery = `Map Selection: ${lat.toFixed(4)}, ${lng.toFixed(4)}`;
+    setQuery(mapQuery);
+    onSearch({ query: mapQuery, lat, lng });
   };
 
   return (
@@ -44,7 +53,18 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onSearch, isLoading }) => 
           onChange={(e) => setQuery(e.target.value)}
           disabled={isLoading}
         />
-        <button type="submit" className={styles.button} disabled={isLoading || !query.trim()}>
+        <button 
+          type="button" 
+          onClick={() => setIsMapOpen(true)}
+          style={{ 
+            background: 'transparent', border: 'none', color: 'var(--text-muted)', 
+            cursor: 'pointer', padding: '0 8px', display: 'flex', alignItems: 'center', gap: '4px' 
+          }}
+          title="Select Location on Map"
+        >
+          <MapPin size={20} />
+        </button>
+        <button type="submit" className={styles.button} disabled={isLoading || (!query.trim() && !isMapOpen)}>
           {isLoading ? (
             <>
               <Loader2 className="animate-spin" size={16} />
@@ -76,6 +96,12 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onSearch, isLoading }) => 
           ))}
         </div>
       </div>
+
+      <MapSelectorModal 
+        isOpen={isMapOpen} 
+        onClose={() => setIsMapOpen(false)} 
+        onConfirm={handleMapConfirm} 
+      />
     </div>
   );
 };

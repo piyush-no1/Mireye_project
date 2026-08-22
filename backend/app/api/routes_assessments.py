@@ -17,11 +17,13 @@ from app.core.logging import logger
 
 router = APIRouter(prefix="/assessments", tags=["Assessments"])
 
-async def run_assessment_task(run_id: str, query: str):
+async def run_assessment_task(run_id: str, query: str, lat: float | None = None, lng: float | None = None):
     logger.info(f"Starting background assessment task for run_id '{run_id}', query '{query}'")
     initial_state = AssessmentState(
         run_id=run_id,
         query=query,
+        input_lat=lat,
+        input_lng=lng,
         status="pending"
     )
     try:
@@ -43,7 +45,7 @@ async def create_assessment(
     run_id = str(uuid.uuid4())
     store.create_job(run_id, payload.query.strip())
     
-    background_tasks.add_task(run_assessment_task, run_id, payload.query.strip())
+    background_tasks.add_task(run_assessment_task, run_id, payload.query.strip(), payload.lat, payload.lng)
     
     return CreateAssessmentResponse(
         run_id=run_id,
