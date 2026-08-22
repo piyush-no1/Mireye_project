@@ -30,6 +30,7 @@ async def persist_node(state: AssessmentState) -> AssessmentState:
         "hydrology": hydrology_data,
         "water_quality_samples": state.water_quality_samples,
         "attains_status": state.attains_status,
+        "attains_summary": getattr(state, "attains_summary", None),
         "polluters": state.polluters,
         "land_risk_points": state.land_risk_points,
         "telemetry": state.telemetry,

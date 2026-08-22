@@ -1,0 +1,106 @@
+{
+  "items": [
+    {
+      "organizationIdentifier": "21VASWCB",
+      "organizationName": "Virginia",
+      "organizationTypeText": "State",
+      "reportingCycleText": "2026",
+      "combinedCycles": [],
+      "reportStatusCode": "Organization Public Comment",
+      "documents": [
+        {
+          "agencyCode": "S",
+          "documentTypes": [
+            {
+              "documentTypeCode": "Integrated Report Document"
+            }
+          ],
+          "documentFileType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "documentFileName": "ir26_Integrated_Report.docx",
+          "documentName": "Draft 2026 Integrated Report",
+          "documentDescription": null,
+          "documentComments": null,
+          "documentURL": "https://attains.epa.gov/attains-public/api/documents/cycles/20885/228832"
+        },
+        {
+          "agencyCode": "S",
+          "documentTypes": [
+            {
+              "documentTypeCode": "Appendices"
+            }
+          ],
+          "documentFileType": "application/x-zip-compressed",
+          "documentFileName": "ir26_Appendices.zip",
+          "documentName": "Draft 2026 Appendices to the Integrated Report",
+          "documentDescription": null,
+          "documentComments": null,
+          "documentURL": "https://attains.epa.gov/attains-public/api/documents/cycles/20885/228833"
+        }
+      ],
+      "assessments": [
+        {
+          "assessmentUnitIdentifier": "VAN-A11R_ZZZ23A00",
+          "agencyCode": "S",
+          "trophicStatusCode": null,
+          "useAttainments": [
+            {
+              "useName": "Recreation",
+              "useAttainmentCode": "X",
+              "threatenedIndicator": "N",
+              "trendCode": null,
+              "agencyCode": "S",
+              "assessmentMetadata": null,
+              "useAttainmentCodeName": "Not Assessed"
+            },
+            {
+              "useName": "Aquatic Life",
+              "useAttainmentCode": "X",
+              "threatenedIndicator": "N",
+              "trendCode": null,
+              "agencyCode": "S",
+              "assessmentMetadata": null,
+              "useAttainmentCodeName": "Not Assessed"
+            },
+            {
+              "useName": "Public Water Supply",
+              "useAttainmentCode": "X",
+              "threatenedIndicator": "N",
+              "trendCode": null,
+              "agencyCode": "S",
+              "assessmentMetadata": null,
+              "useAttainmentCodeName": "Not Assessed"
+            },
+            {
+              "useName": "Fish Consumption",
+              "useAttainmentCode": "X",
+              "threatenedIndicator": "N",
+              "trendCode": null,
+              "agencyCode": "S",
+              "assessmentMetadata": null,
+              "useAttainmentCodeName": "Not Assessed"
+            },
+            {
+              "useName": "Wildlife",
+              "useAttainmentCode": "X",
+              "threatenedIndicator": "N",
+              "trendCode": null,
+              "agencyCode": "S",
+              "assessmentMetadata": null,
+              "useAttainmentCodeName": "Not Assessed"
+            }
+          ],
+          "parameters": [],
+          "probableSources": [],
+          "documents": [],
+          "rationaleText": null,
+          "epaIRCategory": "3",
+          "overallStatus": "Not Assessed",
+          "cycleLastAssessedText": "2000",
+          "yearLastMonitoredText": ""
+        }
+      ],
+      "delistedWaters": []
+    }
+  ],
+  "count": 1
+}

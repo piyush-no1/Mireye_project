@@ -10,6 +10,7 @@ async def aggregate_node(state: AssessmentState) -> AssessmentState:
     try:
         score_res = await reason_and_score_with_openai(
             query=state.query,
+            attains_summary=getattr(state, "attains_summary", None),
             attains_status=state.attains_status,
             polluters=state.polluters,
             water_samples=state.water_quality_samples,
@@ -47,8 +48,13 @@ async def aggregate_node(state: AssessmentState) -> AssessmentState:
             run_id=state.run_id
         )
         state.risk_summary = {
-            "overall_score": 0.0,
+            "rating": "Unknown",
             "label": "Unknown",
+            "risk_factors": [],
+            "mitigating_factors": [],
+            "temporal_assessment": "",
+            "spatial_assessment": "",
+            "data_limitations": "",
             "notes": f"Scoring error: {e}"
         }
 

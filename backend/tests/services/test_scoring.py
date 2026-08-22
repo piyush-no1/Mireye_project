@@ -8,7 +8,7 @@ def test_compute_deterministic_risk_summary_clean():
         water_samples=[],
         land_risk_points=[]
     )
-    assert res["overall_score"] == 0.0
+    assert res["rating"] == "A"
     assert res["label"] == "Low Risk"
 
 def test_compute_deterministic_risk_summary_impaired(sample_attains, sample_echo, sample_wqp, sample_land_risk):
@@ -18,9 +18,9 @@ def test_compute_deterministic_risk_summary_impaired(sample_attains, sample_echo
         water_samples=sample_wqp,
         land_risk_points=sample_land_risk
     )
-    assert res["overall_score"] > 30.0
-    assert res["label"] in ("Moderate Risk", "High Risk", "Critical Risk")
-    assert "Impaired" in res["notes"]
+    assert res["rating"] in ("B", "C", "D", "F")
+    assert res["label"] in ("Limited Risk", "Moderate Risk", "High Risk", "Critical Risk")
+    assert any("Impaired" in factor for factor in res["risk_factors"])
 
 @pytest.mark.asyncio
 async def test_reason_and_score_with_openai_fallback(sample_attains, sample_echo, sample_wqp, sample_land_risk):
@@ -31,7 +31,7 @@ async def test_reason_and_score_with_openai_fallback(sample_attains, sample_echo
         water_samples=sample_wqp,
         land_risk_points=sample_land_risk
     )
-    assert "overall_score" in res
+    assert "rating" in res
     assert "label" in res
     assert "notes" in res
-    assert res["overall_score"] >= 0.0
+    assert res["rating"] in ("A", "B", "C", "D", "F")

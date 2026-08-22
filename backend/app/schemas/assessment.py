@@ -18,12 +18,31 @@ class WaterQualitySample(BaseModel):
     unit_code: Optional[str] = "N/A"
     activity_start_date: Optional[str] = None
 
+class AttainsSummary(BaseModel):
+    assessment_units: int = 0
+    supporting_units: int = 0
+    impaired_units: int = 0
+    designated_use_summary: Dict[str, Any] = Field(default_factory=dict)
+    persistent_impairments: List[Dict[str, Any]] = Field(default_factory=list)
+    new_impairments: List[Dict[str, Any]] = Field(default_factory=list)
+    resolved_impairments: List[Dict[str, Any]] = Field(default_factory=list)
+    major_causes: List[Dict[str, Any]] = Field(default_factory=list)
+    probable_sources: List[Dict[str, Any]] = Field(default_factory=list)
+    tmdl_actions: List[Dict[str, Any]] = Field(default_factory=list)
+    historical_trend: str = "Unknown"
+    source: str = "ATTAINS"
+    retrieval_timestamp: str = ""
+
 class AttainsStatus(BaseModel):
     assessment_unit_id: str
+    waterbody_name: Optional[str] = None
+    assessment_cycle: str
     overall_status: str
-    use_attainment: Dict[str, Any] = Field(default_factory=dict)
-    parameters: List[Dict[str, Any]] = Field(default_factory=list)
-    tmdl_projects: List[Dict[str, Any]] = Field(default_factory=list)
+    uses: List[Dict[str, Any]] = Field(default_factory=list)
+    impairments: List[Dict[str, Any]] = Field(default_factory=list)
+    history: List[Dict[str, Any]] = Field(default_factory=list)
+    tmdl_actions: List[Dict[str, Any]] = Field(default_factory=list)
+    source: str = "ATTAINS"
 
 class PolluterFacility(BaseModel):
     source_id: str
@@ -53,10 +72,15 @@ class TelemetryData(BaseModel):
     date_time: Optional[str] = None
 
 class RiskSummary(BaseModel):
-    overall_score: float = 0.0  # 0 to 100
-    label: str = "Low Risk"
     rating: str = "A"
+    label: str = "Low Risk"
+    risk_factors: List[str] = Field(default_factory=list)
+    mitigating_factors: List[str] = Field(default_factory=list)
+    temporal_assessment: str = ""
+    spatial_assessment: str = ""
+    data_limitations: str = ""
     notes: str = ""
+    scoring_engine: str = "openai_reasoning_agent"
 
 class StageError(BaseModel):
     stage: str
@@ -71,6 +95,7 @@ class AssessmentResult(BaseModel):
     hydrology: Optional[HydrologyData] = None
     water_quality_samples: Optional[List[WaterQualitySample]] = None
     attains_status: Optional[List[AttainsStatus]] = None
+    attains_summary: Optional[AttainsSummary] = None
     polluters: Optional[List[PolluterFacility]] = None
     land_risk_points: Optional[List[LandRiskPoint]] = None
     telemetry: Optional[List[TelemetryData]] = None

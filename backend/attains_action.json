@@ -1,0 +1,4844 @@
+{
+  "items": [
+    {
+      "organizationIdentifier": "21MICH",
+      "organizationName": "Michigan",
+      "organizationTypeText": "State",
+      "actions": [
+        {
+          "actionIdentifier": "MI-2020-003",
+          "actionName": "MI Statewide E. coli TMDL 2020 Revision",
+          "agencyCode": "S",
+          "actionTypeCode": "TMDL",
+          "actionStatusCode": "EPA Final Action",
+          "completionDate": "2020-08-31",
+          "organizationId": "21MICH",
+          "documents": [
+            {
+              "agencyCode": "S",
+              "documentTypes": [
+                {
+                  "documentTypeCode": "Other Supporting Documents (e.g., MOUs, MOAs)"
+                }
+              ],
+              "documentFileType": "application/pdf",
+              "documentFileName": "Statewide E. coli TMDL - 2020 Revision_State-Submittal.pdf",
+              "documentName": "Statewide E. coli TMDL 2020 Revision_State-Submitted-Addendum",
+              "documentDescription": null,
+              "documentComments": "State submitted 2020 changes to MI Statewide E. coli TMDL",
+              "documentURL": "https://api.epa.gov/attains/documents/actions/21MICH/MI-2020-003/196743"
+            },
+            {
+              "agencyCode": "S",
+              "documentTypes": [
+                {
+                  "documentTypeCode": "TMDL Report"
+                }
+              ],
+              "documentFileType": "application/pdf",
+              "documentFileName": "MI STATEWIDE E. COLI TMDL MAIN REPORT.pdf",
+              "documentName": "Statewide E. coli TMDL Main Report",
+              "documentDescription": null,
+              "documentComments": null,
+              "documentURL": "https://api.epa.gov/attains/documents/actions/21MICH/MI-2020-003/196744"
+            },
+            {
+              "agencyCode": "E",
+              "documentTypes": [
+                {
+                  "documentTypeCode": "Transmitted Approval Letter"
+                }
+              ],
+              "documentFileType": "application/pdf",
+              "documentFileName": "MI 2020 StWd TMDLs SigTrack WDD E-SIGN 9-28-20.pdf, tf.pdf",
+              "documentName": "Statewide E. coli TMDL 2020 Revision_EPA Decision Letter",
+              "documentDescription": null,
+              "documentComments": null,
+              "documentURL": "https://api.epa.gov/attains/documents/actions/21MICH/MI-2020-003/196721"
+            },
+            {
+              "agencyCode": "E",
+              "documentTypes": [
+                {
+                  "documentTypeCode": "EPA Decision Rationale"
+                }
+              ],
+              "documentFileType": "application/pdf",
+              "documentFileName": "MI E. coli StWd TMDL 2020 Amendments DD1.pdf",
+              "documentName": "Statewide E. coli TMDL 2020 Revision_EPA Decision Document",
+              "documentDescription": null,
+              "documentComments": null,
+              "documentURL": "https://api.epa.gov/attains/documents/actions/21MICH/MI-2020-003/196720"
+            }
+          ],
+          "associatedWaters": {
+            "specificWaters": [
+              {
+                "assessmentUnitIdentifier": "MI040601030603-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060404-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060702-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI041000010107-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040801030407-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040801010407-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802040307-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802020307-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601010703-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060310-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802020307-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601050207-15",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500020404-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030702-06",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040801040101-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030802-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601010901-04",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030702-05",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060309-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040900030101-10",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030309-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060602-05",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500070407-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040201030104-05",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040201030104-04",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060705-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802040405-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040801010502-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802020302-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500070407-03",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500050201-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500050201-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040201030104-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802020204-04",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601010706-03",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802020204-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601010706-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI041000010104-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060313-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI041000010104-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030805-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060401-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601010904-06",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040801010410-03",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040801010410-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040900030101-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060601-03",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500070406-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060601-05",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060601-04",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500040710-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802040404-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802020301-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060406-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802040410-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802040410-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500050204-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500050204-03",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060708-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601011004-09",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601040406-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802040305-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030808-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030808-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060502-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060312-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601010104-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500020406-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802040305-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040801040103-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601010104-03",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601020303-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060307-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500070307-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030307-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802040404-06",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601010803-03",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601011007-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030902-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040801030204-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601010902-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040801030204-03",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060703-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040801010406-03",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040801010406-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500020403-03",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601010704-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040801030204-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030803-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500020403-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060403-03",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802020304-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500070401-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040801010412-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802020103-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040801010412-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601010803-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060604-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060604-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030305-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040900030108-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802040406-03",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060408-05",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030311-03",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601010103-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601010103-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030311-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030311-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802040501-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601040404-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802040501-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601010707-04",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030102-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802020203-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601010707-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI041000010103-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601010707-03",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802020312-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030806-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030806-03",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802020303-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500070102-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060712-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601010802-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060603-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500070403-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030801-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060405-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060701-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI041000010108-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI041000010108-04",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601010702-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030703-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500040709-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802040306-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802040306-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030809-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802020306-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040801040102-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500020405-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802020306-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802020306-04",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802040306-04",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060405-05",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030308-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601030304-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030903-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601010804-04",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030303-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601050204-03",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601050708-05",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040801030203-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040301080912-03",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040301080912-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040301080912-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040801010405-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802020503-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601010705-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802020201-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030804-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802020305-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802020305-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060402-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802040408-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060605-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040900030102-03",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030306-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060407-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030312-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500020407-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601050207-05",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030312-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060501-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500050208-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060501-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500050208-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500060501-04",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030807-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601050507-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI041000010102-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802020308-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040201010205-05",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601050207-03",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040802040304-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601050207-04",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040201010205-03",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500030810-01",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040601050207-02",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040201010205-04",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              },
+              {
+                "assessmentUnitIdentifier": "MI040500070210-03",
+                "associatedPollutants": [
+                  {
+                    "pollutantName": "ESCHERICHIA COLI (E. COLI)",
+                    "pollutantSourceTypeCode": "Both",
+                    "explicitMarginofSafetyText": null,
+                    "implicitMarginofSafetyText": null,
+                    "loadAllocationDetails": [],
+                    "permits": [],
+                    "TMDLEndPointText": null
+                  }
+                ],
+                "parameters": [
+                  {
+                    "parameterName": "ESCHERICHIA COLI (E. COLI)",
+                    "associatedPollutants": [
+                      {
+                        "pollutantName": "ESCHERICHIA COLI (E. COLI)"
+                      }
+                    ]
+                  }
+                ],
+                "sources": []
+              }
+            ]
+          },
+          "TMDLReportDetails": {
+            "TMDLOtherIdentifier": null,
+            "TMDLDate": "2020-09-28",
+            "indianCountryIndicator": "N"
+          },
+          "pollutants": [],
+          "associatedActions": [
+            {},
+            {}
+          ],
+          "histories": []
+        }
+      ]
+    }
+  ],
+  "count": 1
+}

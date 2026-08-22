@@ -36,7 +36,12 @@ async def fetch_wqp(bbox: list, state: AssessmentState):
 async def fetch_attains(bbox: list, state: AssessmentState):
     try:
         res = await get_epa_attains_status.ainvoke({"bbox": bbox})
-        state.attains_status = res if isinstance(res, list) else []
+        if isinstance(res, dict):
+            state.attains_status = res.get("assessment_units", [])
+            state.attains_summary = res.get("summary")
+        else:
+            state.attains_status = res if isinstance(res, list) else []
+            
         state.execution_log.append({
             "stage": "Stage 4 — Parallel Tool Dispatch",
             "component": "get_epa_attains_status",

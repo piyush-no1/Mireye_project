@@ -21,12 +21,32 @@ export interface WaterQualitySample {
   lng?: number;
 }
 
+export interface AttainsSummary {
+  assessment_units: number;
+  supporting_units: number;
+  impaired_units: number;
+  designated_use_summary: Record<string, any>;
+  persistent_impairments: any[];
+  new_impairments: any[];
+  resolved_impairments: any[];
+  major_causes: any[];
+  probable_sources: any[];
+  tmdl_actions: any[];
+  historical_trend: string;
+  source: string;
+  retrieval_timestamp: string;
+}
+
 export interface AttainsStatus {
   assessment_unit_id: string;
+  waterbody_name?: string;
+  assessment_cycle: string;
   overall_status: string;
-  use_attainment: Record<string, string>;
-  parameters: Array<{ name: string; status: string }>;
-  tmdl_projects: Array<{ id: string; name: string }>;
+  uses: any[];
+  impairments: any[];
+  history: any[];
+  tmdl_actions: any[];
+  source: string;
 }
 
 export interface PolluterFacility {
@@ -60,9 +80,13 @@ export interface TelemetryData {
 }
 
 export interface RiskSummary {
-  overall_score: number;
-  label: string;
   rating: string;
+  label: string;
+  risk_factors: string[];
+  mitigating_factors: string[];
+  temporal_assessment: string;
+  spatial_assessment: string;
+  data_limitations: string;
   notes: string;
 }
 
@@ -80,6 +104,7 @@ export interface AssessmentResult {
   hydrology: HydrologyData | null;
   water_quality_samples: WaterQualitySample[] | null;
   attains_status: AttainsStatus[] | null;
+  attains_summary?: AttainsSummary | null;
   polluters: PolluterFacility[] | null;
   land_risk_points: LandRiskPoint[] | null;
   telemetry: TelemetryData[] | null;

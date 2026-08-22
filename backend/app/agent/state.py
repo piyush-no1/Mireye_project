@@ -12,6 +12,7 @@ class AssessmentState(BaseModel):
     hydrology: Optional[Dict[str, Any]] = None
     water_quality_samples: List[Dict[str, Any]] = Field(default_factory=list)
     attains_status: List[Dict[str, Any]] = Field(default_factory=list)
+    attains_summary: Optional[Dict[str, Any]] = None
     polluters: List[Dict[str, Any]] = Field(default_factory=list)
     land_risk_points: List[Dict[str, Any]] = Field(default_factory=list)
     telemetry: List[Dict[str, Any]] = Field(default_factory=list)

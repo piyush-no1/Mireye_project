@@ -10,80 +10,83 @@ def compute_deterministic_risk_summary(
     polluters: List[Dict[str, Any]],
     water_samples: List[Dict[str, Any]],
     land_risk_points: List[Dict[str, Any]],
-    telemetry: Optional[List[Dict[str, Any]]] = None
+    telemetry: Optional[List[Dict[str, Any]]] = None,
+    attains_summary: Optional[Dict[str, Any]] = None
 ) -> Dict[str, Any]:
     """
-    Computes a deterministic waterbody pollution risk score from 0.0 (Clean/Safe) to 100.0 (Severe Hazard).
+    Computes a deterministic waterbody pollution risk categorical rating (A-F).
     """
-    score = 0.0
-    notes_list: List[str] = []
+    risk_factors = []
+    mitigating_factors = []
 
-    # 1. ATTAINS Regulatory Assessment (up to 35 pts)
-    impaired_count = sum(1 for a in attains_status if a.get("overall_status") == "Impaired")
+    # 1. ATTAINS
+    impaired_count = sum(1 for a in attains_status if a.get("overall_status") in ("Impaired", "Not Supporting"))
     if impaired_count > 0:
-        score += 30.0
-        notes_list.append(f"CWA Section 303(d) Impaired status detected ({impaired_count} unit(s)).")
+        risk_factors.append(f"CWA Section 303(d) Impaired status detected ({impaired_count} unit(s)).")
+    else:
+        mitigating_factors.append("No active ATTAINS impairments detected.")
 
-    # 2. NPDES Point-Source Violations (up to 30 pts)
+    # 2. NPDES Point-Source Violations
     total_exceedances = sum(p.get("effluent_exceedances", 0) for p in polluters)
     noncompliant_quarters = sum(p.get("quarters_in_noncompliance", 0) for p in polluters)
     if total_exceedances > 0 or noncompliant_quarters > 0:
-        pts = min(30.0, (total_exceedances * 5.0) + (noncompliant_quarters * 7.5))
-        score += pts
-        notes_list.append(f"Active point-source exceedances ({total_exceedances}) and noncompliance quarters ({noncompliant_quarters}).")
+        risk_factors.append(f"Active point-source exceedances ({total_exceedances}) and noncompliance quarters ({noncompliant_quarters}).")
+    else:
+        mitigating_factors.append("No documented point-source effluent violations.")
 
-    # 3. Water Quality Chemical Samples (up to 20 pts)
+    # 3. Water Quality Chemical Samples
     for sample in water_samples:
         char = sample.get("characteristic_name", "").lower()
         val = sample.get("result_value")
         if val is not None:
             if "dissolved oxygen" in char and val < 6.0:
-                score += 8.0
-                notes_list.append(f"Low dissolved oxygen detected: {val} {sample.get('unit_code')}.")
+                risk_factors.append(f"Low dissolved oxygen detected: {val} {sample.get('unit_code')}.")
             elif "nitrate" in char and val > 5.0:
-                score += 7.0
-                notes_list.append(f"Elevated nitrate level: {val} {sample.get('unit_code')}.")
+                risk_factors.append(f"Elevated nitrate level: {val} {sample.get('unit_code')}.")
             elif "lead" in char and val > 0.001:
-                score += 10.0
-                notes_list.append(f"Heavy metal (Lead) trace detected: {val} {sample.get('unit_code')}.")
+                risk_factors.append(f"Heavy metal (Lead) trace detected: {val} {sample.get('unit_code')}.")
 
-    # 4. Land Riparian Erosion & Canopy Risk (up to 15 pts)
+    # 4. Land Risk
     if land_risk_points:
         avg_slope = sum(p.get("slope_degrees", 0.0) for p in land_risk_points) / len(land_risk_points)
         avg_canopy = sum(p.get("tree_canopy_pct", 0.0) for p in land_risk_points) / len(land_risk_points)
         avg_ndvi_change = sum(p.get("ndvi_change_5y", 0.0) for p in land_risk_points) / len(land_risk_points)
 
         if avg_slope > 12.0:
-            score += 5.0
-            notes_list.append(f"High riparian bank slope ({avg_slope:.1f}°) increases erosion risk.")
+            risk_factors.append(f"High riparian bank slope ({avg_slope:.1f}°) increases erosion risk.")
         if avg_canopy < 40.0:
-            score += 5.0
-            notes_list.append(f"Low tree canopy coverage ({avg_canopy:.1f}%) reduces natural buffer capacity.")
+            risk_factors.append(f"Low tree canopy coverage ({avg_canopy:.1f}%) reduces natural buffer capacity.")
         if avg_ndvi_change < -0.05:
-            score += 5.0
-            notes_list.append(f"5-year vegetation loss detected (NDVI delta: {avg_ndvi_change:.2f}).")
+            risk_factors.append(f"5-year vegetation loss detected (NDVI delta: {avg_ndvi_change:.2f}).")
 
-    final_score = min(100.0, round(score, 1))
-
-    if final_score < 25.0:
+    risk_count = len(risk_factors)
+    
+    if risk_count == 0:
         label = "Low Risk"
         rating = "A"
-    elif final_score < 55.0:
-        label = "Moderate Risk"
+    elif risk_count <= 2:
+        label = "Limited Risk"
         rating = "B"
-    elif final_score < 80.0:
-        label = "High Risk"
+    elif risk_count <= 4:
+        label = "Moderate Risk"
         rating = "C"
+    elif risk_count <= 6:
+        label = "High Risk"
+        rating = "D"
     else:
         label = "Critical Risk"
         rating = "F"
 
-    notes = " ".join(notes_list) if notes_list else "No significant environmental hazard indicators detected."
+    notes = "Deterministic multi-source evaluation complete based on fallback rules."
 
     return {
-        "overall_score": final_score,
-        "label": label,
         "rating": rating,
+        "label": label,
+        "risk_factors": risk_factors,
+        "mitigating_factors": mitigating_factors,
+        "temporal_assessment": "Current snapshot with historical context.",
+        "spatial_assessment": "Aggregated across resolved points.",
+        "data_limitations": "Deterministic fallback. LLM reasoning unavailable.",
         "notes": notes,
         "scoring_engine": "deterministic_rules"
     }
@@ -95,6 +98,7 @@ async def reason_and_score_with_openai(
     water_samples: List[Dict[str, Any]],
     land_risk_points: List[Dict[str, Any]],
     telemetry: Optional[List[Dict[str, Any]]] = None,
+    attains_summary: Optional[Dict[str, Any]] = None,
     run_id: Optional[str] = None
 ) -> Dict[str, Any]:
     """
@@ -105,11 +109,12 @@ async def reason_and_score_with_openai(
     if not settings.openai_api_key or settings.openai_api_key == "mock-openai-key":
         logger.info("OPENAI_API_KEY is mock/unset. Using deterministic scoring engine fallback.")
         log_diagnostic_event("Stage 5 — Aggregation & Reasoning", "OpenAI Reasoning Agent", "WARNING", {"message": "Using deterministic rules fallback due to mock OpenAI API key"}, run_id=run_id)
-        return compute_deterministic_risk_summary(attains_status, polluters, water_samples, land_risk_points, telemetry)
+        return compute_deterministic_risk_summary(attains_status, polluters, water_samples, land_risk_points, telemetry, attains_summary)
 
     data_payload = {
         "query": query,
         "attains_status": attains_status,
+        "attains_summary": attains_summary,
         "polluters": polluters,
         "water_quality_samples": water_samples,
         "land_risk_points": land_risk_points,
@@ -117,12 +122,47 @@ async def reason_and_score_with_openai(
     }
 
     system_prompt = (
-        "You are an expert environmental water body assessment AI reasoning agent. "
-        "Analyze the multi-source data collected for a US water body (Clean Water Act 303(d) status, NPDES point-source factory violations, "
-        "water quality chemistry, riparian bank slopes, tree canopy coverage, and streamflow telemetry). "
-        "Perform deep environmental reasoning regarding pollution hazards, runoff risk, and ecological degradation. "
-        "Return ONLY a valid JSON object with the following exact keys:\n"
-        '{"overall_score": float (0.0 to 100.0), "label": "Low Risk" | "Moderate Risk" | "High Risk" | "Critical Risk", "rating": "A" | "B" | "C" | "D" | "F", "notes": "analytical reasoning summary string"}'
+        "You are an expert environmental water body assessment AI reasoning agent.\n"
+        "Analyze the multi-source data collected for a US water body. Make a stable, evidence-grounded, independently reasoned A-F categorical assessment.\n\n"
+        "## 1. Separate evidence by type\n"
+        "- Regulatory/impairment evidence: ATTAINS assessment status, designated-use, impairment causes, affected uses, sources, TMDLs, historical cycles.\n"
+        "- Current water-quality evidence: chemical measurements, DO, pH, nitrate, metals, dates.\n"
+        "- Point-source evidence: NPDES facilities, permit status, effluent exceedances, noncompliance.\n"
+        "- Hydrological evidence: streamflow, gage height, telemetry.\n"
+        "- Watershed/landscape evidence: slope, elevation, land-cover, tree canopy, NDVI, flood-zone.\n"
+        "DO NOT treat these categories as interchangeable. (e.g., Flood-zone A is not evidence of pollution. Good chemistry does not erase documented persistent impairment.)\n\n"
+        "## 2. Force temporal & spatial reasoning\n"
+        "Distinguish between Historical (first listed in 2000), Persistent (across cycles), New (most recent cycle only), and Current (recent measurements).\n"
+        "Do not infer a trend when history is insufficient.\n"
+        "Spatially, distinguish whether impairment is localized to one Assessment Unit or widespread. Never blindly aggregate units.\n\n"
+        "## 3. Evidence quality rules\n"
+        "- Missing/null values are NOT evidence of good conditions.\n"
+        "- Identify conflicting measurements and reduce confidence.\n"
+        "- Do not treat stale measurements as current.\n"
+        "- Regulatory causes (e.g. PCBs in ATTAINS) mean documented impairment. Do not invent concentrations.\n"
+        "- Land cover/NDVI are contextual vulnerability, not direct pollution measurements.\n\n"
+        "## 4. Evidence balancing\n"
+        "Explicitly identify Risk-increasing evidence (persistent impairment, multiple causes, point-source violations) AND Risk-reducing/mitigating evidence (Fully Supporting units, favorable chemistry, stable hydrology).\n\n"
+        "## 5. A-F Rubric\n"
+        "A -> Low Risk: Little meaningful impairment. Mostly supporting, no persistent impairment, favorable current chemistry.\n"
+        "B -> Limited Risk: Some concerns, but limited, localized, historical, or weakly supported.\n"
+        "C -> Moderate Risk: Meaningful concerns documented, but not severe/pervasive. One or more impaired uses, mixture of supporting/impaired.\n"
+        "D -> High Risk: Multiple significant impairments. Multiple uses/causes impaired persistently, ecological+recreational impacts.\n"
+        "F -> Critical Risk: Severe, widespread, or acute environmental degradation. Do NOT assign F merely for historical contamination.\n\n"
+        "## 6. Output Rules\n"
+        "Do NOT output any numerical score or fake quantitative precision. Do NOT map letters to numbers (e.g. C=50). Do NOT mention a 0-100 score. The rating is categorical.\n"
+        "Provide evidence traceability in your factors (e.g., \"Persistent PCB impairment (ATTAINS, first listed 2006)\"). Do NOT invent unsupported environmental claims.\n"
+        "Return ONLY a valid JSON object matching this schema exactly:\n"
+        "{\n"
+        '  "rating": "A" | "B" | "C" | "D" | "F",\n'
+        '  "label": "Low Risk" | "Limited Risk" | "Moderate Risk" | "High Risk" | "Critical Risk",\n'
+        '  "risk_factors": ["string"],\n'
+        '  "mitigating_factors": ["string"],\n'
+        '  "temporal_assessment": "string",\n'
+        '  "spatial_assessment": "string",\n'
+        '  "data_limitations": "string",\n'
+        '  "notes": "string"\n'
+        "}"
     )
 
     try:
@@ -135,7 +175,7 @@ async def reason_and_score_with_openai(
         
         messages = [
             SystemMessage(content=system_prompt),
-            HumanMessage(content=f"Analyze this environmental dataset and compute risk score:\n{json.dumps(data_payload, indent=2)}")
+            HumanMessage(content=f"Analyze this environmental dataset and compute categorical risk:\n{json.dumps(data_payload, indent=2)}")
         ]
         
         response = await llm.ainvoke(messages)
@@ -146,9 +186,13 @@ async def reason_and_score_with_openai(
             content = content.split("\n", 1)[-1].rsplit("\n", 1)[0].replace("json", "").strip()
 
         parsed = json.loads(content)
-        parsed["overall_score"] = float(parsed.get("overall_score", 0.0))
-        parsed["label"] = str(parsed.get("label", "Moderate Risk"))
         parsed["rating"] = str(parsed.get("rating", "C"))
+        parsed["label"] = str(parsed.get("label", "Moderate Risk"))
+        parsed["risk_factors"] = list(parsed.get("risk_factors", []))
+        parsed["mitigating_factors"] = list(parsed.get("mitigating_factors", []))
+        parsed["temporal_assessment"] = str(parsed.get("temporal_assessment", ""))
+        parsed["spatial_assessment"] = str(parsed.get("spatial_assessment", ""))
+        parsed["data_limitations"] = str(parsed.get("data_limitations", ""))
         parsed["notes"] = str(parsed.get("notes", "Analytical reasoning complete."))
         parsed["scoring_engine"] = "openai_reasoning_agent"
 
@@ -156,7 +200,7 @@ async def reason_and_score_with_openai(
             stage="Stage 5 — Aggregation & Reasoning",
             component="OpenAI Reasoning Agent",
             status="SUCCESS",
-            details={"overall_score": parsed["overall_score"], "label": parsed["label"]},
+            details={"rating": parsed["rating"], "label": parsed["label"]},
             run_id=run_id
         )
         return parsed
@@ -170,4 +214,4 @@ async def reason_and_score_with_openai(
             details={"error": str(e)},
             run_id=run_id
         )
-        return compute_deterministic_risk_summary(attains_status, polluters, water_samples, land_risk_points, telemetry)
+        return compute_deterministic_risk_summary(attains_status, polluters, water_samples, land_risk_points, telemetry, attains_summary)

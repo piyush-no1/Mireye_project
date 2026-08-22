@@ -1,0 +1,903 @@
+{
+  "items": [
+    {
+      "organizationIdentifier": "21MICH",
+      "organizationName": "Michigan",
+      "organizationTypeText": "State",
+      "reportingCycleText": "2024",
+      "combinedCycles": [],
+      "reportStatusCode": "EPA Final Action",
+      "documents": [
+        {
+          "agencyCode": "S",
+          "documentTypes": [
+            {
+              "documentTypeCode": "Appendices"
+            }
+          ],
+          "documentFileType": "application/pdf",
+          "documentFileName": "2024-WRD-IR-AppA1.pdf",
+          "documentName": "Michigan 2024 Integrated Report Appendix A1",
+          "documentDescription": null,
+          "documentComments": "Appendix A1 Lower Peninsula HUC8",
+          "documentURL": "https://api.epa.gov/attains/documents/cycles/14684/214891"
+        },
+        {
+          "agencyCode": "S",
+          "documentTypes": [
+            {
+              "documentTypeCode": "Appendices"
+            }
+          ],
+          "documentFileType": "application/pdf",
+          "documentFileName": "2024-WRD-IR-AppA2.pdf",
+          "documentName": "Michigan 2024 Integrated Report Appendix A2",
+          "documentDescription": null,
+          "documentComments": "Appendix A2 Upper Peninsula HUC8",
+          "documentURL": "https://api.epa.gov/attains/documents/cycles/14684/214892"
+        },
+        {
+          "agencyCode": "S",
+          "documentTypes": [
+            {
+              "documentTypeCode": "Appendices"
+            }
+          ],
+          "documentFileType": "application/pdf",
+          "documentFileName": "2024_AppE.pdf",
+          "documentName": "Michigan 2024 Integrated Report Appendix E",
+          "documentDescription": null,
+          "documentComments": "Michigan 2024 IR comments",
+          "documentURL": "https://api.epa.gov/attains/documents/cycles/14684/218935"
+        },
+        {
+          "agencyCode": "S",
+          "documentTypes": [
+            {
+              "documentTypeCode": "Integrated Report Document"
+            }
+          ],
+          "documentFileType": "application/pdf",
+          "documentFileName": "Michigan 2024 Integrated Report.pdf",
+          "documentName": "Michigan 2024 Integrated Report",
+          "documentDescription": null,
+          "documentComments": "Michigan's Final 2024 Integrated Report",
+          "documentURL": "https://api.epa.gov/attains/documents/cycles/14684/218936"
+        },
+        {
+          "agencyCode": "S",
+          "documentTypes": [
+            {
+              "documentTypeCode": "List Submittal Letter"
+            }
+          ],
+          "documentFileType": "application/pdf",
+          "documentFileName": "2024 IR Final Submittal Transmittal.pdf",
+          "documentName": "Michigan 2024 Integrated Report Transmittal Memo",
+          "documentDescription": null,
+          "documentComments": "Michigan Submittal Letter for 2024 Integrated Report",
+          "documentURL": "https://api.epa.gov/attains/documents/cycles/14684/218950"
+        },
+        {
+          "agencyCode": "E",
+          "documentTypes": [
+            {
+              "documentTypeCode": "EPA Transmittal Letter"
+            }
+          ],
+          "documentFileType": "application/pdf",
+          "documentFileName": "MI_303(d)AprvlCvrLetr_20240419.pdf",
+          "documentName": "EPA 2024 303d List Final Aprov Cover Letter",
+          "documentDescription": null,
+          "documentComments": "Cover Letter to EPA Final Approval of MI 2024 303(d) list.",
+          "documentURL": "https://api.epa.gov/attains/documents/cycles/16544/220190"
+        },
+        {
+          "agencyCode": "E",
+          "documentTypes": [
+            {
+              "documentTypeCode": "EPA Decision Rationale"
+            }
+          ],
+          "documentFileType": "application/pdf",
+          "documentFileName": "MI_303(d)EPFinalDD_20240419.pdf",
+          "documentName": "EPA Decision Document MI 2024 303d list final approval",
+          "documentDescription": null,
+          "documentComments": "EPA's Decision Document for review and approval of MI's 2024 303(d) list.",
+          "documentURL": "https://api.epa.gov/attains/documents/cycles/16544/220191"
+        },
+        {
+          "agencyCode": "E",
+          "documentTypes": [
+            {
+              "documentTypeCode": "Other Supporting Documents"
+            }
+          ],
+          "documentFileType": "application/pdf",
+          "documentFileName": "MI_DD_Apdx1_Tbl1_20240419.pdf",
+          "documentName": "EPA 2024 DD Appendix 1 MI's 303d list",
+          "documentDescription": null,
+          "documentComments": "Appendix 1 to EPA's final decision document on MI's 2024 303(d) list.",
+          "documentURL": "https://api.epa.gov/attains/documents/cycles/16544/220192"
+        },
+        {
+          "agencyCode": "S",
+          "documentTypes": [
+            {
+              "documentTypeCode": "Appendices"
+            }
+          ],
+          "documentFileType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "documentFileName": "WRD-IR-2024-AppB.xlsx",
+          "documentName": "Michigan 2024 Integrated Report Appendix B",
+          "documentDescription": null,
+          "documentComments": "Michigan Final 305(b)",
+          "documentURL": "https://api.epa.gov/attains/documents/cycles/14684/218931"
+        },
+        {
+          "agencyCode": "S",
+          "documentTypes": [
+            {
+              "documentTypeCode": "Appendices"
+            }
+          ],
+          "documentFileType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "documentFileName": "WRD-IR-2024-AppC.xlsx",
+          "documentName": "Michigan 2024 Integrated Report Appendix C",
+          "documentDescription": null,
+          "documentComments": "Michigan Final 303(d)",
+          "documentURL": "https://api.epa.gov/attains/documents/cycles/14684/218932"
+        },
+        {
+          "agencyCode": "S",
+          "documentTypes": [
+            {
+              "documentTypeCode": "Appendices"
+            }
+          ],
+          "documentFileType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "documentFileName": "WRD-IR-2024-AppD1.xlsx",
+          "documentName": "Michigan 2024 Integrated Report Appendix D1",
+          "documentDescription": null,
+          "documentComments": "Michigan Delistings",
+          "documentURL": "https://api.epa.gov/attains/documents/cycles/14684/218933"
+        },
+        {
+          "agencyCode": "S",
+          "documentTypes": [
+            {
+              "documentTypeCode": "Appendices"
+            }
+          ],
+          "documentFileType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "documentFileName": "WRD-IR-2024-AppD2.xlsx",
+          "documentName": "Michigan 2024 Integrated Report Appendix D2",
+          "documentDescription": null,
+          "documentComments": "Michigan New Listings",
+          "documentURL": "https://api.epa.gov/attains/documents/cycles/14684/218934"
+        }
+      ],
+      "assessments": [
+        {
+          "assessmentUnitIdentifier": "MI040802040410-01",
+          "agencyCode": "S",
+          "trophicStatusCode": null,
+          "useAttainments": [
+            {
+              "useName": "Total Body Contact Recreation",
+              "useAttainmentCode": "N",
+              "threatenedIndicator": "N",
+              "trendCode": "5",
+              "agencyCode": "S",
+              "assessmentMetadata": {
+                "assessmentBasisCode": "Monitored Data",
+                "assessmentTypes": [
+                  {
+                    "assessmentTypeCode": "PATHOGEN INDICATORS",
+                    "assessmentConfidenceCode": "Good"
+                  }
+                ],
+                "assessmentMethodTypes": [
+                  {
+                    "methodTypeContext": "21MICH",
+                    "methodTypeCode": "1143",
+                    "methodTypeName": "E. COLI MONITORING - NONBEACH"
+                  }
+                ],
+                "monitoringActivity": null,
+                "assessmentActivity": null
+              },
+              "useAttainmentCodeName": "Not Supporting"
+            },
+            {
+              "useName": "Partial Body Contact Recreation",
+              "useAttainmentCode": "F",
+              "threatenedIndicator": "N",
+              "trendCode": "5",
+              "agencyCode": "S",
+              "assessmentMetadata": {
+                "assessmentBasisCode": "Monitored Data",
+                "assessmentTypes": [
+                  {
+                    "assessmentTypeCode": "PATHOGEN INDICATORS",
+                    "assessmentConfidenceCode": "Good"
+                  }
+                ],
+                "assessmentMethodTypes": [
+                  {
+                    "methodTypeContext": "21MICH",
+                    "methodTypeCode": "1143",
+                    "methodTypeName": "E. COLI MONITORING - NONBEACH"
+                  }
+                ],
+                "monitoringActivity": null,
+                "assessmentActivity": {
+                  "assessmentDate": "2020-04-06",
+                  "assessorName": "Rippke"
+                }
+              },
+              "useAttainmentCodeName": "Fully Supporting"
+            },
+            {
+              "useName": "Navigation",
+              "useAttainmentCode": "F",
+              "threatenedIndicator": "N",
+              "trendCode": null,
+              "agencyCode": "S",
+              "assessmentMetadata": {
+                "assessmentBasisCode": null,
+                "assessmentTypes": [
+                  {
+                    "assessmentTypeCode": "OTHER",
+                    "assessmentConfidenceCode": "Good"
+                  }
+                ],
+                "assessmentMethodTypes": [],
+                "monitoringActivity": null,
+                "assessmentActivity": {
+                  "assessmentDate": null,
+                  "assessorName": "Cooper"
+                }
+              },
+              "useAttainmentCodeName": "Fully Supporting"
+            },
+            {
+              "useName": "Industrial Water Supply",
+              "useAttainmentCode": "F",
+              "threatenedIndicator": "N",
+              "trendCode": null,
+              "agencyCode": "S",
+              "assessmentMetadata": {
+                "assessmentBasisCode": null,
+                "assessmentTypes": [
+                  {
+                    "assessmentTypeCode": "OTHER",
+                    "assessmentConfidenceCode": "Good"
+                  }
+                ],
+                "assessmentMethodTypes": [],
+                "monitoringActivity": null,
+                "assessmentActivity": {
+                  "assessmentDate": null,
+                  "assessorName": "Cooper"
+                }
+              },
+              "useAttainmentCodeName": "Fully Supporting"
+            },
+            {
+              "useName": "Agriculture",
+              "useAttainmentCode": "F",
+              "threatenedIndicator": "N",
+              "trendCode": null,
+              "agencyCode": "S",
+              "assessmentMetadata": {
+                "assessmentBasisCode": null,
+                "assessmentTypes": [
+                  {
+                    "assessmentTypeCode": "OTHER",
+                    "assessmentConfidenceCode": "Good"
+                  }
+                ],
+                "assessmentMethodTypes": [],
+                "monitoringActivity": null,
+                "assessmentActivity": {
+                  "assessmentDate": null,
+                  "assessorName": "Cooper"
+                }
+              },
+              "useAttainmentCodeName": "Fully Supporting"
+            },
+            {
+              "useName": "Warm Water Fishery",
+              "useAttainmentCode": "N",
+              "threatenedIndicator": "N",
+              "trendCode": null,
+              "agencyCode": "S",
+              "assessmentMetadata": {
+                "assessmentBasisCode": "Monitored Data",
+                "assessmentTypes": [
+                  {
+                    "assessmentTypeCode": "PHYSICAL/CHEMICAL",
+                    "assessmentConfidenceCode": "Good"
+                  }
+                ],
+                "assessmentMethodTypes": [
+                  {
+                    "methodTypeContext": "21MICH",
+                    "methodTypeCode": "1147",
+                    "methodTypeName": "CHEMICAL/PHYSICAL MONITORING"
+                  }
+                ],
+                "monitoringActivity": null,
+                "assessmentActivity": {
+                  "assessmentDate": "2023-09-14",
+                  "assessorName": "Turek"
+                }
+              },
+              "useAttainmentCodeName": "Not Supporting"
+            },
+            {
+              "useName": "Cold Water Fishery",
+              "useAttainmentCode": "X",
+              "threatenedIndicator": "N",
+              "trendCode": null,
+              "agencyCode": "S",
+              "assessmentMetadata": null,
+              "useAttainmentCodeName": "Not Assessed"
+            },
+            {
+              "useName": "Fish Consumption",
+              "useAttainmentCode": "N",
+              "threatenedIndicator": "N",
+              "trendCode": null,
+              "agencyCode": "S",
+              "assessmentMetadata": {
+                "assessmentBasisCode": "Monitored Data",
+                "assessmentTypes": [
+                  {
+                    "assessmentTypeCode": "PHYSICAL/CHEMICAL",
+                    "assessmentConfidenceCode": "Good"
+                  }
+                ],
+                "assessmentMethodTypes": [
+                  {
+                    "methodTypeContext": "EPA",
+                    "methodTypeCode": "230",
+                    "methodTypeName": "Fixed station physical/chemical (conventional plus toxic pollutants)"
+                  },
+                  {
+                    "methodTypeContext": "21MICH",
+                    "methodTypeCode": "1140",
+                    "methodTypeName": "FISH TISSUE ANALYSIS - FCMP"
+                  }
+                ],
+                "monitoringActivity": null,
+                "assessmentActivity": {
+                  "assessmentDate": "2020-03-10",
+                  "assessorName": "Bohr"
+                }
+              },
+              "useAttainmentCodeName": "Not Supporting"
+            },
+            {
+              "useName": "Other Indigenous Aquatic Life and Wildlife",
+              "useAttainmentCode": "N",
+              "threatenedIndicator": "N",
+              "trendCode": null,
+              "agencyCode": "S",
+              "assessmentMetadata": {
+                "assessmentBasisCode": "Monitored Data",
+                "assessmentTypes": [
+                  {
+                    "assessmentTypeCode": "BIOLOGICAL",
+                    "assessmentConfidenceCode": "Good"
+                  },
+                  {
+                    "assessmentTypeCode": "HABITAT",
+                    "assessmentConfidenceCode": "Good"
+                  },
+                  {
+                    "assessmentTypeCode": "PHYSICAL/CHEMICAL",
+                    "assessmentConfidenceCode": "Good"
+                  },
+                  {
+                    "assessmentTypeCode": "TOXICOLOGICAL",
+                    "assessmentConfidenceCode": "Good"
+                  }
+                ],
+                "assessmentMethodTypes": [
+                  {
+                    "methodTypeContext": "EPA",
+                    "methodTypeCode": "430",
+                    "methodTypeName": "Sediment analysis"
+                  },
+                  {
+                    "methodTypeContext": "21MICH",
+                    "methodTypeCode": "1145",
+                    "methodTypeName": "HABITAT ASSESSMENT - MDEQ PROCEDURE 51"
+                  },
+                  {
+                    "methodTypeContext": "21MICH",
+                    "methodTypeCode": "1146",
+                    "methodTypeName": "MACROINVERTEBRATE COMMUNITY ASSESSMENT - MDEQ PROCEDURE 51"
+                  },
+                  {
+                    "methodTypeContext": "21MICH",
+                    "methodTypeCode": "1147",
+                    "methodTypeName": "CHEMICAL/PHYSICAL MONITORING"
+                  }
+                ],
+                "monitoringActivity": null,
+                "assessmentActivity": {
+                  "assessmentDate": "2023-09-14",
+                  "assessorName": "Noffke/Turek"
+                }
+              },
+              "useAttainmentCodeName": "Not Supporting"
+            }
+          ],
+          "parameters": [
+            {
+              "parameterStatusName": "Cause",
+              "parameterName": "ESCHERICHIA COLI (E. COLI)",
+              "associatedUses": [
+                {
+                  "associatedUseName": "Total Body Contact Recreation",
+                  "parameterAttainmentCode": "Not meeting criteria",
+                  "trendCode": "U",
+                  "seasons": []
+                },
+                {
+                  "associatedUseName": "Partial Body Contact Recreation",
+                  "parameterAttainmentCode": "Meeting criteria",
+                  "trendCode": "U",
+                  "seasons": []
+                }
+              ],
+              "impairedWatersInformation": {
+                "listingInformation": {
+                  "agencyCode": "S",
+                  "cycleFirstListedText": "2020",
+                  "cycleScheduledForTMDLText": "2020",
+                  "CWA303dPriorityRankingText": null,
+                  "consentDecreeCycleText": "",
+                  "alternateListingIdentifier": null
+                },
+                "category4BInformation": null,
+                "priorCauses": []
+              },
+              "associatedActions": [
+                {
+                  "associatedActionIdentifier": "MI-2020-003"
+                }
+              ],
+              "pollutantIndicator": "Y"
+            },
+            {
+              "parameterStatusName": "Meeting Criteria",
+              "parameterName": "MERCURY IN FISH TISSUE",
+              "associatedUses": [
+                {
+                  "associatedUseName": "Fish Consumption",
+                  "parameterAttainmentCode": "Meeting criteria",
+                  "trendCode": null,
+                  "seasons": []
+                }
+              ],
+              "impairedWatersInformation": {
+                "listingInformation": {
+                  "agencyCode": "S",
+                  "cycleFirstListedText": "2020",
+                  "cycleScheduledForTMDLText": "2020",
+                  "CWA303dPriorityRankingText": null,
+                  "consentDecreeCycleText": "",
+                  "alternateListingIdentifier": null
+                },
+                "category4BInformation": null,
+                "priorCauses": []
+              },
+              "associatedActions": [],
+              "pollutantIndicator": "Y"
+            },
+            {
+              "parameterStatusName": "Cause",
+              "parameterName": "PCBS IN FISH TISSUE",
+              "associatedUses": [
+                {
+                  "associatedUseName": "Fish Consumption",
+                  "parameterAttainmentCode": "Not meeting criteria",
+                  "trendCode": null,
+                  "seasons": []
+                }
+              ],
+              "impairedWatersInformation": {
+                "listingInformation": {
+                  "agencyCode": "S",
+                  "cycleFirstListedText": "2000",
+                  "cycleScheduledForTMDLText": "2022",
+                  "CWA303dPriorityRankingText": null,
+                  "consentDecreeCycleText": "",
+                  "alternateListingIdentifier": "MI040802040410-01"
+                },
+                "category4BInformation": null,
+                "priorCauses": []
+              },
+              "associatedActions": [
+                {
+                  "associatedActionIdentifier": "68285"
+                }
+              ],
+              "pollutantIndicator": "Y"
+            },
+            {
+              "parameterStatusName": "Cause",
+              "parameterName": "PERFLUOROOCTANE SULFONATE (PFOS) IN FISH TISSUE",
+              "associatedUses": [
+                {
+                  "associatedUseName": "Fish Consumption",
+                  "parameterAttainmentCode": "Not meeting criteria",
+                  "trendCode": null,
+                  "seasons": []
+                }
+              ],
+              "impairedWatersInformation": {
+                "listingInformation": {
+                  "agencyCode": "S",
+                  "cycleFirstListedText": "2016",
+                  "cycleScheduledForTMDLText": "2022",
+                  "CWA303dPriorityRankingText": null,
+                  "consentDecreeCycleText": "",
+                  "alternateListingIdentifier": null
+                },
+                "category4BInformation": null,
+                "priorCauses": []
+              },
+              "associatedActions": [],
+              "pollutantIndicator": "Y"
+            },
+            {
+              "parameterStatusName": "Cause",
+              "parameterName": "POLYCHLORINATED BIPHENYLS (PCBS)",
+              "associatedUses": [
+                {
+                  "associatedUseName": "Fish Consumption",
+                  "parameterAttainmentCode": "Not meeting criteria",
+                  "trendCode": null,
+                  "seasons": []
+                }
+              ],
+              "impairedWatersInformation": {
+                "listingInformation": {
+                  "agencyCode": "S",
+                  "cycleFirstListedText": "2006",
+                  "cycleScheduledForTMDLText": "2022",
+                  "CWA303dPriorityRankingText": null,
+                  "consentDecreeCycleText": "",
+                  "alternateListingIdentifier": "MI040802040410-01"
+                },
+                "category4BInformation": null,
+                "priorCauses": []
+              },
+              "associatedActions": [
+                {
+                  "associatedActionIdentifier": "68285"
+                }
+              ],
+              "pollutantIndicator": "Y"
+            },
+            {
+              "parameterStatusName": "Observed effect",
+              "parameterName": "SEDIMENT SCREENING VALUE (EXCEEDANCE)",
+              "associatedUses": [
+                {
+                  "associatedUseName": "Other Indigenous Aquatic Life and Wildlife",
+                  "parameterAttainmentCode": "Not meeting threshold",
+                  "trendCode": null,
+                  "seasons": []
+                }
+              ],
+              "impairedWatersInformation": {
+                "listingInformation": {
+                  "agencyCode": "S",
+                  "cycleFirstListedText": "2006",
+                  "cycleScheduledForTMDLText": "2022",
+                  "CWA303dPriorityRankingText": null,
+                  "consentDecreeCycleText": "",
+                  "alternateListingIdentifier": "MI040802040410-01"
+                },
+                "category4BInformation": null,
+                "priorCauses": []
+              },
+              "associatedActions": [],
+              "pollutantIndicator": "Y"
+            },
+            {
+              "parameterStatusName": "Observed effect",
+              "parameterName": "BENTHIC MACROINVERTEBRATES BIOASSESSMENTS",
+              "associatedUses": [
+                {
+                  "associatedUseName": "Other Indigenous Aquatic Life and Wildlife",
+                  "parameterAttainmentCode": "Meeting threshold",
+                  "trendCode": null,
+                  "seasons": []
+                }
+              ],
+              "impairedWatersInformation": {
+                "listingInformation": {
+                  "agencyCode": "S",
+                  "cycleFirstListedText": "2006",
+                  "cycleScheduledForTMDLText": "2022",
+                  "CWA303dPriorityRankingText": null,
+                  "consentDecreeCycleText": "",
+                  "alternateListingIdentifier": "MI040802040410-01"
+                },
+                "category4BInformation": null,
+                "priorCauses": []
+              },
+              "associatedActions": [],
+              "pollutantIndicator": "Y"
+            },
+            {
+              "parameterStatusName": "Meeting Criteria",
+              "parameterName": "PH",
+              "associatedUses": [
+                {
+                  "associatedUseName": "Other Indigenous Aquatic Life and Wildlife",
+                  "parameterAttainmentCode": "Meeting criteria",
+                  "trendCode": null,
+                  "seasons": []
+                },
+                {
+                  "associatedUseName": "Warm Water Fishery",
+                  "parameterAttainmentCode": "Meeting criteria",
+                  "trendCode": null,
+                  "seasons": []
+                }
+              ],
+              "impairedWatersInformation": {
+                "listingInformation": {
+                  "agencyCode": "S",
+                  "cycleFirstListedText": "2006",
+                  "cycleScheduledForTMDLText": "2022",
+                  "CWA303dPriorityRankingText": null,
+                  "consentDecreeCycleText": "",
+                  "alternateListingIdentifier": "MI040802040410-01"
+                },
+                "category4BInformation": null,
+                "priorCauses": []
+              },
+              "associatedActions": [],
+              "pollutantIndicator": "Y"
+            },
+            {
+              "parameterStatusName": "Cause",
+              "parameterName": "EUTROPHICATION, NUTRIENTS",
+              "associatedUses": [
+                {
+                  "associatedUseName": "Other Indigenous Aquatic Life and Wildlife",
+                  "parameterAttainmentCode": "Not meeting criteria",
+                  "trendCode": null,
+                  "seasons": []
+                }
+              ],
+              "impairedWatersInformation": {
+                "listingInformation": {
+                  "agencyCode": "S",
+                  "cycleFirstListedText": "2024",
+                  "cycleScheduledForTMDLText": "",
+                  "CWA303dPriorityRankingText": "Low",
+                  "consentDecreeCycleText": "",
+                  "alternateListingIdentifier": null
+                },
+                "category4BInformation": null,
+                "priorCauses": []
+              },
+              "associatedActions": [],
+              "pollutantIndicator": "Y"
+            },
+            {
+              "parameterStatusName": "Cause",
+              "parameterName": "SEDIMENT TOXICITY",
+              "associatedUses": [
+                {
+                  "associatedUseName": "Other Indigenous Aquatic Life and Wildlife",
+                  "parameterAttainmentCode": "Not meeting criteria",
+                  "trendCode": "U",
+                  "seasons": []
+                }
+              ],
+              "impairedWatersInformation": {
+                "listingInformation": {
+                  "agencyCode": "S",
+                  "cycleFirstListedText": "2024",
+                  "cycleScheduledForTMDLText": "",
+                  "CWA303dPriorityRankingText": "Low",
+                  "consentDecreeCycleText": "",
+                  "alternateListingIdentifier": null
+                },
+                "category4BInformation": null,
+                "priorCauses": []
+              },
+              "associatedActions": [],
+              "pollutantIndicator": "Y"
+            },
+            {
+              "parameterStatusName": "Cause",
+              "parameterName": "CONTAMINATED SEDIMENTS (PAHS)",
+              "associatedUses": [
+                {
+                  "associatedUseName": "Other Indigenous Aquatic Life and Wildlife",
+                  "parameterAttainmentCode": "Not meeting criteria",
+                  "trendCode": "U",
+                  "seasons": []
+                }
+              ],
+              "impairedWatersInformation": {
+                "listingInformation": {
+                  "agencyCode": "S",
+                  "cycleFirstListedText": "2024",
+                  "cycleScheduledForTMDLText": "",
+                  "CWA303dPriorityRankingText": "Low",
+                  "consentDecreeCycleText": "",
+                  "alternateListingIdentifier": null
+                },
+                "category4BInformation": null,
+                "priorCauses": []
+              },
+              "associatedActions": [],
+              "pollutantIndicator": "Y"
+            },
+            {
+              "parameterStatusName": "Cause",
+              "parameterName": "DISSOLVED OXYGEN",
+              "associatedUses": [
+                {
+                  "associatedUseName": "Warm Water Fishery",
+                  "parameterAttainmentCode": "Not meeting criteria",
+                  "trendCode": null,
+                  "seasons": []
+                }
+              ],
+              "impairedWatersInformation": {
+                "listingInformation": {
+                  "agencyCode": "S",
+                  "cycleFirstListedText": "2024",
+                  "cycleScheduledForTMDLText": "",
+                  "CWA303dPriorityRankingText": "Low",
+                  "consentDecreeCycleText": "",
+                  "alternateListingIdentifier": null
+                },
+                "category4BInformation": null,
+                "priorCauses": []
+              },
+              "associatedActions": [],
+              "pollutantIndicator": "Y"
+            },
+            {
+              "parameterStatusName": "Meeting Criteria",
+              "parameterName": "CHLORIDE",
+              "associatedUses": [
+                {
+                  "associatedUseName": "Other Indigenous Aquatic Life and Wildlife",
+                  "parameterAttainmentCode": "Meeting criteria",
+                  "trendCode": null,
+                  "seasons": []
+                },
+                {
+                  "associatedUseName": "Warm Water Fishery",
+                  "parameterAttainmentCode": "Meeting criteria",
+                  "trendCode": null,
+                  "seasons": []
+                }
+              ],
+              "impairedWatersInformation": {
+                "listingInformation": {
+                  "agencyCode": "S",
+                  "cycleFirstListedText": "2024",
+                  "cycleScheduledForTMDLText": "",
+                  "CWA303dPriorityRankingText": "Low",
+                  "consentDecreeCycleText": "",
+                  "alternateListingIdentifier": null
+                },
+                "category4BInformation": null,
+                "priorCauses": []
+              },
+              "associatedActions": [],
+              "pollutantIndicator": "Y"
+            },
+            {
+              "parameterStatusName": "Meeting Criteria",
+              "parameterName": "SULFATE",
+              "associatedUses": [
+                {
+                  "associatedUseName": "Other Indigenous Aquatic Life and Wildlife",
+                  "parameterAttainmentCode": "Meeting criteria",
+                  "trendCode": null,
+                  "seasons": []
+                },
+                {
+                  "associatedUseName": "Warm Water Fishery",
+                  "parameterAttainmentCode": "Meeting criteria",
+                  "trendCode": null,
+                  "seasons": []
+                }
+              ],
+              "impairedWatersInformation": {
+                "listingInformation": {
+                  "agencyCode": "S",
+                  "cycleFirstListedText": "2024",
+                  "cycleScheduledForTMDLText": "",
+                  "CWA303dPriorityRankingText": "Low",
+                  "consentDecreeCycleText": "",
+                  "alternateListingIdentifier": null
+                },
+                "category4BInformation": null,
+                "priorCauses": []
+              },
+              "associatedActions": [],
+              "pollutantIndicator": "Y"
+            }
+          ],
+          "probableSources": [
+            {
+              "sourceName": "ATMOSPHERIC DEPOSITION - TOXICS",
+              "sourceConfirmedIndicator": "Y",
+              "associatedCauseNames": [
+                {
+                  "causeName": "PCBS IN FISH TISSUE"
+                },
+                {
+                  "causeName": "POLYCHLORINATED BIPHENYLS (PCBS)"
+                },
+                {
+                  "causeName": "PERFLUOROOCTANE SULFONATE (PFOS) IN FISH TISSUE"
+                }
+              ]
+            },
+            {
+              "sourceName": "DISCHARGES FROM BIOSOLIDS (SLUDGE) STORAGE, APPLICATION OR DISPOSAL",
+              "sourceConfirmedIndicator": "Y",
+              "associatedCauseNames": [
+                {
+                  "causeName": "PERFLUOROOCTANE SULFONATE (PFOS) IN FISH TISSUE"
+                }
+              ]
+            },
+            {
+              "sourceName": "INDUSTRIAL POINT SOURCE DISCHARGE",
+              "sourceConfirmedIndicator": "N",
+              "associatedCauseNames": [
+                {
+                  "causeName": "PERFLUOROOCTANE SULFONATE (PFOS) IN FISH TISSUE"
+                }
+              ]
+            },
+            {
+              "sourceName": "SOURCE UNKNOWN",
+              "sourceConfirmedIndicator": "Y",
+              "associatedCauseNames": [
+                {
+                  "causeName": "DISSOLVED OXYGEN"
+                },
+                {
+                  "causeName": "SEDIMENT TOXICITY"
+                },
+                {
+                  "causeName": "CONTAMINATED SEDIMENTS (PAHS)"
+                }
+              ]
+            }
+          ],
+          "documents": [],
+          "rationaleText": null,
+          "epaIRCategory": "5",
+          "overallStatus": "Not Supporting",
+          "cycleLastAssessedText": "2020",
+          "yearLastMonitoredText": "2017"
+        }
+      ],
+      "delistedWaters": []
+    }
+  ],
+  "count": 1
+}

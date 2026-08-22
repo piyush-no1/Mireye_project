@@ -135,6 +135,7 @@ export const DataSourcesPanel: React.FC<Props> = ({ result }) => {
             icon={<Server size={20} style={{ color: '#10b981' }} />}
             data={{
               query: result.query,
+              attains_summary: result.attains_summary || null,
               attains_status: result.attains_status || [],
               polluters: result.polluters || [],
               water_quality_samples: result.water_quality_samples || [],

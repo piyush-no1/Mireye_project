@@ -38,7 +38,7 @@ export const RiskScoreCard: React.FC<RiskScoreCardProps> = ({ summary }) => {
     }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
         <h3 style={{ fontSize: '15px', fontWeight: 600, color: 'var(--text-muted)' }}>
-          Overall Pollution Risk Score
+          Environmental Assessment Rating
         </h3>
         <div style={{
           display: 'flex',
@@ -56,19 +56,57 @@ export const RiskScoreCard: React.FC<RiskScoreCardProps> = ({ summary }) => {
         </div>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '12px' }}>
-        <span style={{ fontSize: '42px', fontWeight: 900, color: badgeColor, marginRight: '12px' }}>
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '16px' }}>
+        <span style={{ fontSize: '48px', fontWeight: 900, color: badgeColor, marginRight: '12px' }}>
           {rating}
         </span>
-        <span style={{ fontSize: '30px', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.03em' }}>
-          {summary.overall_score.toFixed(1)}
-        </span>
-        <span style={{ fontSize: '14px', color: 'var(--text-subtle)' }}>/ 100 Risk Points</span>
       </div>
 
-      <p style={{ fontSize: '13px', color: 'var(--text-main)', lineHeight: '1.5', background: 'rgba(30, 41, 59, 0.5)', padding: '10px 14px', borderRadius: 'var(--radius-sm)' }}>
-        {summary.notes || 'Deterministic multi-source evaluation complete.'}
-      </p>
+      {summary.risk_factors && summary.risk_factors.length > 0 && (
+        <div style={{ marginBottom: '12px' }}>
+          <strong style={{ color: 'var(--text-primary)', fontSize: '13px', display: 'block', marginBottom: '4px' }}>Risk Factors</strong>
+          <ul style={{ margin: 0, paddingLeft: '20px', fontSize: '13px', color: 'var(--text-main)' }}>
+            {summary.risk_factors.map((rf, i) => <li key={i}>{rf}</li>)}
+          </ul>
+        </div>
+      )}
+
+      {summary.mitigating_factors && summary.mitigating_factors.length > 0 && (
+        <div style={{ marginBottom: '12px' }}>
+          <strong style={{ color: 'var(--text-primary)', fontSize: '13px', display: 'block', marginBottom: '4px' }}>Mitigating Factors</strong>
+          <ul style={{ margin: 0, paddingLeft: '20px', fontSize: '13px', color: 'var(--text-main)' }}>
+            {summary.mitigating_factors.map((mf, i) => <li key={i}>{mf}</li>)}
+          </ul>
+        </div>
+      )}
+
+      {summary.temporal_assessment && (
+        <div style={{ marginBottom: '12px' }}>
+          <strong style={{ color: 'var(--text-primary)', fontSize: '13px', display: 'block', marginBottom: '4px' }}>Temporal Assessment</strong>
+          <p style={{ margin: 0, fontSize: '13px', color: 'var(--text-main)' }}>{summary.temporal_assessment}</p>
+        </div>
+      )}
+      
+      {summary.spatial_assessment && (
+        <div style={{ marginBottom: '12px' }}>
+          <strong style={{ color: 'var(--text-primary)', fontSize: '13px', display: 'block', marginBottom: '4px' }}>Spatial Assessment</strong>
+          <p style={{ margin: 0, fontSize: '13px', color: 'var(--text-main)' }}>{summary.spatial_assessment}</p>
+        </div>
+      )}
+
+      {summary.data_limitations && (
+        <div style={{ marginBottom: '12px' }}>
+          <strong style={{ color: 'var(--text-primary)', fontSize: '13px', display: 'block', marginBottom: '4px' }}>Data Limitations</strong>
+          <p style={{ margin: 0, fontSize: '13px', color: 'var(--text-main)' }}>{summary.data_limitations}</p>
+        </div>
+      )}
+
+      <div style={{ marginTop: '16px' }}>
+        <strong style={{ color: 'var(--text-primary)', fontSize: '13px', display: 'block', marginBottom: '4px' }}>Synthesis Notes</strong>
+        <p style={{ fontSize: '13px', color: 'var(--text-main)', lineHeight: '1.5', background: 'rgba(30, 41, 59, 0.5)', padding: '10px 14px', borderRadius: 'var(--radius-sm)', margin: 0 }}>
+          {summary.notes || 'Deterministic multi-source evaluation complete.'}
+        </p>
+      </div>
     </div>
   );
 };
