@@ -43,6 +43,7 @@ class AttainsStatus(BaseModel):
     history: List[Dict[str, Any]] = Field(default_factory=list)
     tmdl_actions: List[Dict[str, Any]] = Field(default_factory=list)
     source: str = "ATTAINS"
+    geometry: Optional[Dict[str, Any]] = None
 
 class PolluterFacility(BaseModel):
     source_id: str

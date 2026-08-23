@@ -47,6 +47,7 @@ export interface AttainsStatus {
   history: any[];
   tmdl_actions: any[];
   source: string;
+  geometry?: any;
 }
 
 export interface PolluterFacility {

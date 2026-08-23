@@ -5,6 +5,7 @@ import { FlowlineLayer } from './FlowlineLayer';
 import { PolluterMarkers } from './PolluterMarkers';
 import { WaterQualityMarkers } from './WaterQualityMarkers';
 import { LandRiskOverlay } from './LandRiskOverlay';
+import { AttainsLayers } from './AttainsLayers';
 import { AssessmentResult } from '../../types/assessment';
 import styles from './MapView.module.css';
 
@@ -66,6 +67,15 @@ export const MapView: React.FC<MapViewProps> = ({ result }) => {
         />
 
         <MapBoundsController result={result} />
+
+        {result?.attains_status && (
+          <AttainsLayers 
+            attains_status={result.attains_status} 
+            start_point={result.start_point}
+            end_point={result.end_point}
+            flowline_geojson={result.hydrology?.flowline_geojson}
+          />
+        )}
 
         {result?.hydrology?.flowline_geojson && (
           <FlowlineLayer geojson={result.hydrology.flowline_geojson} />
@@ -135,6 +145,8 @@ export const MapView: React.FC<MapViewProps> = ({ result }) => {
           />
         )}
 
+
+
         {result?.land_risk_points && (
           <LandRiskOverlay points={result.land_risk_points} />
         )}
@@ -170,6 +182,14 @@ export const MapView: React.FC<MapViewProps> = ({ result }) => {
         <div className={styles.legendItem}>
           <div className={styles.legendDot} style={{ background: '#8b5cf6' }} />
           <span>Mireye Riparian Land Risk Buffer</span>
+        </div>
+        <div className={styles.legendItem}>
+          <div className={styles.legendDot} style={{ border: '2px solid #ef4444', background: 'rgba(239, 68, 68, 0.2)' }} />
+          <span>EPA ATTAINS Impaired Unit</span>
+        </div>
+        <div className={styles.legendItem}>
+          <div className={styles.legendDot} style={{ border: '2px solid #22c55e', background: 'rgba(34, 197, 94, 0.2)' }} />
+          <span>EPA ATTAINS Supporting Unit</span>
         </div>
       </div>
     </div>

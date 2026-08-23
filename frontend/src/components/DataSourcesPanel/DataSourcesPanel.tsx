@@ -136,7 +136,10 @@ export const DataSourcesPanel: React.FC<Props> = ({ result }) => {
             data={{
               query: result.query,
               attains_summary: result.attains_summary || null,
-              attains_status: result.attains_status || [],
+              attains_status: (result.attains_status || []).map(au => {
+                const { geometry, ...rest } = au;
+                return rest;
+              }),
               polluters: result.polluters || [],
               water_quality_samples: result.water_quality_samples || [],
               land_risk_points: result.land_risk_points || [],

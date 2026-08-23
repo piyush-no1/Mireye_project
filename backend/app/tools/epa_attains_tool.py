@@ -47,7 +47,7 @@ def load_fixture_attains() -> Dict[str, Any]:
         ]
     }
 
-async def fetch_attains_map(bbox_str: str) -> List[Dict[str, str]]:
+async def fetch_attains_map(bbox_str: str) -> List[Dict[str, Any]]:
     map_url = "https://gispub.epa.gov/arcgis/rest/services/OW/ATTAINS_Assessment/MapServer/1/query"
     map_params = {
         "geometry": bbox_str,
@@ -55,8 +55,8 @@ async def fetch_attains_map(bbox_str: str) -> List[Dict[str, str]]:
         "inSR": "4326",
         "spatialRel": "esriSpatialRelIntersects",
         "outFields": "assessmentunitidentifier,organizationid",
-        "returnGeometry": "false",
-        "f": "json"
+        "returnGeometry": "true",
+        "f": "geojson"
     }
     
     try:
@@ -65,10 +65,12 @@ async def fetch_attains_map(bbox_str: str) -> List[Dict[str, str]]:
         
         au_list = []
         for feature in map_data.get("features", []):
-            au_id = feature.get("attributes", {}).get("assessmentunitidentifier")
-            org_id = feature.get("attributes", {}).get("organizationid")
+            props = feature.get("properties", {})
+            au_id = props.get("assessmentunitidentifier")
+            org_id = props.get("organizationid")
+            geom = feature.get("geometry")
             if au_id and org_id and not any(a["au_id"] == au_id for a in au_list):
-                au_list.append({"au_id": au_id, "org_id": org_id})
+                au_list.append({"au_id": au_id, "org_id": org_id, "geometry": geom})
         return au_list[:5]
     except Exception as e:
         logger.warning(f"ATTAINS MapServer query failed: {e}")
@@ -280,7 +282,8 @@ async def get_epa_attains_status(bbox: List[float]) -> Dict[str, Any]:
                 "impairments": impairments,
                 "history": history,
                 "tmdl_actions": tmdl_actions,
-                "source": "ATTAINS"
+                "source": "ATTAINS",
+                "geometry": au_info.get("geometry")
             })
             
         final_result = {
