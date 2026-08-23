@@ -17,7 +17,9 @@ def clean_waterbody_query(query: str) -> str:
 async def geocode_via_nominatim(query: str) -> Dict[str, Any]:
     """Geocodes any free-text US waterbody query using OpenStreetMap Nominatim with query cleaning."""
     url = "https://nominatim.openstreetmap.org/search"
-    headers = {"User-Agent": "AquaTraceApp/1.0 (waterbody-pollution-agent)"}
+    headers = {
+        "User-Agent": "AquaTraceEnvironmentalApp/1.0 (contact@aquatrace.org; environmental-risk-platform)"
+    }
     
     # Try exact query first, then cleaned query
     queries_to_try = [query]
@@ -25,7 +27,10 @@ async def geocode_via_nominatim(query: str) -> Dict[str, Any]:
     if cleaned != query:
         queries_to_try.append(cleaned)
     
-    # Also try just the main waterbody name if multi-word
+    # Also try removing state/qualifiers or splitting on comma
+    if "," in query:
+        queries_to_try.append(query.split(",")[0].strip())
+    
     words = query.split()
     if len(words) > 2:
         queries_to_try.append(" ".join(words[:2]))
@@ -33,7 +38,7 @@ async def geocode_via_nominatim(query: str) -> Dict[str, Any]:
     async with httpx.AsyncClient(timeout=8.0) as client:
         for q in queries_to_try:
             try:
-                resp = await client.get(url, params={"q": q, "format": "json", "limit": 1}, headers=headers)
+                resp = await client.get(url, params={"q": q, "format": "json", "limit": 1, "countrycodes": "us"}, headers=headers)
                 if resp.status_code == 200:
                     data = resp.json()
                     if data and len(data) > 0:

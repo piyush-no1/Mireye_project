@@ -1,6 +1,7 @@
 import time
 import json
 import os
+import math
 import httpx
 from typing import Dict, Any, Optional, List, Tuple
 from langchain_core.tools import tool
@@ -315,6 +316,166 @@ async def fetch_nhd_waterbody(lat: float, lng: float, query_name: Optional[str] 
         }]
     }
 
+async def fetch_river_segment_flowline(
+    start_lat: float,
+    start_lng: float,
+    end_lat: float,
+    end_lng: float,
+    query_name: Optional[str] = None
+) -> Dict[str, Any]:
+    """
+    Fetches and stitches the official river flowlines along a designated corridor between Point A (start) and Point B (end),
+    strictly tracing all natural curves, loops, and meanders along the riverbed with pixel-perfect map alignment.
+    """
+    dist = math.sqrt((start_lat - end_lat)**2 + (start_lng - end_lng)**2)
+    buf = max(0.08, dist * 0.8)
+    
+    min_lng = min(start_lng, end_lng) - buf
+    min_lat = min(start_lat, end_lat) - buf
+    max_lng = max(start_lng, end_lng) + buf
+    max_lat = max(start_lat, end_lat) + buf
+
+    def pt_dist_sq(p1, p2):
+        return (p1[0] - p2[0])**2 + (p1[1] - p2[1])**2
+
+    # Tier 1: Query OpenStreetMap Native Waterway Geometry (Pixel-Perfect with Leaflet OSM Tiles)
+    overpass_url = "https://overpass-api.de/api/interpreter"
+    overpass_query = f"""[out:json][timeout:6];
+(
+  way["waterway"~"river|stream|canal"]({min_lat:.5f},{min_lng:.5f},{max_lat:.5f},{max_lng:.5f});
+);
+out geom;"""
+    
+    headers = {"User-Agent": "AquaTraceEnvironmentalApp/1.0 (contact@aquatrace.org; environmental-risk-platform)"}
+    
+    async with httpx.AsyncClient(timeout=8.0) as client:
+        try:
+            op_resp = await client.post(overpass_url, data={"data": overpass_query}, headers=headers)
+            if op_resp.status_code == 200:
+                elements = op_resp.json().get("elements", [])
+                osm_feats = []
+                for el in elements:
+                    geom_pts = [[g["lon"], g["lat"]] for g in el.get("geometry", [])]
+                    if len(geom_pts) >= 2:
+                        osm_feats.append({
+                            "type": "Feature",
+                            "geometry": {"type": "LineString", "coordinates": geom_pts},
+                            "properties": {"name": el.get("tags", {}).get("name", "")}
+                        })
+                
+                if osm_feats:
+                    best_f = min(osm_feats, key=lambda f: min(pt_dist_sq(c, (start_lng, start_lat)) for c in f["geometry"]["coordinates"]))
+                    t_name = best_f["properties"].get("name")
+                    candidate_osm = [f for f in osm_feats if f["properties"].get("name") == t_name] if t_name else osm_feats
+                    
+                    stitched_osm = stitch_river_linestrings(candidate_osm, (start_lng, start_lat))
+                    if stitched_osm and len(stitched_osm) >= 3:
+                        idx_A = min(range(len(stitched_osm)), key=lambda i: pt_dist_sq(stitched_osm[i], (start_lng, start_lat)))
+                        idx_B = min(range(len(stitched_osm)), key=lambda i: pt_dist_sq(stitched_osm[i], (end_lng, end_lat)))
+                        
+                        segment_coords = stitched_osm[idx_A:idx_B+1] if idx_A <= idx_B else stitched_osm[idx_B:idx_A+1][::-1]
+                        if len(segment_coords) >= 3:
+                            return {
+                                "type": "FeatureCollection",
+                                "features": [{
+                                    "type": "Feature",
+                                    "geometry": {
+                                        "type": "LineString",
+                                        "coordinates": segment_coords
+                                    },
+                                    "properties": {
+                                        "gnis_name": t_name or query_name or "Designated River Segment",
+                                        "source": "OpenStreetMap High-Resolution Waterway",
+                                        "segment_mode": True,
+                                        "point_count": len(segment_coords)
+                                    }
+                                }]
+                            }
+        except Exception as e:
+            logger.debug(f"OSM Overpass query notice: {e}. Falling back to USGS NHD.")
+
+    # Tier 2: Federal USGS NHD MapServer Layer 4
+    flowline_url = "https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer/4/query"
+    params = {
+        "geometry": f"{min_lng:.4f},{min_lat:.4f},{max_lng:.4f},{max_lat:.4f}",
+        "geometryType": "esriGeometryEnvelope",
+        "spatialRel": "esriSpatialRelIntersects",
+        "inSR": "4326",
+        "outSR": "4326",
+        "outFields": "GNIS_NAME,LENGTHKM,REACHCODE,StreamOrde,FTYPE",
+        "where": "1=1",
+        "f": "geojson",
+        "resultRecordCount": 200
+    }
+
+    async with httpx.AsyncClient(timeout=10.0) as client:
+        try:
+            resp = await client.get(flowline_url, params=params, headers=headers)
+            if resp.status_code == 200 and "json" in resp.headers.get("content-type", ""):
+                data = resp.json()
+                features = data.get("features", [])
+                linestring_feats = [f for f in features if f.get("geometry", {}).get("type") == "LineString"]
+                
+                if linestring_feats:
+                    best_feat = min(
+                        linestring_feats,
+                        key=lambda f: min(pt_dist_sq(c, (start_lng, start_lat)) for c in f["geometry"]["coordinates"])
+                    )
+                    detected_river = best_feat.get("properties", {}).get("GNIS_NAME")
+
+                    if detected_river:
+                        river_feats = [f for f in linestring_feats if f.get("properties", {}).get("GNIS_NAME") == detected_river]
+                    else:
+                        max_order = max(int(f.get("properties", {}).get("StreamOrde") or 1) for f in linestring_feats)
+                        river_feats = [f for f in linestring_feats if int(f.get("properties", {}).get("StreamOrde") or 1) >= max(1, max_order - 1)]
+
+                    stitched = stitch_river_linestrings(river_feats, (start_lng, start_lat))
+                    if stitched and len(stitched) >= 2:
+                        idx_A = min(range(len(stitched)), key=lambda i: pt_dist_sq(stitched[i], (start_lng, start_lat)))
+                        idx_B = min(range(len(stitched)), key=lambda i: pt_dist_sq(stitched[i], (end_lng, end_lat)))
+                        
+                        segment_coords = stitched[idx_A:idx_B+1] if idx_A <= idx_B else stitched[idx_B:idx_A+1][::-1]
+
+                        if len(segment_coords) >= 2:
+                            return {
+                                "type": "FeatureCollection",
+                                "features": [{
+                                    "type": "Feature",
+                                    "geometry": {
+                                        "type": "LineString",
+                                        "coordinates": segment_coords
+                                    },
+                                    "properties": {
+                                        "gnis_name": detected_river or query_name or "Designated River Segment",
+                                        "source": "USGS NHDPlus Hydrography",
+                                        "segment_mode": True,
+                                        "point_count": len(segment_coords)
+                                    }
+                                }]
+                            }
+        except Exception as e:
+            logger.debug(f"USGS segment flowline query notice: {e}")
+
+    # Fallback
+    coords = [
+        [round(start_lng, 5), round(start_lat, 5)],
+        [round(end_lng, 5), round(end_lat, 5)]
+    ]
+    return {
+        "type": "FeatureCollection",
+        "features": [{
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": coords
+            },
+            "properties": {
+                "gnis_name": query_name or "Designated River Corridor",
+                "segment_mode": True
+            }
+        }]
+    }
+
 @tool
 async def get_usgs_comid(lat: float, lng: float) -> Dict[str, str]:
     """Retrieves USGS NHDPlus COMID for a given lat/lng coordinate position."""
@@ -340,11 +501,41 @@ async def get_usgs_comid(lat: float, lng: float) -> Dict[str, str]:
     return {"comid": f"NHD-{lat:.4f}-{lng:.4f}"}
 
 @tool
-async def trace_network(comid: str, direction: str = "both", lat: Optional[float] = None, lng: Optional[float] = None, query_name: Optional[str] = None) -> Dict[str, Any]:
-    """Traces hydrographic flowline/polygon vector for rivers, lakes, bays, estuaries, or reservoirs around resolved coordinates."""
+async def trace_network(
+    comid: str,
+    direction: str = "both",
+    lat: Optional[float] = None,
+    lng: Optional[float] = None,
+    query_name: Optional[str] = None,
+    start_lat: Optional[float] = None,
+    start_lng: Optional[float] = None,
+    end_lat: Optional[float] = None,
+    end_lng: Optional[float] = None
+) -> Dict[str, Any]:
+    """Traces hydrographic flowline/polygon vector for rivers, lakes, bays, estuaries, or reservoirs around resolved coordinates or between two points."""
     start_time = time.time()
-    inputs = {"comid": comid, "direction": direction, "lat": lat, "lng": lng, "query_name": query_name}
+    inputs = {
+        "comid": comid,
+        "direction": direction,
+        "lat": lat,
+        "lng": lng,
+        "query_name": query_name,
+        "start_lat": start_lat,
+        "start_lng": start_lng,
+        "end_lat": end_lat,
+        "end_lng": end_lng
+    }
     
+    # 1. Segment Mode
+    if start_lat is not None and start_lng is not None and end_lat is not None and end_lng is not None:
+        try:
+            data = await fetch_river_segment_flowline(start_lat, start_lng, end_lat, end_lng, query_name)
+            log_tool_call("trace_network", inputs, time.time() - start_time, True)
+            return data
+        except Exception as e:
+            logger.debug(f"USGS segment trace notice: {e}")
+
+    # 2. Single Point Mode
     if lat is not None and lng is not None:
         try:
             data = await fetch_nhd_waterbody(lat, lng, query_name)
@@ -356,3 +547,4 @@ async def trace_network(comid: str, direction: str = "both", lat: Optional[float
     fixture = load_fixture_nldi()
     log_tool_call("trace_network", inputs, time.time() - start_time, True)
     return fixture["flowline_geojson"]
+

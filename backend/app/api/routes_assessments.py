@@ -17,13 +17,32 @@ from app.core.logging import logger
 
 router = APIRouter(prefix="/assessments", tags=["Assessments"])
 
-async def run_assessment_task(run_id: str, query: str, lat: float | None = None, lng: float | None = None):
-    logger.info(f"Starting background assessment task for run_id '{run_id}', query '{query}'")
+async def run_assessment_task(
+    run_id: str,
+    query: str,
+    lat: float | None = None,
+    lng: float | None = None,
+    start_lat: float | None = None,
+    start_lng: float | None = None,
+    end_lat: float | None = None,
+    end_lng: float | None = None,
+    start_name: str | None = None,
+    end_name: str | None = None
+):
+    is_segment = bool(start_lat is not None and start_lng is not None and end_lat is not None and end_lng is not None)
+    logger.info(f"Starting background assessment task for run_id '{run_id}', query '{query}', segment_mode={is_segment}")
     initial_state = AssessmentState(
         run_id=run_id,
         query=query,
         input_lat=lat,
         input_lng=lng,
+        is_segment_mode=is_segment,
+        start_lat=start_lat,
+        start_lng=start_lng,
+        end_lat=end_lat,
+        end_lng=end_lng,
+        start_name=start_name,
+        end_name=end_name,
         status="pending"
     )
     try:
@@ -39,13 +58,31 @@ async def create_assessment(
     background_tasks: BackgroundTasks,
     store: JobStore = Depends(get_job_store)
 ):
-    if not payload.query or not payload.query.strip():
-        raise HTTPException(status_code=400, detail="Query parameter cannot be empty.")
+    query_str = (payload.query or "").strip()
+    if not query_str:
+        if payload.start_lat is not None and payload.end_lat is not None:
+            query_str = f"River Corridor: ({payload.start_lat:.3f}, {payload.start_lng:.3f}) to ({payload.end_lat:.3f}, {payload.end_lng:.3f})"
+        elif payload.lat is not None and payload.lng is not None:
+            query_str = f"Map Selection: {payload.lat:.4f}, {payload.lng:.4f}"
+        else:
+            raise HTTPException(status_code=400, detail="Query or valid coordinates must be provided.")
 
     run_id = str(uuid.uuid4())
-    store.create_job(run_id, payload.query.strip())
+    store.create_job(run_id, query_str)
     
-    background_tasks.add_task(run_assessment_task, run_id, payload.query.strip(), payload.lat, payload.lng)
+    background_tasks.add_task(
+        run_assessment_task,
+        run_id,
+        query_str,
+        payload.lat,
+        payload.lng,
+        payload.start_lat,
+        payload.start_lng,
+        payload.end_lat,
+        payload.end_lng,
+        payload.start_name,
+        payload.end_name
+    )
     
     return CreateAssessmentResponse(
         run_id=run_id,

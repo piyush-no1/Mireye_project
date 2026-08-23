@@ -49,15 +49,15 @@ export const AttainsStatusCard: React.FC<AttainsStatusCardProps> = ({ attains })
               </span>
             </div>
 
-            {au.parameters && au.parameters.length > 0 && (
+            {((au.impairments && au.impairments.length > 0) || ((au as any).parameters && (au as any).parameters.length > 0)) && (
               <div style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '6px' }}>
-                <strong>Impairment Causes:</strong> {au.parameters.map(p => p.name).join(', ')}
+                <strong>Impairment Causes:</strong> {((au.impairments || (au as any).parameters) as any[]).map((p: any) => p.name || p.cause_name || p).join(', ')}
               </div>
             )}
 
-            {au.tmdl_projects && au.tmdl_projects.length > 0 && (
+            {((au.tmdl_actions && au.tmdl_actions.length > 0) || ((au as any).tmdl_projects && (au as any).tmdl_projects.length > 0)) && (
               <div style={{ fontSize: '12px', color: 'var(--text-subtle)', marginTop: '4px' }}>
-                <strong>Active TMDL Projects:</strong> {au.tmdl_projects.map(t => t.name).join(', ')}
+                <strong>Active TMDL Projects:</strong> {((au.tmdl_actions || (au as any).tmdl_projects) as any[]).map((t: any) => t.name || t.action_name || t).join(', ')}
               </div>
             )}
           </div>

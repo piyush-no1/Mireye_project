@@ -27,13 +27,20 @@ async def hydrology_node(state: AssessmentState) -> AssessmentState:
         comid_res = await get_usgs_comid.ainvoke({"lat": lat, "lng": lng})
         comid = comid_res.get("comid", f"NHD-{lat:.4f}-{lng:.4f}")
         
-        flowline_res = await trace_network.ainvoke({
+        trace_inputs = {
             "comid": comid,
             "direction": "both",
             "lat": lat,
             "lng": lng,
             "query_name": matched_name
-        })
+        }
+        if state.is_segment_mode and state.start_lat is not None and state.end_lat is not None:
+            trace_inputs["start_lat"] = state.start_lat
+            trace_inputs["start_lng"] = state.start_lng
+            trace_inputs["end_lat"] = state.end_lat
+            trace_inputs["end_lng"] = state.end_lng
+
+        flowline_res = await trace_network.ainvoke(trace_inputs)
         
         state.hydrology = {
             "comid": comid,

@@ -100,6 +100,9 @@ export interface AssessmentResult {
   run_id: string;
   status: 'pending' | 'completed' | 'failed' | 'needs_clarification';
   query: string;
+  segment_mode?: boolean;
+  start_point?: ResolvedLocation | null;
+  end_point?: ResolvedLocation | null;
   resolved_location: ResolvedLocation | null;
   hydrology: HydrologyData | null;
   water_quality_samples: WaterQualitySample[] | null;

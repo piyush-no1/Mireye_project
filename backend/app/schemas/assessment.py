@@ -91,6 +91,9 @@ class AssessmentResult(BaseModel):
     run_id: str
     status: str  # completed | failed | needs_clarification
     query: str
+    segment_mode: bool = False
+    start_point: Optional[ResolvedLocation] = None
+    end_point: Optional[ResolvedLocation] = None
     resolved_location: Optional[ResolvedLocation] = None
     hydrology: Optional[HydrologyData] = None
     water_quality_samples: Optional[List[WaterQualitySample]] = None

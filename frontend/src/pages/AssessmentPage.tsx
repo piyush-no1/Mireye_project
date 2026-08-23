@@ -7,12 +7,14 @@ import { useCreateAssessment } from '../hooks/useCreateAssessment';
 import { useAssessmentPolling } from '../hooks/useAssessmentPolling';
 import { AlertCircle, HelpCircle, Loader2 } from 'lucide-react';
 
+import { CreateAssessmentPayload } from '../api/assessments';
+
 export const AssessmentPage: React.FC = () => {
   const [activeRunId, setActiveRunId] = useState<string | null>(null);
   const createMutation = useCreateAssessment();
   const { status, error, isLoading, result } = useAssessmentPolling(activeRunId);
 
-  const handleSearch = (payload: { query: string; lat?: number; lng?: number }) => {
+  const handleSearch = (payload: CreateAssessmentPayload) => {
     createMutation.mutate(payload, {
       onSuccess: (data) => {
         setActiveRunId(data.run_id);

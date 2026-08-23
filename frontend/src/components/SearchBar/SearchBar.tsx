@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
 import { Search, Loader2, Compass, MapPin } from 'lucide-react';
 import styles from './SearchBar.module.css';
-import { MapSelectorModal } from '../MapSelectorModal';
+import { MapSelectorModal, MapSelectionPayload } from '../MapSelectorModal/MapSelectorModal';
 
 interface SearchBarProps {
-  onSearch: (payload: { query: string; lat?: number; lng?: number }) => void;
+  onSearch: (payload: {
+    query: string;
+    lat?: number;
+    lng?: number;
+    start_lat?: number;
+    start_lng?: number;
+    end_lat?: number;
+    end_lng?: number;
+  }) => void;
   isLoading: boolean;
 }
 
@@ -34,11 +42,23 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onSearch, isLoading }) => 
     }
   };
 
-  const handleMapConfirm = (lat: number, lng: number) => {
+  const handleMapConfirm = (payload: MapSelectionPayload) => {
     setIsMapOpen(false);
-    const mapQuery = `Map Selection: ${lat.toFixed(4)}, ${lng.toFixed(4)}`;
-    setQuery(mapQuery);
-    onSearch({ query: mapQuery, lat, lng });
+    if (payload.mode === 'segment' && payload.start_lat && payload.end_lat) {
+      const segmentQuery = `River Corridor: (${payload.start_lat.toFixed(3)}, ${payload.start_lng?.toFixed(3)}) ➔ (${payload.end_lat.toFixed(3)}, ${payload.end_lng?.toFixed(3)})`;
+      setQuery(segmentQuery);
+      onSearch({
+        query: segmentQuery,
+        start_lat: payload.start_lat,
+        start_lng: payload.start_lng,
+        end_lat: payload.end_lat,
+        end_lng: payload.end_lng
+      });
+    } else if (payload.lat && payload.lng) {
+      const mapQuery = `Map Selection: ${payload.lat.toFixed(4)}, ${payload.lng.toFixed(4)}`;
+      setQuery(mapQuery);
+      onSearch({ query: mapQuery, lat: payload.lat, lng: payload.lng });
+    }
   };
 
   return (
@@ -48,7 +68,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onSearch, isLoading }) => 
         <input
           type="text"
           className={styles.input}
-          placeholder="Enter any water body name in the United States (River, Lake, Bay, Estuary, Sound, Reservoir)..."
+          placeholder="Enter water body name or click the Map Pin to select a River Corridor (Point A ➔ Point B)..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           disabled={isLoading}
@@ -60,9 +80,9 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onSearch, isLoading }) => 
             background: 'transparent', border: 'none', color: 'var(--text-muted)', 
             cursor: 'pointer', padding: '0 8px', display: 'flex', alignItems: 'center', gap: '4px' 
           }}
-          title="Select Location on Map"
+          title="Select River Corridor or Location on Map"
         >
-          <MapPin size={20} />
+          <MapPin size={20} style={{ color: '#38bdf8' }} />
         </button>
         <button type="submit" className={styles.button} disabled={isLoading || (!query.trim() && !isMapOpen)}>
           {isLoading ? (

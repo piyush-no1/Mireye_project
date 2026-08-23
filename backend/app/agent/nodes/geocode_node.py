@@ -8,6 +8,39 @@ async def geocode_node(state: AssessmentState) -> AssessmentState:
     if state.status == "failed":
         return state
 
+    # 1. Segment Mode (Point A ➔ Point B)
+    if state.is_segment_mode and state.start_lat is not None and state.end_lat is not None:
+        state.start_location = {
+            "matched_name": state.start_name or f"Point A ({state.start_lat:.4f}, {state.start_lng:.4f})",
+            "lat": state.start_lat,
+            "lng": state.start_lng
+        }
+        state.end_location = {
+            "matched_name": state.end_name or f"Point B ({state.end_lat:.4f}, {state.end_lng:.4f})",
+            "lat": state.end_lat,
+            "lng": state.end_lng
+        }
+        # Set primary resolved location to midpoint
+        mid_lat = (state.start_lat + state.end_lat) / 2.0
+        mid_lng = (state.start_lng + state.end_lng) / 2.0
+        corridor_title = state.query or f"River Segment: {state.start_location['matched_name']} ➔ {state.end_location['matched_name']}"
+        state.resolved_location = {
+            "matched_name": corridor_title,
+            "lat": mid_lat,
+            "lng": mid_lng
+        }
+        state.execution_log.append({
+            "stage": "Stage 1 — Intent Parsing & Geocoding",
+            "component": "geocode_location",
+            "status": "SUCCESS (Segment Mode Coordinates)",
+            "start_location": state.start_location,
+            "end_location": state.end_location,
+            "resolved_location": state.resolved_location
+        })
+        log_diagnostic_event("Stage 1 — Geocoding", "geocode_location", "SUCCESS", {"mode": "segment", "start": state.start_location, "end": state.end_location}, run_id=state.run_id)
+        return state
+
+    # 2. Single Point Mode with direct coordinates
     if state.input_lat is not None and state.input_lng is not None:
         state.resolved_location = {
             "matched_name": state.query if state.query else "Custom Map Selection",
