@@ -1,5 +1,6 @@
 import pytest
 from unittest.mock import patch, MagicMock, AsyncMock
+import unittest.mock
 from app.services.source_attribution import run_source_attribution
 from app.config import settings
 import json
@@ -114,7 +115,7 @@ async def test_dynamic_mireye_investigation(mock_agent_factory, mock_openai_key)
     
     # Simulate one Mireye fetch tool loop
     mock_agent.ainvoke.return_value = create_mock_response(json_output, tool_calls=[
-        {"tool": "query_mireye_fetch", "id": "call_123", "args": {"lat": 38.0, "lng": -77.0}, "response": json.dumps(mireye_result)}
+        {"tool": "query_mireye_fetch", "id": "call_123", "args": {"lat": 38.0, "lng": -77.0, "reason": "Need to confirm agriculture"}, "response": json.dumps(mireye_result)}
     ])
     
     res, log = await run_source_attribution(
@@ -129,7 +130,11 @@ async def test_dynamic_mireye_investigation(mock_agent_factory, mock_openai_key)
     assert res["impairments"][0]["sources"][0]["source_name"] == "Agriculture"
     assert len(log) == 1
     assert log[0]["tool"] == "query_mireye_fetch"
+    assert log[0]["reason"] == "Need to confirm agriculture"
     assert log[0]["result_status"] == "success"
+    
+    # Verify recursion limit is passed to ainvoke
+    mock_agent.ainvoke.assert_called_with(unittest.mock.ANY, config={"recursion_limit": 15})
 
 @pytest.mark.asyncio
 @patch("app.services.source_attribution.create_source_reasoning_agent")
@@ -155,3 +160,25 @@ async def test_nearby_context_trap(mock_agent_factory, mock_openai_key):
     )
     
     assert len(res["impairments"]) == 0
+
+@pytest.mark.asyncio
+@patch("app.services.source_attribution.create_source_reasoning_agent")
+async def test_max_calls_enforcement(mock_agent_factory, mock_openai_key):
+    mock_agent = AsyncMock()
+    mock_agent_factory.return_value = mock_agent
+    
+    from langgraph.errors import GraphRecursionError
+    
+    mock_agent.ainvoke.side_effect = GraphRecursionError("Recursion limit exceeded")
+    
+    res, log = await run_source_attribution(
+        query="Infinite Loop River",
+        attains_status=[{"is_primary_path": True, "status": "Impaired"}],
+        polluters=[],
+        water_samples=[],
+        land_risk_points=[]
+    )
+    
+    # Verify the fallback mechanism caught it
+    assert "Error running source attribution" in res["overall_source_reasoning"]
+    assert len(log) == 0

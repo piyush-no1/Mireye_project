@@ -51,6 +51,9 @@ def create_source_reasoning_agent():
         "- `query_mireye_ask`: Use for information requests requiring Mireye to gather or describe contextual environmental info (e.g. \"What agricultural land-use characteristics are present upstream?\").\n\n"
         "BAD query: \"Is the agricultural land upstream causing the nutrient impairment?\"\n"
         "GOOD query: \"What agricultural land-use characteristics are present upstream of this assessment unit?\"\n\n"
+        "Before every Mireye call, you MUST determine your CURRENT UNCERTAINTY and why the information matters. "
+        "Provide this explanation in the `reason` argument of the tool call.\n"
+        "Only call Mireye when the expected information value is meaningful. Do not underuse or overuse it.\n"
         "Limit: You may use Mireye up to 5 times. Zero calls are also valid if evidence is sufficient.\n\n"
         "==================================================\n"
         "ATTRIBUTION LABELS\n"
@@ -134,9 +137,10 @@ async def run_source_attribution(
     # Run the ReAct agent
     try:
         # We invoke the agent with the user payload
-        # Wait, create_react_agent expects `{"messages": [("user", content)]}`
+        # We invoke the agent with the user payload and enforce recursion limit
+        # A limit of 15 allows enough steps for 5 tool calls + initial/final reasoning
         inputs = {"messages": [("user", f"Analyze this environmental dataset for source attribution:\n{json.dumps(data_payload, indent=2)}")]}
-        response = await agent.ainvoke(inputs)
+        response = await agent.ainvoke(inputs, config={"recursion_limit": 15})
         
         # The last message should be the AI response
         last_message = response["messages"][-1].content.strip()
@@ -157,11 +161,13 @@ async def run_source_attribution(
                     
             elif getattr(msg, "type", "") == "tool":
                 tc = tool_call_map.get(msg.tool_call_id, {})
+                args = tc.get("args", {})
+                reason = args.get("reason", "Agent requested additional environmental context.")
                 investigation_log.append({
                     "round": len(investigation_log) + 1,
                     "tool": msg.name,
-                    "reason": "Agent requested additional environmental context.",
-                    "arguments": tc.get("args", {}),
+                    "reason": reason,
+                    "arguments": {k: v for k, v in args.items() if k != "reason"},
                     "result_status": "success" if not msg.content.startswith('{"error"') else "error",
                     "source": "Mireye",
                     "summary": f"Mireye call to {msg.name}"

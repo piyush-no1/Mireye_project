@@ -14,13 +14,14 @@ def _get_headers() -> Dict[str, str]:
     }
 
 @tool
-async def query_mireye_fetch(lat: float, lng: float, preset: str = "land_cover") -> Dict[str, Any]:
+async def query_mireye_fetch(lat: float, lng: float, reason: str, preset: str = "land_cover") -> Dict[str, Any]:
     """
     Fetches structured land-use, terrain, or environmental data from Mireye Earth API for a specific location.
     
     Args:
         lat: Latitude of the point of interest.
         lng: Longitude of the point of interest.
+        reason: Explanation of the current uncertainty and why this information is needed.
         preset: The preset to fetch. Valid options include "land_cover", "terrain", "built_environment", "vegetation".
         
     Returns:
@@ -49,7 +50,7 @@ async def query_mireye_fetch(lat: float, lng: float, preset: str = "land_cover")
         return {"error": f"Failed to fetch data from Mireye API: {e}"}
 
 @tool
-async def query_mireye_ask(lat: float, lng: float, query: str) -> Dict[str, Any]:
+async def query_mireye_ask(lat: float, lng: float, query: str, reason: str) -> Dict[str, Any]:
     """
     Asks the Mireye Earth API a complex contextual or spatial question about a location's environment.
     Use this when structural fields from fetch are insufficient (e.g. asking for nearby residential density or specific upstream sources).
@@ -58,6 +59,7 @@ async def query_mireye_ask(lat: float, lng: float, query: str) -> Dict[str, Any]
         lat: Latitude of the point of interest.
         lng: Longitude of the point of interest.
         query: The specific question about the environmental or spatial characteristics.
+        reason: Explanation of the current uncertainty and why this information is needed.
         
     Returns:
         A dictionary containing the contextual answer from Mireye.
