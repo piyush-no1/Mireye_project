@@ -182,3 +182,234 @@ async def test_max_calls_enforcement(mock_agent_factory, mock_openai_key):
     # Verify the fallback mechanism caught it
     assert "Error running source attribution" in res["overall_source_reasoning"]
     assert len(log) == 0
+
+
+@pytest.mark.asyncio
+@patch("app.services.source_attribution.create_source_reasoning_agent")
+async def test_mireye_discovery_power_industrial(mock_agent_factory, mock_openai_key):
+    mock_agent = AsyncMock()
+    mock_agent_factory.return_value = mock_agent
+    
+    mireye_result = {"source": "Mireye", "infrastructure": ["Coal Power Plant"]}
+    json_output = {
+        "impairments": [{"impairment": "Thermal", "affected_uses": [], "sources": [{"source_type": "Point", "source_name": "Coal Power Plant", "source_id": None, "latitude": None, "longitude": None, "geography_type": "point", "geography_id": None, "relationship_to_primary_path": "upstream", "attribution": "POSSIBLE", "confidence": "MEDIUM", "supporting_evidence": ["Mireye found a power plant upstream"], "contradicting_evidence": [], "evidence_sources": ["Mireye"]}]}],
+        "major_source_findings": ["Thermal impairment possibly due to power plant."],
+        "source_data_gaps": [],
+        "overall_source_reasoning": "Mireye discovered a power plant."
+    }
+    
+    mock_agent.ainvoke.return_value = create_mock_response(json_output, tool_calls=[
+        {"tool": "query_mireye_fetch", "id": "call_pwr", "args": {"reason": "check industrial infrastructure"}, "response": json.dumps(mireye_result)}
+    ])
+    
+    res, log = await run_source_attribution(query="Thermal River", attains_status=[{"is_primary_path": True, "status": "Impaired"}], polluters=[], water_samples=[], land_risk_points=[])
+    
+    assert res["impairments"][0]["sources"][0]["source_name"] == "Coal Power Plant"
+    assert log[0]["tool"] == "query_mireye_fetch"
+
+@pytest.mark.asyncio
+@patch("app.services.source_attribution.create_source_reasoning_agent")
+async def test_mireye_discovery_disconnected_source(mock_agent_factory, mock_openai_key):
+    mock_agent = AsyncMock()
+    mock_agent_factory.return_value = mock_agent
+    
+    mireye_result = {"source": "Mireye", "facility": "Chemical Plant", "location": "Downstream"}
+    json_output = {
+        "impairments": [{"impairment": "Toxins", "affected_uses": [], "sources": [{"source_type": "Industrial", "source_name": "Chemical Plant", "source_id": None, "latitude": None, "longitude": None, "geography_type": "point", "geography_id": None, "relationship_to_primary_path": "downstream", "attribution": "UNSUPPORTED", "confidence": "HIGH", "supporting_evidence": [], "contradicting_evidence": ["Facility is downstream from impairment"], "evidence_sources": ["Mireye"]}]}],
+        "major_source_findings": ["Chemical plant found but is downstream."],
+        "source_data_gaps": [],
+        "overall_source_reasoning": "Downstream facility excluded."
+    }
+    
+    mock_agent.ainvoke.return_value = create_mock_response(json_output, tool_calls=[
+        {"tool": "query_mireye_fetch", "id": "call_disc", "args": {"reason": "investigate infrastructure"}, "response": json.dumps(mireye_result)}
+    ])
+    
+    res, log = await run_source_attribution(query="Toxin River", attains_status=[{"is_primary_path": True, "status": "Impaired"}], polluters=[], water_samples=[], land_risk_points=[])
+    
+    assert res["impairments"][0]["sources"][0]["attribution"] == "UNSUPPORTED"
+    assert "downstream" in res["impairments"][0]["sources"][0]["relationship_to_primary_path"].lower()
+
+@pytest.mark.asyncio
+@patch("app.services.source_attribution.create_source_reasoning_agent")
+async def test_mireye_discovery_competing_sources(mock_agent_factory, mock_openai_key):
+    mock_agent = AsyncMock()
+    mock_agent_factory.return_value = mock_agent
+    
+    mireye_result = {"source": "Mireye", "facility": "Upstream Factory"}
+    json_output = {
+        "impairments": [{"impairment": "Metals", "affected_uses": [], "sources": [{"source_type": "Industrial", "source_name": "Upstream Factory", "source_id": None, "latitude": None, "longitude": None, "geography_type": "point", "geography_id": None, "relationship_to_primary_path": "upstream", "attribution": "LIKELY", "confidence": "HIGH", "supporting_evidence": ["Mireye identified factory", "ECHO confirms violation"], "contradicting_evidence": [], "evidence_sources": ["Mireye", "ECHO"]}]}],
+        "major_source_findings": ["Upstream factory confirmed by ECHO."],
+        "source_data_gaps": [],
+        "overall_source_reasoning": "ECHO validated Mireye discovery."
+    }
+    
+    mock_agent.ainvoke.return_value = create_mock_response(json_output, tool_calls=[
+        {"tool": "query_mireye_fetch", "id": "call_comp", "args": {"reason": "check facilities"}, "response": json.dumps(mireye_result)}
+    ])
+    
+    res, log = await run_source_attribution(query="Metal River", attains_status=[{"is_primary_path": True, "status": "Impaired"}], polluters=[{"facility_name": "Upstream Factory"}], water_samples=[], land_risk_points=[])
+    
+    assert res["impairments"][0]["sources"][0]["attribution"] == "LIKELY"
+    assert "ECHO" in res["impairments"][0]["sources"][0]["evidence_sources"]
+
+@pytest.mark.asyncio
+@patch("app.services.source_attribution.create_source_reasoning_agent")
+async def test_mireye_discovery_oil_gas(mock_agent_factory, mock_openai_key):
+    mock_agent = AsyncMock()
+    mock_agent_factory.return_value = mock_agent
+    
+    mireye_result = {"source": "Mireye", "infrastructure": ["Pipeline compressor station"]}
+    json_output = {
+        "impairments": [{"impairment": "Petroleum", "affected_uses": [], "sources": [{"source_type": "Point", "source_name": "Pipeline compressor station", "source_id": None, "latitude": None, "longitude": None, "geography_type": "point", "geography_id": None, "relationship_to_primary_path": "upstream", "attribution": "POSSIBLE", "confidence": "MEDIUM", "supporting_evidence": ["Mireye found oil/gas infrastructure upstream"], "contradicting_evidence": [], "evidence_sources": ["Mireye"]}]}],
+        "major_source_findings": ["Petroleum impairment possibly due to compressor station."],
+        "source_data_gaps": [],
+        "overall_source_reasoning": "Mireye discovered oil and gas infrastructure."
+    }
+    
+    mock_agent.ainvoke.return_value = create_mock_response(json_output, tool_calls=[
+        {"tool": "query_mireye_fetch", "id": "call_oil", "args": {"reason": "check oil and gas infrastructure"}, "response": json.dumps(mireye_result)}
+    ])
+    
+    res, log = await run_source_attribution(query="Oil River", attains_status=[{"is_primary_path": True, "status": "Impaired"}], polluters=[], water_samples=[], land_risk_points=[])
+    
+    assert res["impairments"][0]["sources"][0]["source_name"] == "Pipeline compressor station"
+    assert log[0]["tool"] == "query_mireye_fetch"
+
+@pytest.mark.asyncio
+@patch("app.services.source_attribution.create_source_reasoning_agent")
+async def test_mireye_discovery_legacy_contamination(mock_agent_factory, mock_openai_key):
+    mock_agent = AsyncMock()
+    mock_agent_factory.return_value = mock_agent
+    
+    mireye_result = {"source": "Mireye", "infrastructure": ["Superfund site"]}
+    json_output = {
+        "impairments": [{"impairment": "Heavy Metals", "affected_uses": [], "sources": [{"source_type": "Legacy", "source_name": "Superfund site", "source_id": None, "latitude": None, "longitude": None, "geography_type": "polygon", "geography_id": None, "relationship_to_primary_path": "adjacent", "attribution": "LIKELY", "confidence": "HIGH", "supporting_evidence": ["Mireye found Superfund site adjacent to river"], "contradicting_evidence": [], "evidence_sources": ["Mireye"]}]}],
+        "major_source_findings": ["Heavy metals impairment likely due to Superfund site."],
+        "source_data_gaps": [],
+        "overall_source_reasoning": "Mireye discovered legacy contamination."
+    }
+    
+    mock_agent.ainvoke.return_value = create_mock_response(json_output, tool_calls=[
+        {"tool": "query_mireye_fetch", "id": "call_legacy", "args": {"reason": "check legacy contamination"}, "response": json.dumps(mireye_result)}
+    ])
+    
+    res, log = await run_source_attribution(query="Metal River", attains_status=[{"is_primary_path": True, "status": "Impaired"}], polluters=[], water_samples=[], land_risk_points=[])
+    
+    assert res["impairments"][0]["sources"][0]["source_name"] == "Superfund site"
+    assert log[0]["tool"] == "query_mireye_fetch"
+
+@pytest.mark.asyncio
+@patch("app.services.source_attribution.create_source_reasoning_agent")
+async def test_mireye_discovery_wastewater_crosscheck(mock_agent_factory, mock_openai_key):
+    mock_agent = AsyncMock()
+    mock_agent_factory.return_value = mock_agent
+    
+    mireye_result = {"source": "Mireye", "infrastructure": ["Wastewater treatment plant"]}
+    json_output = {
+        "impairments": [{"impairment": "E. coli", "affected_uses": [], "sources": [{"source_type": "Point", "source_name": "Wastewater treatment plant", "source_id": None, "latitude": None, "longitude": None, "geography_type": "point", "geography_id": None, "relationship_to_primary_path": "upstream", "attribution": "POSSIBLE", "confidence": "MEDIUM", "supporting_evidence": ["Mireye found WWTP upstream"], "contradicting_evidence": [], "evidence_sources": ["Mireye"]}]}],
+        "major_source_findings": ["E. coli impairment possibly due to WWTP."],
+        "source_data_gaps": [],
+        "overall_source_reasoning": "Mireye discovered wastewater infrastructure."
+    }
+    
+    mock_agent.ainvoke.return_value = create_mock_response(json_output, tool_calls=[
+        {"tool": "query_mireye_fetch", "id": "call_waste", "args": {"reason": "check wastewater infrastructure"}, "response": json.dumps(mireye_result)}
+    ])
+    
+    res, log = await run_source_attribution(query="Bacteria River", attains_status=[{"is_primary_path": True, "status": "Impaired"}], polluters=[], water_samples=[], land_risk_points=[])
+    
+    assert res["impairments"][0]["sources"][0]["source_name"] == "Wastewater treatment plant"
+    assert log[0]["tool"] == "query_mireye_fetch"
+
+@pytest.mark.asyncio
+@patch("app.services.source_attribution.create_source_reasoning_agent")
+async def test_mireye_discovery_parcel_ownership(mock_agent_factory, mock_openai_key):
+    mock_agent = AsyncMock()
+    mock_agent_factory.return_value = mock_agent
+    
+    mireye_result = {"source": "Mireye", "parcel_owner": "Industrial Corp LLC"}
+    json_output = {
+        "impairments": [{"impairment": "Toxins", "affected_uses": [], "sources": [{"source_type": "Point", "source_name": "Industrial Corp LLC Facility", "source_id": None, "latitude": None, "longitude": None, "geography_type": "point", "geography_id": None, "relationship_to_primary_path": "upstream", "attribution": "POSSIBLE", "confidence": "LOW", "supporting_evidence": ["Mireye identified parcel ownership as Industrial Corp LLC"], "contradicting_evidence": [], "evidence_sources": ["Mireye"]}]}],
+        "major_source_findings": ["Toxins impairment possibly due to Industrial Corp LLC facility."],
+        "source_data_gaps": [],
+        "overall_source_reasoning": "Mireye identified parcel ownership."
+    }
+    
+    mock_agent.ainvoke.return_value = create_mock_response(json_output, tool_calls=[
+        {"tool": "query_mireye_fetch", "id": "call_parcel", "args": {"reason": "check parcel ownership"}, "response": json.dumps(mireye_result)}
+    ])
+    
+    res, log = await run_source_attribution(query="Toxin River", attains_status=[{"is_primary_path": True, "status": "Impaired"}], polluters=[], water_samples=[], land_risk_points=[])
+    
+    assert res["impairments"][0]["sources"][0]["source_name"] == "Industrial Corp LLC Facility"
+    assert log[0]["tool"] == "query_mireye_fetch"
+
+@pytest.mark.asyncio
+@patch("app.services.source_attribution.create_source_reasoning_agent")
+async def test_mireye_discovery_natural_groundwater(mock_agent_factory, mock_openai_key):
+    mock_agent = AsyncMock()
+    mock_agent_factory.return_value = mock_agent
+    
+    mireye_result = {"source": "Mireye", "hazards": ["Karst susceptibility"]}
+    json_output = {
+        "impairments": [{"impairment": "Pathogens", "affected_uses": [], "sources": [{"source_type": "Natural", "source_name": "Karst groundwater pathway", "source_id": None, "latitude": None, "longitude": None, "geography_type": "region", "geography_id": None, "relationship_to_primary_path": "within_watershed", "attribution": "POSSIBLE", "confidence": "LOW", "supporting_evidence": ["Mireye identified Karst susceptibility"], "contradicting_evidence": [], "evidence_sources": ["Mireye"]}]}],
+        "major_source_findings": ["Pathogens impairment possibly due to Karst groundwater pathway."],
+        "source_data_gaps": [],
+        "overall_source_reasoning": "Mireye discovered natural groundwater hazards."
+    }
+    
+    mock_agent.ainvoke.return_value = create_mock_response(json_output, tool_calls=[
+        {"tool": "query_mireye_fetch", "id": "call_natural", "args": {"reason": "check groundwater hazards"}, "response": json.dumps(mireye_result)}
+    ])
+    
+    res, log = await run_source_attribution(query="Pathogen River", attains_status=[{"is_primary_path": True, "status": "Impaired"}], polluters=[], water_samples=[], land_risk_points=[])
+    
+    assert res["impairments"][0]["sources"][0]["source_name"] == "Karst groundwater pathway"
+    assert log[0]["tool"] == "query_mireye_fetch"
+
+@pytest.mark.asyncio
+@patch("app.services.source_attribution.create_source_reasoning_agent")
+async def test_mireye_discovery_poi_based(mock_agent_factory, mock_openai_key):
+    mock_agent = AsyncMock()
+    mock_agent_factory.return_value = mock_agent
+    
+    mireye_result = {"source": "Mireye", "POIs": ["Gas station"]}
+    json_output = {
+        "impairments": [{"impairment": "Petroleum", "affected_uses": [], "sources": [{"source_type": "Point", "source_name": "Gas station", "source_id": None, "latitude": None, "longitude": None, "geography_type": "point", "geography_id": None, "relationship_to_primary_path": "adjacent", "attribution": "POSSIBLE", "confidence": "LOW", "supporting_evidence": ["Mireye identified a gas station adjacent to river"], "contradicting_evidence": [], "evidence_sources": ["Mireye"]}]}],
+        "major_source_findings": ["Petroleum impairment possibly due to adjacent gas station."],
+        "source_data_gaps": [],
+        "overall_source_reasoning": "Mireye discovered POI."
+    }
+    
+    mock_agent.ainvoke.return_value = create_mock_response(json_output, tool_calls=[
+        {"tool": "query_mireye_fetch", "id": "call_poi", "args": {"reason": "check POIs"}, "response": json.dumps(mireye_result)}
+    ])
+    
+    res, log = await run_source_attribution(query="Petroleum River", attains_status=[{"is_primary_path": True, "status": "Impaired"}], polluters=[], water_samples=[], land_risk_points=[])
+    
+    assert res["impairments"][0]["sources"][0]["source_name"] == "Gas station"
+    assert log[0]["tool"] == "query_mireye_fetch"
+
+@pytest.mark.asyncio
+@patch("app.services.source_attribution.create_source_reasoning_agent")
+async def test_mireye_discovery_epa_validation(mock_agent_factory, mock_openai_key):
+    mock_agent = AsyncMock()
+    mock_agent_factory.return_value = mock_agent
+    
+    mireye_result = {"source": "Mireye", "facility": "Upstream Factory"}
+    json_output = {
+        "impairments": [{"impairment": "Metals", "affected_uses": [], "sources": [{"source_type": "Industrial", "source_name": "Upstream Factory", "source_id": "ECHO-123", "latitude": None, "longitude": None, "geography_type": "point", "geography_id": None, "relationship_to_primary_path": "upstream", "attribution": "DOCUMENTED", "confidence": "HIGH", "supporting_evidence": ["Mireye identified factory", "ECHO confirms violation and links to ATTAINS"], "contradicting_evidence": [], "evidence_sources": ["Mireye", "ECHO", "ATTAINS"]}]}],
+        "major_source_findings": ["Upstream factory validated by EPA ECHO."],
+        "source_data_gaps": [],
+        "overall_source_reasoning": "ECHO and ATTAINS validated Mireye discovery."
+    }
+    
+    mock_agent.ainvoke.return_value = create_mock_response(json_output, tool_calls=[
+        {"tool": "query_mireye_fetch", "id": "call_epa_val", "args": {"reason": "check facilities"}, "response": json.dumps(mireye_result)}
+    ])
+    
+    res, log = await run_source_attribution(query="Metal River", attains_status=[{"is_primary_path": True, "status": "Impaired"}], polluters=[{"facility_name": "Upstream Factory", "source_id": "ECHO-123"}], water_samples=[], land_risk_points=[])
+    
+    assert res["impairments"][0]["sources"][0]["attribution"] == "DOCUMENTED"
+    assert "ECHO" in res["impairments"][0]["sources"][0]["evidence_sources"]

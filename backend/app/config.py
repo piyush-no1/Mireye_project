@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     cors_allowed_origins: str = "http://localhost:5173"
 
     openai_api_key: str = "mock-openai-key"
-    openai_model: str = "gpt-4.1"
+    openai_model: str = "gpt-5.5"
     openai_request_timeout_seconds: int = 30
 
     mireye_api_key: str = "mock-mireye-key"

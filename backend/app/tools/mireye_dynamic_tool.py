@@ -22,7 +22,7 @@ async def query_mireye_fetch(lat: float, lng: float, reason: str, preset: str = 
         lat: Latitude of the point of interest.
         lng: Longitude of the point of interest.
         reason: Explanation of the current uncertainty and why this information is needed.
-        preset: The preset to fetch. Valid options include "land_cover", "terrain", "built_environment", "vegetation".
+        preset: The preset to fetch. Valid options MUST be one of: "land_cover", "terrain", "points_of_interest", "utilities", "natural_hazard", "boundaries", "flood_risk".
         
     Returns:
         A dictionary containing the structured fields requested.
@@ -70,7 +70,7 @@ async def query_mireye_ask(lat: float, lng: float, query: str, reason: str) -> D
     try:
         headers = _get_headers()
         async with httpx.AsyncClient(timeout=30.0) as client:
-            response = await client.post(url, json={"lat": lat, "lng": lng, "query": query}, headers=headers)
+            response = await client.post(url, json={"lat": lat, "lng": lng, "question": query}, headers=headers)
             response.raise_for_status()
             return response.json()
     except ValueError as ve:
