@@ -110,7 +110,7 @@ export const AssessmentPage: React.FC = () => {
       )}
 
       {/* Main split dashboard: Map + Results Panel */}
-      {result && result.status === 'completed' && !isSearching && (
+      {result && (result.status === 'completed' || result.status === 'assessment_completed') && !isSearching && (
         <>
           <div style={{
             display: 'grid',

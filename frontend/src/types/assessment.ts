@@ -4,6 +4,8 @@ export interface ResolvedLocation {
   lng: number;
 }
 
+import { SourceAttributionData, InvestigationLogEntry } from './sourceAttribution';
+
 export interface HydrologyData {
   comid: string;
   flowline_geojson: any;
@@ -99,7 +101,7 @@ export interface StageError {
 
 export interface AssessmentResult {
   run_id: string;
-  status: 'pending' | 'completed' | 'failed' | 'needs_clarification';
+  status: 'pending' | 'assessment_completed' | 'completed' | 'failed' | 'needs_clarification';
   query: string;
   segment_mode?: boolean;
   start_point?: ResolvedLocation | null;
@@ -113,6 +115,8 @@ export interface AssessmentResult {
   land_risk_points: LandRiskPoint[] | null;
   telemetry: TelemetryData[] | null;
   risk_summary: RiskSummary | null;
+  source_attribution?: SourceAttributionData | null;
+  source_investigation_log?: InvestigationLogEntry[];
   errors: StageError[];
   execution_log?: Array<Record<string, any>>;
   generated_at: string;
@@ -120,6 +124,6 @@ export interface AssessmentResult {
 
 export interface AssessmentStatusResponse {
   run_id: string;
-  status: 'pending' | 'completed' | 'failed' | 'needs_clarification';
+  status: 'pending' | 'assessment_completed' | 'completed' | 'failed' | 'needs_clarification';
   error: string | null;
 }
