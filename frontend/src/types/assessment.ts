@@ -4,6 +4,8 @@ export interface ResolvedLocation {
   lng: number;
 }
 
+export type LocationPoint = ResolvedLocation;
+
 export interface HydrologyData {
   comid: string;
   flowline_geojson: any;

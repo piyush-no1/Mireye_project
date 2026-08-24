@@ -6,8 +6,8 @@ import * as turf from '@turf/turf';
 
 interface AttainsLayersProps {
   attains_status: AttainsStatus[];
-  start_point?: LocationPoint;
-  end_point?: LocationPoint;
+  start_point?: LocationPoint | null;
+  end_point?: LocationPoint | null;
   flowline_geojson?: any;
 }
 
