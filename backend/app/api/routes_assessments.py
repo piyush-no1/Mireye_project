@@ -113,8 +113,8 @@ async def get_assessment_result(
     if not job:
         raise HTTPException(status_code=404, detail=f"Assessment run_id '{run_id}' not found.")
     
-    if job["status"] == "pending":
-        raise HTTPException(status_code=400, detail=f"Assessment '{run_id}' is still pending. Poll status endpoint.")
+    if job["status"] not in ("assessment_completed", "completed"):
+        raise HTTPException(status_code=400, detail=f"Assessment '{run_id}' is still processing (status: {job['status']}). Poll status endpoint.")
     
     file_path = os.path.join(settings.output_dir, f"{run_id}.json")
     if not os.path.exists(file_path):

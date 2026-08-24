@@ -104,6 +104,7 @@ class AssessmentResult(BaseModel):
     land_risk_points: Optional[List[LandRiskPoint]] = None
     telemetry: Optional[List[TelemetryData]] = None
     risk_summary: Optional[RiskSummary] = None
+    source_attribution: Optional[Dict[str, Any]] = None
     errors: List[StageError] = Field(default_factory=list)
     execution_log: List[Dict[str, Any]] = Field(default_factory=list)
     generated_at: str

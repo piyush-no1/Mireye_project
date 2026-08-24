@@ -3,6 +3,8 @@ import { ErrorsBanner } from './ErrorsBanner';
 import { RiskScoreCard } from './RiskScoreCard';
 import { AttainsStatusCard } from './AttainsStatusCard';
 import { TelemetryChart } from './TelemetryChart';
+import { SourceAttributionCard } from './SourceAttributionCard';
+import { MireyeAgentLogCard } from './MireyeAgentLogCard';
 import { AssessmentResult } from '../../types/assessment';
 import { FlaskConical, Factory, TreePine } from 'lucide-react';
 
@@ -18,6 +20,9 @@ export const ResultsPanel: React.FC<ResultsPanelProps> = ({ result }) => {
       <ErrorsBanner errors={result.errors || []} />
 
       <RiskScoreCard summary={result.risk_summary} />
+      
+      <SourceAttributionCard result={result} />
+      <MireyeAgentLogCard result={result} />
 
       <AttainsStatusCard attains={result.attains_status} />
 
