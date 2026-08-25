@@ -1,4 +1,4 @@
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional, Literal
 from pydantic import BaseModel, Field
 
 class ResolvedLocation(BaseModel):
@@ -72,6 +72,25 @@ class TelemetryData(BaseModel):
     water_temp_c: Optional[float] = None
     date_time: Optional[str] = None
 
+class HypothesisItem(BaseModel):
+    hypothesis: str
+    initial_reasoning: str
+    data_needed_to_confirm: List[str] = Field(default_factory=list)
+
+class HypothesisGenerationOutput(BaseModel):
+    segment_id: str
+    hypotheses: List[HypothesisItem] = Field(default_factory=list)
+    insufficient_evidence: bool = False
+
+class EvidenceSynthesisOutput(BaseModel):
+    segment_id: str
+    final_cause: str
+    supporting_evidence: List[str] = Field(default_factory=list)
+    contradicting_evidence: List[str] = Field(default_factory=list)
+    confidence: Literal["high", "medium", "low"] = "medium"
+    alternative_explanations_considered: List[str] = Field(default_factory=list)
+    grade_contribution_notes: str = ""
+
 class RiskSummary(BaseModel):
     rating: str = "A"
     label: str = "Low Risk"
@@ -103,8 +122,12 @@ class AssessmentResult(BaseModel):
     polluters: Optional[List[PolluterFacility]] = None
     land_risk_points: Optional[List[LandRiskPoint]] = None
     telemetry: Optional[List[TelemetryData]] = None
+    hypothesis_generation: Optional[HypothesisGenerationOutput] = None
+    targeted_evidence: Optional[Dict[str, Any]] = None
+    evidence_synthesis: Optional[EvidenceSynthesisOutput] = None
     risk_summary: Optional[RiskSummary] = None
     source_attribution: Optional[Dict[str, Any]] = None
+    source_investigation_log: Optional[List[Dict[str, Any]]] = None
     errors: List[StageError] = Field(default_factory=list)
     execution_log: List[Dict[str, Any]] = Field(default_factory=list)
     generated_at: str
