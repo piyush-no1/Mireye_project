@@ -57,10 +57,12 @@ def create_source_reasoning_agent():
         "REASONING PROTOCOL\n"
         "==================================================\n"
         "You MUST execute your investigation in the following strict sequence. Do not skip phases or jump to conclusions.\n\n"
-        "PHASE 1 — IDENTIFY IMPAIRMENTS\n"
-        "- Start ONLY from ATTAINS impairments flagged as 'is_primary_path': true.\n"
-        "- Nearby/contextual assessment units (is_primary_path: false) are NOT evidence that the primary path is impaired. Use them for supporting context only.\n"
-        "- If there are no meaningful primary-path impairments, do not invent sources.\n\n"
+        "PHASE 1 — IDENTIFY IMPAIRMENTS & CHEMICAL PARAMETERS (EPA ATTAINS IS PRIMARY BASELINE AUTHORITY)\n"
+        "- EPA ATTAINS is the PRIMARY baseline authority and foundation for water quality impairment and chemical identification.\n"
+        "- Extract ALL reported 303(d) causes, parameters, and designated use status from ATTAINS as the foundational baseline.\n"
+        "- Cross-reference with ALL sampled chemical parameters from WQP, NWIS telemetry, and ECHO (e.g. Nitrate [NO3], Water Temperature, Specific Conductivity, Dissolved Oxygen [DO], pH, Lead [Pb], Arsenic [As], Turbidity / Sediment, E. coli).\n"
+        "- You MUST generate an entry in `impairments` for EVERY chemical or water quality parameter found across ATTAINS, WQP, NWIS, or ECHO, whether impaired, warning, or compliant!\n"
+        "- NEVER return an empty `impairments` array.\n\n"
         "PHASE 2 — GENERATE CANDIDATE SOURCES (EXPANDED HYPOTHESIS SPACE)\n"
         "- Generate candidate source categories relevant to the actual impairment. Do NOT restrict candidate sources to the categories already present in ATTAINS/ECHO.\n"
         "- 1. INDUSTRIAL/POWER INFRASTRUCTURE: Use Mireye for power plants, substations, transmission, industrial infrastructure (relevant for thermal, industrial, discharge). Presence does not equal attribution. Evaluate location, pathways, pollutants.\n"
@@ -94,15 +96,22 @@ def create_source_reasoning_agent():
         "==================================================\n"
         "OUTPUT FORMAT (JSON ONLY)\n"
         "==================================================\n"
+        "DO NOT write long paragraphs of text. Keep all text concise, exact, and confined.\n"
+        "ALWAYS include records in `impairments` for ALL measured chemical/water parameters present in `water_quality_samples`, `telemetry`, or `attains_status` (e.g. Nitrate, Water Temperature, Specific Conductivity, Dissolved Oxygen, pH, Lead, Arsenic, Turbidity). Even if the waterbody is fully compliant or supporting, you MUST generate an entry for each parameter showing its chemical name, measured amount, safe threshold, dataset, and brief side effects! NEVER return an empty `impairments` array.\n\n"
         "{\n"
         '  "impairments": [\n'
         "    {\n"
-        '      "impairment": "...",\n'
+        '      "impairment": "Short Name (e.g. ARSENIC, NITRATES, LEAD, TEMPERATURE, SPECIFIC CONDUCTIVITY, DISSOLVED OXYGEN)",\n'
+        '      "chemical_name": "Exact Pollutant/Chemical Name (e.g. Arsenic [As], Nitrates [NO3], Lead [Pb], Chlorophyll-a)",\n'
+        '      "measured_concentration": "Exact measured value or exceedance status (e.g. 0.042 mg/L, 5 quarters noncompliance)",\n'
+        '      "safe_threshold": "EPA Safe Count/Threshold (e.g. <= 0.010 mg/L [EPA Drinking MCL], <= 20.0C)",\n'
+        '      "source_dataset": "Dataset from which it was found (e.g. EPA ATTAINS, USGS WQP Lab Samples, EPA ECHO, Sentinel-2 Satellite, Mireye)",\n'
+        '      "health_environmental_effects": "Concise 1-sentence health and environmental side effects (e.g. Skin lesions, cardiovascular disease, elevated cancer risk)",\n'
         '      "affected_uses": ["..."],\n'
         '      "sources": [\n'
         "        {\n"
         '          "source_type": "...",\n'
-        '          "source_name": "...",\n'
+        '          "source_name": "Exact source name (e.g. Metal Plating Outfall #2, Agricultural Cropland, Flood Zone A, Municipal Storm Sewers)",\n'
         '          "source_id": null,\n'
         '          "latitude": null,\n'
         '          "longitude": null,\n'
@@ -111,8 +120,8 @@ def create_source_reasoning_agent():
         '          "relationship_to_primary_path": "upstream | downstream | adjacent | within_watershed | tributary_connected | disconnected | unknown",\n'
         '          "attribution": "DOCUMENTED | LIKELY | POSSIBLE | UNSUPPORTED",\n'
         '          "confidence": "HIGH | MEDIUM | LOW",\n'
-        '          "supporting_evidence": ["..."],\n'
-        '          "contradicting_evidence": ["..."],\n'
+        '          "supporting_evidence": ["1 concise sentence supporting evidence"],\n'
+        '          "contradicting_evidence": ["1 concise sentence contradicting evidence"],\n'
         '          "evidence_sources": ["ATTAINS", "ECHO", "WQP", "USGS", "NLDI", "Mireye"]\n'
         "        }\n"
         "      ]\n"
@@ -120,12 +129,12 @@ def create_source_reasoning_agent():
         "  ],\n"
         '  "major_source_findings": ["..."],\n'
         '  "source_data_gaps": ["..."],\n'
-        '  "overall_source_reasoning": "..."\n'
+        '  "overall_source_reasoning": "Concise 2-sentence synthesis of findings without long paragraphs.",\n'
+        '  "major_pollution_source_one_liner": "EXACT ONE-SENTENCE SUMMARY stating where the major pollution originates across ALL potential sources (considering industrial outfalls, agricultural cropland, municipal stormwater, floodplains, mining tailings, natural geogenic deposits, power infrastructure, oil/gas pipelines, etc.). Do NOT restrict your consideration to only agriculture and industry!"\n'
         "}\n\n"
-        "In `overall_source_reasoning`, you MUST explicitly state how many times you called the Mireye tool (e.g., 'Mireye was called 2 times.' or 'Mireye was not called.').\n"
+        "In `overall_source_reasoning`, explicitly state Mireye call counts (e.g., 'Mireye was called 2 times.').\n"
         "For physical facilities, coordinates MUST come from trusted supplied data. Never invent coordinates.\n"
-        "For diffuse sources, latitude/longitude must be null; use geography_type/geography_id where available.\n"
-        "Respond with the raw JSON string only, so it can be parsed."
+        "Respond with raw JSON string only."
     )
     
     agent_executor = create_react_agent(llm, tools, prompt=system_prompt)

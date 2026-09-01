@@ -7,84 +7,105 @@ This document provides a detailed technical breakdown of every execution node, d
 ## 📐 Overall Graph Execution Flowchart
 
 ```mermaid
-graph TD
-    %% User Entry Point
-    UserQuery["👤 User Entry Point (Query / Point A ➔ Point B Selection)"] --> GeocodeNode
-
-    %% Stage 1: Geocoding
-    subgraph Stage1 ["Stage 1: Location Resolution"]
-        GeocodeNode["📍 GeocodeNode<br/>(geocode_node.py)"]
-        GeocodeTool["mireye_geocode_tool.py / Nominatim API"]
-        GeocodeNode <--> GeocodeTool
+flowchart TD
+    %% 1. Input Layer
+    subgraph S1 ["1. Input (Frontend UI)"]
+        direction TB
+        Input1["Search Bar (Name / Location Query)"]
+        Input2["Map Pinning (Point A ➔ Point B Corridor)"]
     end
 
-    %% Stage 2: Spatial Translation
-    GeocodeNode --> SpatialNode
-
-    subgraph Stage2 ["Stage 2: Hydrographic Geometry Translation"]
-        SpatialNode["🌊 SpatialTranslationNode<br/>(spatial_translation_node.py)"]
-        NHDTool["usgs_nldi_tool.py<br/>(USGS NHD Layer 12/10 & Flowlines)"]
-        SpatialNode <--> NHDTool
+    %% 2. Stage 1: Geocoding
+    subgraph S2 ["Stage 1: Geocoding (geocode_node.py)"]
+        Geocode["📍 GeocodeNode (mireye_geocode_tool.py / Nominatim)"]
     end
 
-    %% Stage 3: Ingestion
-    SpatialNode --> TelemetryIngestion
-
-    subgraph Stage3 ["Stage 3: Parallel Environmental Telemetry Ingestion"]
-        TelemetryIngestion["⚡ Concurrently Querying Federal & Satellite APIS"]
-        WQP["USGS WQP Water Quality Chemistry"]
-        ECHO["EPA ECHO Permitted Polluters"]
-        TRI["EPA Toxic Release Inventory (TRI)"]
-        ATTAINS["EPA ATTAINS 303(d) Impairments"]
-        USDA["USDA Cropland CDL & CAFOs"]
-        Sentinel["Sentinel Algal Bloom Eutrophication"]
-        MireyeLand["Mireye Riverbank Terrain Risk"]
-        
-        TelemetryIngestion --> WQP
-        TelemetryIngestion --> ECHO
-        TelemetryIngestion --> TRI
-        TelemetryIngestion --> ATTAINS
-        TelemetryIngestion --> USDA
-        TelemetryIngestion --> Sentinel
-        TelemetryIngestion --> MireyeLand
+    %% 3. Stage 2: Hydrography Geometry
+    subgraph S3 ["Stage 2: Spatial Geometry (spatial_translation_node.py)"]
+        Hydro["🌊 SpatialTranslationNode (USGS NHD Layer 12/10 & Flowlines)"]
     end
 
-    %% Stage 4: Specialist Nodes
-    TelemetryIngestion --> IndNode
-    TelemetryIngestion --> AgriNode
+    Input1 --> Geocode
+    Input2 --> Hydro
+    Geocode --> Hydro
 
-    subgraph Stage4 ["Stage 4: Parallel MoA Specialist Reasoning Nodes"]
-        IndNode["🏭 IndustrialSpecialistNode<br/>(industrial_specialist_node.py)"]
-        AgriNode["🌾 AgriculturalSpecialistNode<br/>(agricultural_specialist_node.py)"]
-        
-        subgraph MireyeDynamic ["Dynamic Mireye Earth API Execution"]
-            MireyeTools["query_mireye_fetch()<br/>query_mireye_ask()<br/>get_mireye_land_risk()"]
+    %% 4. Stage 3: General Baseline Data (EPA ATTAINS)
+    subgraph S3_5 ["Stage 3: General Baseline Data"]
+        ATTAINS["📋 EPA ATTAINS — General Waterbody Baseline<br/>(Clean Water Act Section 303d Impairments & Listed Causes)"]
+    end
+
+    Hydro --> ATTAINS
+
+    %% 5. Stage 4: Specialized Reasoning Lanes
+    subgraph S4 ["Stage 4: Specialized Reasoning Lanes"]
+        direction LR
+
+        subgraph IndustryLane ["🏭 Industry Processing Lane (industrial_specialist_node.py)"]
+            direction TB
+            IndNode["Industrial Specialist Agent"]
+            ECHO["EPA ECHO — NPDES Facilities & Exceedances"]
+            TRI["EPA TRI — Toxic Release Inventory Chemicals"]
+            WQP_Ind["USGS WQP — Heavy Metals & Solvents"]
+            Mireye_Ind["🛰️ Mireye Earth API — Outfall Utilities & Factory POIs"]
+            
+            IndNode --> ECHO
+            IndNode --> TRI
+            IndNode --> WQP_Ind
+            IndNode <===> Mireye_Ind
         end
-        
-        IndNode <--> MireyeTools
-        AgriNode <--> MireyeTools
+
+        subgraph AgriLane ["🌾 Agriculture Processing Lane (agricultural_specialist_node.py)"]
+            direction TB
+            AgriNode["Agricultural Specialist Agent"]
+            USDA["USDA Cropland CDL — Agricultural Land % & CAFOs"]
+            Sentinel["Sentinel Satellite — Algal Bloom Eutrophication"]
+            WQP_Agri["USGS WQP — Nutrients & E. coli"]
+            Mireye_Agri["🛰️ Mireye Earth API — Land Cover, Slope & Terrain"]
+            
+            AgriNode --> USDA
+            AgriNode --> Sentinel
+            AgriNode --> WQP_Agri
+            AgriNode <===> Mireye_Agri
+        end
     end
 
-    %% Stage 5: Master Orchestration
-    IndNode --> MasterNode
-    AgriNode --> MasterNode
+    ATTAINS --> IndustryLane
+    ATTAINS --> AgriLane
 
-    subgraph Stage5 ["Stage 5: Master Orchestration & Attribution"]
-        MasterNode["🧠 MasterOrchestrationNode<br/>(master_orchestration_node.py)"]
-        SourceAttribution["Source Attribution ReAct Engine<br/>(source_attribution.py)"]
-        MasterNode <--> SourceAttribution
+    %% 6. Stage 5: Master Orchestration & Source Attribution
+    subgraph S5 ["Stage 5: Master Synthesis & Source Attribution"]
+        MasterNode["🧠 Master Orchestration Node (source_attribution.py)"]
+        MireyeCall5["🛰️ Mireye Fallback ReAct Query (query_mireye_ask)"]
+        MasterNode --- MireyeCall5
     end
 
-    %% Stage 6: Persistence & UI
-    MasterNode --> PersistNode
+    IndustryLane --> MasterNode
+    AgriLane --> MasterNode
 
-    subgraph Stage6 ["Stage 6: Report Persistence & UI Stream"]
-        PersistNode["💾 PersistNode<br/>(persist_node.py)"]
-        FileStore[("backend/data/outputs/*.json")]
-        ReactUI["🖥️ Glassmorphic Vite/React UI Dashboard"]
-        PersistNode --> FileStore
-        PersistNode --> ReactUI
+    %% 7. Stage 6 & 7: Persistence & Visualization
+    subgraph S6_7 ["Stages 6 & 7: Persistence & Dashboard Render"]
+        direction LR
+        Persist["💾 PersistNode (backend/data/outputs/*.json)"]
+        UI_Render["🖥️ React Dashboard (Contaminant Source Attribution & MapView)"]
+        Persist --> UI_Render
     end
+
+    MasterNode --> Persist
+
+    %% Styling
+    classDef inputStyle fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
+    classDef purpleStyle fill:#f3e8ff,stroke:#a855f7,stroke-width:2px,color:#6b21a8
+    classDef baselineStyle fill:#dbeafe,stroke:#2563eb,stroke-width:3px,color:#1e40af
+    classDef greenStyle fill:#dcfce7,stroke:#22c55e,stroke-width:2px,color:#15803d
+    classDef orangeStyle fill:#ffedd5,stroke:#f97316,stroke-width:2px,color:#c2410c
+    classDef yellowStyle fill:#fef08a,stroke:#eab308,stroke-width:2px,color:#854d0e
+
+    class Input1,Input2 inputStyle
+    class Geocode,Hydro purpleStyle
+    class ATTAINS baselineStyle
+    class ECHO,TRI,WQP_Ind,USDA,Sentinel,WQP_Agri greenStyle
+    class IndNode,AgriNode,MasterNode orangeStyle
+    class Mireye_Ind,Mireye_Agri,MireyeCall5 yellowStyle
 ```
 
 ---
@@ -92,24 +113,12 @@ graph TD
 ## 🔍 Detailed Breakdown of Every Node & Code Component
 
 ### 1. `GeocodeNode` (`backend/app/agent/nodes/geocode_node.py`)
-- **Purpose**: Converts user input (e.g. `"Potomac River near Great Falls"` or latitude/longitude coordinates) into standardized geospatial location metadata.
+- **Purpose**: Converts user input (text queries like `"Utah Lake"` or custom Point A ➔ Point B map selections) into standardized geospatial location metadata.
 - **Inputs**: `state.query`, `state.start_point`, `state.end_point`.
-- **Tools Invoked**: `mireye_geocode_tool.py`, OpenStreetMap Nominatim REST API.
+- **Mireye Integration**: **🛰️ MIREYE CALL 1 (Initial Geocoding Lookup)**: Queries `mireye_geocode_tool.py` (`geocode_waterbody`) and OpenStreetMap Nominatim REST API.
 - **Outputs**:
   - `state.resolved_location`: `{ "lat": float, "lng": float, "display_name": str }`.
   - `state.hydrology["bbox"]`: Extended bounding box `[min_lng, min_lat, max_lng, max_lat]`.
-- **Code Logic**:
-  ```python
-  if state.start_point and state.end_point:
-      # Segment Corridor mode
-      bbox = [
-          min(start_lng, end_lng) - 0.05, min(start_lat, end_lat) - 0.05,
-          max(start_lng, end_lng) + 0.05, max(start_lat, end_lat) + 0.05
-      ]
-  else:
-      # Text query geocoding
-      resolved = await geocode_waterbody.ainvoke({"query": state.query})
-  ```
 
 ---
 
@@ -130,117 +139,85 @@ graph TD
 
 ---
 
-### 3. Telemetry & Data Ingestion Layer (Concurrent Pipeline)
-- **Purpose**: Concurrently fetches live environmental data across federal registries, satellite remote sensing, and Mireye spatial APIs.
-- **Data Ingestion Components**:
-  - `get_epa_water_quality` (`epa_wqp_tool.py`): Queries USGS Water Quality Portal for heavy metals, solvents, nutrients, pH, dissolved oxygen, and turbidity.
-  - `get_epa_echo_polluters` (`epa_echo_tool.py`): Queries EPA ECHO NPDES permitted industrial facilities, effluent exceedance counts, and quarters in noncompliance.
-  - `get_epa_tri_releases` (`epa_tri_tool.py`): Queries EPA Toxic Release Inventory (TRI) for chemical volumes (lead, arsenic, benzene, toluene).
-  - `get_epa_attains_status` (`epa_attains_tool.py`): Queries EPA CWA Section 303(d) waterbody impairment records, cause names, and TMDL status.
-  - `get_usda_cropland_data` (`usda_cropscape_tool.py`): USDA CDL agricultural cropland %, crop breakdown (corn/soy/wheat), fertilizer intensity, CAFO manure lagoons.
-  - `get_sentinel_eutrophication_index` (`sentinel_eutrophication_tool.py`): Satellite remote sensing Chlorophyll-a & algal bloom index.
-  - `get_mireye_land_risk` (`mireye_land_risk_tool.py`): Mireye terrain bank slope, tree canopy %, NDVI 5-year change, soil erodibility (K-factor).
+### 3. General Baseline Data Layer — EPA ATTAINS (`epa_attains_tool.py`)
+- **Purpose**: Establishes the authoritative Clean Water Act Section 303(d) baseline waterbody impairment status, listed causes (e.g. Arsenic, Sediment, Nutrients), affected designated uses, and TMDL requirements.
+- **Role in Workflow**: Functions as the primary general data entry point that feeds downstream specialized reasoning lanes.
 
 ---
 
-### 4A. `IndustrialSpecialistNode` (`backend/app/agent/nodes/industrial_specialist_node.py`)
-- **Purpose**: Autonomous sub-agent specializing in point-source industrial pollution, NPDES outfall violations, and toxic chemical releases.
-- **Dynamic Mireye Integration**:
-  - Bound tools: `[query_mireye_fetch, query_mireye_ask, get_mireye_land_risk]`.
-  - System prompt includes the full Mireye Data Catalog (`utilities`, `points_of_interest`, `land_cover`, `terrain`, `boundaries`, `natural_hazard`, `flood_risk`).
-  - Possesses **autonomous authority** to execute multi-turn tool calls (up to 4 turns) based on diagnostic relevance.
-- **Outputs**: `state.industrial_analysis`:
-  ```json
-  {
-    "risk_score": 75,
-    "risk_rating": "D",
-    "high_risk_facilities": [...],
-    "chemical_signature_match": "NPDES Industrial Effluent Match",
-    "evidence_summary": "Audited 4 NPDES permitted facilities and 2 TRI chemical release sites...",
-    "npdes_violations_summary": { "total_exceedances": 8, "noncompliance_quarters": 4 },
-    "tri_releases_summary": { "sites_found": 2, "releases": [...] }
-  }
-  ```
+### 4A. Industry Processing Lane — `IndustrialSpecialistNode` (`industrial_specialist_node.py`)
+- **Purpose**: Specialized reasoning lane for point-source industrial pollution, NPDES outfall violations, and toxic chemical releases.
+- **Datasets & Tools Consumed**:
+  - **EPA ECHO Tool** (`epa_echo_tool.py`): NPDES Permitted Industrial Facilities & Effluent Violations
+  - **EPA TRI Tool** (`epa_tri_tool.py`): Toxic Release Inventory Chemical Release Volumes
+  - **USGS WQP Chemistry**: Filtered Industrial Water Samples (Lead, Arsenic, Cadmium, Mercury, Benzene, Toluene, pH)
+  - **Mireye Earth API** (`query_mireye_fetch`, `query_mireye_ask`): `utilities` (Outfall channels), `points_of_interest` (Chemical & Manufacturing POIs)
+- **Dynamic Execution**: Possesses **autonomous authority** to execute multi-turn tool calls (up to 4 turns) based on diagnostic relevance.
+- **Outputs**: `state.industrial_analysis`.
 
 ---
 
-### 4B. `AgriculturalSpecialistNode` (`backend/app/agent/nodes/agricultural_specialist_node.py`)
-- **Purpose**: Autonomous sub-agent specializing in non-point source agricultural runoff, fertilizer intensity, CAFO manure loading, and algal blooms.
-- **Dynamic Mireye Integration**:
-  - Bound tools: `[query_mireye_fetch, query_mireye_ask, get_mireye_land_risk]`.
-  - System prompt includes full Mireye Data Catalog for agricultural cropland %, NDVI vegetation index, soil erodibility K-factor, and manure storage lagoons.
-  - Multi-turn autonomous tool execution loop (up to 4 turns).
-- **Outputs**: `state.agricultural_analysis`:
-  ```json
-  {
-    "risk_score": 60,
-    "risk_rating": "C",
-    "crop_coverage": { "agricultural_land_pct": 52.5, "fertilizer_intensity": "HIGH" },
-    "cafos_in_watershed": [...],
-    "eutrophication_index": { "algal_bloom_detected": true, "chlorophyll_a_ug_l": 28.4 },
-    "nutrient_signature_match": "High Nitrate / Synthetic Fertilizer Runoff",
-    "evidence_summary": "Analyzed 52.5% agricultural land cover and satellite algal bloom indicators..."
-  }
-  ```
+### 4B. Agriculture Processing Lane — `AgriculturalSpecialistNode` (`agricultural_specialist_node.py`)
+- **Purpose**: Specialized reasoning lane for non-point source agricultural runoff, fertilizer intensity, CAFO manure loading, and algal blooms.
+- **Datasets & Tools Consumed**:
+  - **USDA Cropland CDL Tool** (`usda_cropscape_tool.py`): Agricultural Land %, Crop Breakdown & CAFO Lagoons
+  - **Sentinel Satellite Tool** (`sentinel_eutrophication_tool.py`): Algal Bloom Chlorophyll-a Eutrophication Index
+  - **Mireye Land Risk Tool** (`mireye_land_risk_tool.py`): Riverbank Slope, Tree Canopy %, Soil Erodibility K-Factor
+  - **USGS WQP Chemistry**: Filtered Agricultural Nutrient Samples (Nitrates, Phosphates, Ammonia, E. coli)
+  - **Mireye Earth API** (`query_mireye_fetch`, `query_mireye_ask`): `land_cover`, `terrain`, manure lagoons
+- **Dynamic Execution**: Possesses **autonomous authority** to execute multi-turn tool calls (up to 4 turns) based on diagnostic relevance.
+- **Outputs**: `state.agricultural_analysis`.
 
 ---
 
 ### 5. `MasterOrchestrationNode` (`backend/app/agent/nodes/master_orchestration_node.py`)
-- **Purpose**: Master MoA Orchestrator that synthesizes outputs from both specialist agents into a unified Master Synthesis (`master_synthesis`).
-- **Inputs**: `state.industrial_analysis`, `state.agricultural_analysis`, `state.attains_status`, `state.water_quality_samples`.
-- **Reasoning Process**:
-  1. Resolves conflicting hypotheses between point-source industrial outfalls and non-point agricultural runoff.
-  2. Synthesizes overall Environmental Assessment Risk Rating (0–100 score, A–F grade).
-  3. Formulates EPA CWA Section 303(d) impairment attribution and legal compliance recommendations.
-- **Outputs**: `state.master_synthesis`:
-  ```json
-  {
-    "overall_risk_score": 68,
-    "overall_risk_rating": "D",
-    "primary_polluter_category": "Point Source Industrial Effluent & Agricultural Runoff",
-    "attribution_confidence": "HIGH",
-    "conflict_resolution_notes": "Industrial outfall exceedances match measured heavy metal concentrations...",
-    "legal_attains_compliance_summary": "Exceeds CWA Section 303(d) nutrient & heavy metal criteria...",
-    "recommended_remediation_actions": ["Audit NPDES outfall pipeline #2", "Install riparian buffer strips"]
-  }
-  ```
+- **Purpose**: Master MoA Orchestrator that synthesizes outputs from both specialized reasoning lanes into a unified Master Synthesis (`master_synthesis`).
+- **Mireye Integration**: **🛰️ MIREYE CALL 5 (Fallback ReAct Reasoning Query)**: Executes `query_mireye_ask` inside `source_attribution.py` if remaining uncertainty requires natural language spatial reasoning.
+- **Outputs**: `state.master_synthesis` (Overall Risk Score 0–100, Grade A–F, primary polluter category, EPA CWA 303d legal attribution).
 
 ---
 
 ### 6. `PersistNode` (`backend/app/agent/nodes/persist_node.py`)
-- **Purpose**: Saves the complete, structured assessment report to local disk storage and finalizes state execution.
-- **File Output Path**: `backend/data/outputs/assessment_<run_id>.json`.
-- **Frontend Sync**: Exposes JSON report for immediate consumption by the Vite/React UI dashboard (`AssessmentPage.tsx`, `MoAAnalysisCards.tsx`, `PollutionDiagnosisCard.tsx`).
+- **Purpose**: Saves the complete, structured assessment report to local disk storage (`backend/data/outputs/assessment_<run_id>.json`) and feeds the Vite/React interactive UI dashboard.
 
 ---
 
-## 🔄 Complete Execution Data Flow Summary
+## 🔄 Complete Execution Data Flow Summary (General Baseline ➔ Industry & Agriculture Lanes)
 
 ```text
 User Request / Coordinates Selection
        │
        ▼
-[Stage 1: GeocodeNode] ──► Resolves Lat/Lng & Bounding Box
+[Stage 1: GeocodeNode] ──► 🛰️ MIREYE CALL 1: Initial Geocoding Lookup (mireye_geocode_tool.py / Nominatim)
+       │                    └─► Converts waterbody name/query ➔ Lat/Lng & Bounding Box
+       ▼
+[Stage 2: SpatialTranslationNode] ──► Hydrography Tracing & Polygon Engine
+       │                            ├─► USGS NHD Layer 12/10 Waterbody Polygons (e.g. Utah Lake 4,778 pts)
+       │                            └─► Extracts Riverbank Sampling Points (_bank_points)
+       ▼
+[Stage 3: EPA ATTAINS General Data] ──► Baseline CWA Section 303(d) Waterbody Impairments & Listed Causes
+       │
+       ├────────────────────────────────────────────────────────────────────────┐
+       ▼                                                                        ▼
+[Industry Processing Lane (Stage 4A)]                  [Agriculture Processing Lane (Stage 4B)]
+  (industrial_specialist_node.py)                         (agricultural_specialist_node.py)
+  │                                                        │
+  ├─► EPA ECHO (Permitted Facilities & Exceedances)        ├─► USDA Cropland CDL (Agricultural Land % & CAFOs)
+  ├─► EPA TRI (Toxic Release Inventory Chemicals)         ├─► Sentinel Satellite (Algal Bloom Eutrophication)
+  ├─► USGS WQP (Heavy Metals, Solvents & pH)              ├─► USGS WQP (Nutrients: Nitrates, Phosphates, E. coli)
+  └─► 🛰️ MIREYE DYNAMIC EARTH TOOLS (AUTONOMOUS)           └─► 🛰️ MIREYE DYNAMIC EARTH TOOLS (AUTONOMOUS)
+       ├─► query_mireye_fetch(preset='utilities')              ├─► query_mireye_fetch(preset='land_cover')
+       ├─► query_mireye_fetch(preset='points_of_interest')     ├─► query_mireye_fetch(preset='terrain')
+       └─► query_mireye_ask() [Multi-turn, up to 4 turns]      └─► query_mireye_ask() [Multi-turn, up to 4 turns]
+  │                                                        │
+  └────────────────────────────────────────────────────────┴────────────────────┘
        │
        ▼
-[Stage 2: SpatialTranslationNode] ──► Multi-Tier USGS NHD Layer 12/10 Polygon Tracing
+[Stage 5: MasterOrchestrationNode] ──► Synthesizes Evidence Across Lanes & Performs Source Attribution
+       │                                └─► 🛰️ MIREYE CALL 5: Fallback ReAct Reasoning (query_mireye_ask)
+       ▼
+[Stage 6: PersistNode] ──► Save JSON Report (backend/data/outputs/assessment_<run_id>.json)
        │
        ▼
-[Stage 3: Telemetry Ingestion Layer] (WQP + ECHO + TRI + ATTAINS + USDA CDL + Sentinel)
-       │
-       ├─────────────────────────────────────────┐
-       ▼                                         ▼
-[Stage 4A: IndustrialSpecialistNode]    [Stage 4B: AgriculturalSpecialistNode]
-  └─► Dynamic Mireye Earth Tools          └─► Dynamic Mireye Earth Tools
-       │                                         │
-       └─────────────────────────────────────────┘
-       │
-       ▼
-[Stage 5: MasterOrchestrationNode] ──► Master Synthesis & Legal CWA Attribution
-       │
-       ▼
-[Stage 6: PersistNode] ──► Save JSON Report (backend/data/outputs/)
-       │
-       ▼
-[Interactive Dashboard UI] ──► 60fps Leaflet Map & Glassmorphic MoA Cards
+[Interactive Dashboard UI] ──► Contaminant-Centric Source Attribution Cards & Leaflet Map
 ```

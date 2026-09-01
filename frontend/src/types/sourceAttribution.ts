@@ -26,7 +26,11 @@ export interface SourceCandidate {
 
 export interface Impairment {
   impairment: string;
-  affected_uses: string[];
+  chemical_name?: string;
+  measured_concentration?: string;
+  source_dataset?: string;
+  health_environmental_effects?: string;
+  affected_uses?: string[];
   sources: SourceCandidate[];
 }
 
@@ -35,4 +39,5 @@ export interface SourceAttributionData {
   major_source_findings: string[];
   source_data_gaps: string[];
   overall_source_reasoning: string;
+  major_pollution_source_one_liner?: string;
 }

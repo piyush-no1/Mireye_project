@@ -24,14 +24,15 @@ export const ResultsPanel: React.FC<ResultsPanelProps> = ({ result, omitRatingCa
 
       {!omitRatingCard && <RiskScoreCard summary={result.risk_summary} />}
 
+      <SourceAttributionCard result={result} />
+
       <PollutionDiagnosisCard
         industrial={result.industrial_analysis}
         agricultural={result.agricultural_analysis}
         master={result.master_synthesis}
         waterbodyType={result.resolved_location?.waterbody_type || result.hydrology?.waterbody_type}
       />
-      
-      <SourceAttributionCard result={result} />
+
       <MireyeAgentLogCard result={result} />
 
       <AttainsStatusCard attains={result.attains_status} />

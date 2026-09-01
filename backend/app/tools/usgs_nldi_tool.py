@@ -540,6 +540,36 @@ def construct_closed_lake_polygon(
         }]
     }
 
+def construct_river_linestring_corridor(
+    start_lat: float, start_lng: float, end_lat: float, end_lng: float, query_name: Optional[str] = None
+) -> Dict[str, Any]:
+    """Constructs a clean LineString river corridor segment between Point A and Point B."""
+    num_pts = 12
+    coords = []
+    for i in range(num_pts):
+        t = i / (num_pts - 1)
+        curve = math.sin(t * math.pi) * 0.0025
+        lng = round(start_lng + t * (end_lng - start_lng) + curve, 5)
+        lat = round(start_lat + t * (end_lat - start_lat) - curve, 5)
+        coords.append([lng, lat])
+    
+    return {
+        "type": "FeatureCollection",
+        "features": [{
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": coords
+            },
+            "properties": {
+                "gnis_name": query_name or "River Segment Corridor",
+                "waterbody_type": "river",
+                "segment_mode": True,
+                "is_polygon": False
+            }
+        }]
+    }
+
 async def fetch_river_segment_flowline(
     start_lat: float,
     start_lng: float,
@@ -550,20 +580,20 @@ async def fetch_river_segment_flowline(
     """
     Fetches and stitches hydrographic waterbody geometry between Point A and Point B.
     If the selected area or query is a Lake/Pond, returns the complete closed waterbody polygon boundary.
+    If the selected area is a River corridor, returns a continuous river LineString.
     """
     dist = math.sqrt((start_lat - end_lat)**2 + (start_lng - end_lng)**2)
     center_lat = (start_lat + end_lat) / 2.0
     center_lng = (start_lng + end_lng) / 2.0
 
-    is_lake_query = bool(query_name and any(w in query_name.lower() for w in ["lake", "pond", "reservoir", "tarn", "sea", "bay", "basin", "waterbody"]))
+    is_lake_query = bool(query_name and any(w in query_name.lower() for w in ["lake", "pond", "reservoir", "tarn", "sea", "bay", "basin"]))
     
-    # If explicitly searching a lake/pond or short distance across waterbody, check for polygon first
-    if is_lake_query or dist < 0.035:
+    # If explicitly searching a lake/pond, fetch polygon boundary
+    if is_lake_query:
         poly_geo = await fetch_overpass_polygon_geometry(center_lat, center_lng, query_name)
         if poly_geo and poly_geo.get("features"):
             return poly_geo
-        if is_lake_query:
-            return construct_closed_lake_polygon(start_lat, start_lng, end_lat, end_lng, query_name)
+        return construct_closed_lake_polygon(start_lat, start_lng, end_lat, end_lng, query_name)
 
     buf = max(0.08, dist * 0.8)
     min_lng = min(start_lng, end_lng) - buf
@@ -600,17 +630,31 @@ out geom;"""
                         })
                 
                 if osm_feats:
+                    # Try name match first, but fallback to all river features if named selection is too short
                     best_f = min(osm_feats, key=lambda f: min(pt_dist_sq(c, (start_lng, start_lat)) for c in f["geometry"]["coordinates"]))
                     t_name = best_f["properties"].get("name")
                     candidate_osm = [f for f in osm_feats if f["properties"].get("name") == t_name] if t_name else osm_feats
                     
                     stitched_osm = stitch_river_linestrings(candidate_osm, (start_lng, start_lat))
-                    if stitched_osm and len(stitched_osm) >= 3:
+                    
+                    # Verify if stitched named segment spans close to Point B. If not, use all waterways in corridor.
+                    dist_to_B = math.sqrt(pt_dist_sq(stitched_osm[-1], (end_lng, end_lat))) if stitched_osm else 999.0
+                    if dist_to_B > 0.05 and len(osm_feats) > len(candidate_osm):
+                        stitched_osm = stitch_river_linestrings(osm_feats, (start_lng, start_lat))
+
+                    if stitched_osm and len(stitched_osm) >= 2:
                         idx_A = min(range(len(stitched_osm)), key=lambda i: pt_dist_sq(stitched_osm[i], (start_lng, start_lat)))
                         idx_B = min(range(len(stitched_osm)), key=lambda i: pt_dist_sq(stitched_osm[i], (end_lng, end_lat)))
                         
                         segment_coords = stitched_osm[idx_A:idx_B+1] if idx_A <= idx_B else stitched_osm[idx_B:idx_A+1][::-1]
-                        if len(segment_coords) >= 3:
+                        
+                        # Ensure segment extends all the way to start and end pins
+                        if pt_dist_sq(segment_coords[0], (start_lng, start_lat)) > 0.0001:
+                            segment_coords.insert(0, [start_lng, start_lat])
+                        if pt_dist_sq(segment_coords[-1], (end_lng, end_lat)) > 0.0001:
+                            segment_coords.append([end_lng, end_lat])
+
+                        if len(segment_coords) >= 2:
                             return {
                                 "type": "FeatureCollection",
                                 "features": [{
@@ -620,7 +664,7 @@ out geom;"""
                                         "coordinates": segment_coords
                                     },
                                     "properties": {
-                                        "gnis_name": t_name or query_name or "Designated River Segment",
+                                        "gnis_name": t_name or query_name or "Designated River Segment Corridor",
                                         "source": "OpenStreetMap High-Resolution Waterway",
                                         "segment_mode": True,
                                         "point_count": len(segment_coords)
@@ -666,11 +710,20 @@ out geom;"""
                         river_feats = [f for f in linestring_feats if int(f.get("properties", {}).get("StreamOrde") or 1) >= max(1, max_order - 1)]
 
                     stitched = stitch_river_linestrings(river_feats, (start_lng, start_lat))
+                    dist_to_B = math.sqrt(pt_dist_sq(stitched[-1], (end_lng, end_lat))) if stitched else 999.0
+                    if dist_to_B > 0.05:
+                        stitched = stitch_river_linestrings(linestring_feats, (start_lng, start_lat))
+
                     if stitched and len(stitched) >= 2:
                         idx_A = min(range(len(stitched)), key=lambda i: pt_dist_sq(stitched[i], (start_lng, start_lat)))
                         idx_B = min(range(len(stitched)), key=lambda i: pt_dist_sq(stitched[i], (end_lng, end_lat)))
                         
                         segment_coords = stitched[idx_A:idx_B+1] if idx_A <= idx_B else stitched[idx_B:idx_A+1][::-1]
+
+                        if pt_dist_sq(segment_coords[0], (start_lng, start_lat)) > 0.0001:
+                            segment_coords.insert(0, [start_lng, start_lat])
+                        if pt_dist_sq(segment_coords[-1], (end_lng, end_lat)) > 0.0001:
+                            segment_coords.append([end_lng, end_lat])
 
                         if len(segment_coords) >= 2:
                             return {
@@ -682,7 +735,7 @@ out geom;"""
                                         "coordinates": segment_coords
                                     },
                                     "properties": {
-                                        "gnis_name": detected_river or query_name or "Designated River Segment",
+                                        "gnis_name": detected_river or query_name or "Designated River Segment Corridor",
                                         "source": "USGS NHDPlus Hydrography",
                                         "segment_mode": True,
                                         "point_count": len(segment_coords)
@@ -692,8 +745,8 @@ out geom;"""
         except Exception as e:
             logger.debug(f"USGS segment flowline query notice: {e}")
 
-    # Fallback to accurate closed lake polygon if no line geometry was found or if points are in waterbody
-    return construct_closed_lake_polygon(start_lat, start_lng, end_lat, end_lng, query_name)
+    # Fallback to river linestring corridor if no NHD line geometry was found
+    return construct_river_linestring_corridor(start_lat, start_lng, end_lat, end_lng, query_name)
 
 @tool
 async def get_usgs_comid(lat: float, lng: float) -> Dict[str, str]:
