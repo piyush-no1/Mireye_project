@@ -95,6 +95,33 @@ export const DataSourcesPanel: React.FC<Props> = ({ result }) => {
           />
         )}
 
+        {result.industrial_analysis?.tri_releases_summary && (
+          <SourceCard 
+            title="EPA TRI Chemical Release Inventory API" 
+            description="Toxics Release Inventory (TRI) chemical discharge records and facility releases."
+            data={result.industrial_analysis.tri_releases_summary} 
+          />
+        )}
+
+        {result.agricultural_analysis?.crop_coverage && (
+          <SourceCard 
+            title="USDA Cropland Data Layer (CDL) & CAFO Metrics" 
+            description="Agricultural cropland breakdown, fertilizer application intensity, and CAFO counts."
+            data={{
+              crop_coverage: result.agricultural_analysis.crop_coverage,
+              cafos: result.agricultural_analysis.cafos_in_watershed || []
+            }} 
+          />
+        )}
+
+        {result.agricultural_analysis?.eutrophication_index && (
+          <SourceCard 
+            title="Sentinel Satellite Eutrophication Index" 
+            description="Chlorophyll-a concentration, turbidity, and satellite-detected algal bloom risk."
+            data={result.agricultural_analysis.eutrophication_index} 
+          />
+        )}
+
         {result.water_quality_samples && result.water_quality_samples.length > 0 && (
           <SourceCard 
             title="EPA Water Quality Portal (WQP)" 
@@ -127,6 +154,15 @@ export const DataSourcesPanel: React.FC<Props> = ({ result }) => {
           />
         )}
 
+        {result.execution_log && result.execution_log.length > 0 && (
+          <SourceCard 
+            title="Mireye & Multi-Agent Execution Audit Log" 
+            description="Chronological audit trace of every tool, agent, and API call executed for this run."
+            icon={<Server size={20} style={{ color: '#38bdf8' }} />}
+            data={result.execution_log} 
+          />
+        )}
+
         <div style={{ marginTop: '32px', borderTop: '1px solid var(--border-color)', paddingTop: '24px' }}>
           <h3 style={{ margin: '0 0 16px 0', fontSize: '18px', color: 'var(--text-primary)' }}>LLM Reasoning Payload</h3>
           <SourceCard 
@@ -135,11 +171,10 @@ export const DataSourcesPanel: React.FC<Props> = ({ result }) => {
             icon={<Server size={20} style={{ color: '#10b981' }} />}
             data={{
               query: result.query,
+              industrial_analysis: result.industrial_analysis || null,
+              agricultural_analysis: result.agricultural_analysis || null,
+              master_synthesis: result.master_synthesis || null,
               attains_summary: result.attains_summary || null,
-              attains_status: (result.attains_status || []).map(au => {
-                const { geometry, ...rest } = au;
-                return rest;
-              }),
               polluters: result.polluters || [],
               water_quality_samples: result.water_quality_samples || [],
               land_risk_points: result.land_risk_points || [],

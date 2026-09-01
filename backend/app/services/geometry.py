@@ -112,21 +112,37 @@ def simplify_geometry(
     target_pt = (center_lng, center_lat) if (center_lng is not None and center_lat is not None) else None
     is_polygon = geom_type in ("Polygon", "MultiPolygon")
 
-    if is_polygon and target_pt:
-        # Sort polygon vertices by distance to the user's entered location
-        sorted_coords = sorted(coords, key=lambda p: distance_sq(p, target_pt))
-        closest_cluster = sorted_coords[:max(10, min(30, len(sorted_coords)))]
+    if is_polygon:
+        # Complete Pond / Lake Polygon Examination: Enclose the ENTIRE waterbody boundary
+        lngs = [c[0] for c in coords]
+        lats = [c[1] for c in coords]
+        min_lng, max_lng = min(lngs), max(lngs)
+        min_lat, max_lat = min(lats), max(lats)
         
-        c_lngs = [c[0] for c in closest_cluster]
-        c_lats = [c[1] for c in closest_cluster]
+        # Add 0.005 degree buffer around full lake bounding box
+        bbox = [
+            round(min_lng - 0.005, 5),
+            round(min_lat - 0.005, 5),
+            round(max_lng + 0.005, 5),
+            round(max_lat + 0.005, 5)
+        ]
         
-        min_lng, max_lng = min(c_lngs), max(c_lngs)
-        min_lat, max_lat = min(c_lats), max(c_lats)
+        # Sample 12 shoreline perimeter points in 360-degree loop around full lake perimeter
+        step = max(1, len(coords) // 12)
+        perimeter_samples = coords[::step][:12]
+        bank_points = [{"lat": round(lat, 5), "lng": round(lng, 5)} for lng, lat in perimeter_samples]
         
-        bbox = [round(min_lng - 0.005, 5), round(min_lat - 0.005, 5), round(max_lng + 0.005, 5), round(max_lat + 0.005, 5)]
-        step = max(1, len(closest_cluster) // 5)
-        sampled_coords = closest_cluster[::step][:5]
-        bank_points = [{"lat": round(lat, 5), "lng": round(lng, 5)} for lng, lat in sampled_coords]
+        # Add lake centroid (Deep-water central sampling node)
+        c_lat_avg = round(sum(lats) / len(lats), 5)
+        c_lng_avg = round(sum(lngs) / len(lngs), 5)
+        bank_points.append({"lat": c_lat_avg, "lng": c_lng_avg})
+
+        return {
+            "bbox": bbox,
+            "bank_points": bank_points,
+            "waterbody_type": "pond_lake",
+            "center": {"lat": c_lat_avg, "lng": c_lng_avg}
+        }
     else:
         # River: Keep continuous natural LineString order from start to end
         lngs = [c[0] for c in coords]
@@ -143,7 +159,8 @@ def simplify_geometry(
             
         bank_points = [{"lat": round(lat, 5), "lng": round(lng, 5)} for lng, lat in sampled_coords]
 
-    return {
-        "bbox": bbox,
-        "bank_points": bank_points
-    }
+        return {
+            "bbox": bbox,
+            "bank_points": bank_points,
+            "waterbody_type": "river"
+        }

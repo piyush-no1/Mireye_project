@@ -8,18 +8,28 @@ import { MireyeAgentLogCard } from './MireyeAgentLogCard';
 import { AssessmentResult } from '../../types/assessment';
 import { FlaskConical, Factory, TreePine } from 'lucide-react';
 
+import { PollutionDiagnosisCard } from './PollutionDiagnosisCard';
+
 interface ResultsPanelProps {
   result: AssessmentResult | null;
+  omitRatingCard?: boolean;
 }
 
-export const ResultsPanel: React.FC<ResultsPanelProps> = ({ result }) => {
+export const ResultsPanel: React.FC<ResultsPanelProps> = ({ result, omitRatingCard = false }) => {
   if (!result) return null;
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', overflowY: 'auto' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
       <ErrorsBanner errors={result.errors || []} />
 
-      <RiskScoreCard summary={result.risk_summary} />
+      {!omitRatingCard && <RiskScoreCard summary={result.risk_summary} />}
+
+      <PollutionDiagnosisCard
+        industrial={result.industrial_analysis}
+        agricultural={result.agricultural_analysis}
+        master={result.master_synthesis}
+        waterbodyType={result.resolved_location?.waterbody_type || result.hydrology?.waterbody_type}
+      />
       
       <SourceAttributionCard result={result} />
       <MireyeAgentLogCard result={result} />

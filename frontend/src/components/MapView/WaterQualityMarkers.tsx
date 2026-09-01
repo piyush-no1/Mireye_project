@@ -33,6 +33,10 @@ export const WaterQualityMarkers: React.FC<WaterQualityMarkersProps> = ({
           lng = sample.lng;
         }
 
+        if (typeof lat !== 'number' || isNaN(lat) || typeof lng !== 'number' || isNaN(lng)) {
+          return null;
+        }
+
         return (
           <CircleMarker
             key={`wqp-${sample.monitoring_location_id}-${idx}`}

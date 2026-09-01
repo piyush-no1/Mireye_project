@@ -34,6 +34,15 @@ const MapBoundsController: React.FC<{ result: AssessmentResult | null }> = ({ re
   useEffect(() => {
     if (!result) return;
     
+    if (result.hydrology?.bbox && Array.isArray(result.hydrology.bbox) && result.hydrology.bbox.length === 4) {
+      const [minLng, minLat, maxLng, maxLat] = result.hydrology.bbox;
+      if (minLat !== 0 && minLng !== 0) {
+        const bounds = L.latLngBounds([minLat, minLng], [maxLat, maxLng]);
+        map.fitBounds(bounds, { padding: [40, 40] });
+        return;
+      }
+    }
+
     if (result.start_point && result.end_point) {
       const bounds = L.latLngBounds(
         [result.start_point.lat, result.start_point.lng],
@@ -71,8 +80,8 @@ export const MapView: React.FC<MapViewProps> = ({ result }) => {
         {result?.attains_status && (
           <AttainsLayers 
             attains_status={result.attains_status} 
-            start_point={result.start_point}
-            end_point={result.end_point}
+            start_point={result.start_point || undefined}
+            end_point={result.end_point || undefined}
             flowline_geojson={result.hydrology?.flowline_geojson}
           />
         )}
@@ -83,23 +92,32 @@ export const MapView: React.FC<MapViewProps> = ({ result }) => {
 
         {/* Start Point A Marker with Magnetic Snapping */}
         {result?.start_point && (() => {
-          let pos: [number, number] = [result.start_point.lat, result.start_point.lng];
+          let pos: [number, number] = [Number(result.start_point.lat), Number(result.start_point.lng)];
           try {
-            const featCoords = result.hydrology?.flowline_geojson?.features?.[0]?.geometry?.coordinates;
-            if (featCoords && featCoords.length > 0) {
-              // Magnetically snap to first vertex of river curve
-              pos = [featCoords[0][1], featCoords[0][0]];
+            const geom = result.hydrology?.flowline_geojson?.features?.[0]?.geometry;
+            if (geom?.type === 'LineString' && geom.coordinates?.length > 0) {
+              const first = geom.coordinates[0];
+              if (typeof first[1] === 'number' && typeof first[0] === 'number') {
+                pos = [first[1], first[0]];
+              }
+            } else if (geom?.type === 'Polygon' && geom.coordinates?.[0]?.length > 0) {
+              const first = geom.coordinates[0][0];
+              if (typeof first[1] === 'number' && typeof first[0] === 'number') {
+                pos = [first[1], first[0]];
+              }
             }
           } catch (e) {
             console.debug('Magnetic snap A notice:', e);
           }
+          const latStr = typeof pos[0] === 'number' && !isNaN(pos[0]) ? pos[0].toFixed(4) : String(pos[0]);
+          const lngStr = typeof pos[1] === 'number' && !isNaN(pos[1]) ? pos[1].toFixed(4) : String(pos[1]);
           return (
             <Marker position={pos} icon={startPinIcon}>
               <Popup>
                 <div style={{ color: '#0f172a', fontSize: '13px' }}>
-                  <strong style={{ display: 'block', color: '#10b981', marginBottom: '4px' }}>🟢 River Start (Point A)</strong>
+                  <strong style={{ display: 'block', color: '#10b981', marginBottom: '4px' }}>🟢 Waterbody Start (Point A)</strong>
                   <div><strong>Location:</strong> {result.start_point.matched_name}</div>
-                  <div><strong>Snapped Coordinates:</strong> {pos[0].toFixed(4)}, {pos[1].toFixed(4)}</div>
+                  <div><strong>Snapped Coordinates:</strong> {latStr}, {lngStr}</div>
                 </div>
               </Popup>
             </Marker>
@@ -108,24 +126,33 @@ export const MapView: React.FC<MapViewProps> = ({ result }) => {
 
         {/* End Point B Marker with Magnetic Snapping */}
         {result?.end_point && (() => {
-          let pos: [number, number] = [result.end_point.lat, result.end_point.lng];
+          let pos: [number, number] = [Number(result.end_point.lat), Number(result.end_point.lng)];
           try {
-            const featCoords = result.hydrology?.flowline_geojson?.features?.[0]?.geometry?.coordinates;
-            if (featCoords && featCoords.length > 0) {
-              // Magnetically snap to last vertex of river curve
-              const last = featCoords[featCoords.length - 1];
-              pos = [last[1], last[0]];
+            const geom = result.hydrology?.flowline_geojson?.features?.[0]?.geometry;
+            if (geom?.type === 'LineString' && geom.coordinates?.length > 0) {
+              const last = geom.coordinates[geom.coordinates.length - 1];
+              if (typeof last[1] === 'number' && typeof last[0] === 'number') {
+                pos = [last[1], last[0]];
+              }
+            } else if (geom?.type === 'Polygon' && geom.coordinates?.[0]?.length > 0) {
+              const ring = geom.coordinates[0];
+              const last = ring[ring.length - 1];
+              if (typeof last[1] === 'number' && typeof last[0] === 'number') {
+                pos = [last[1], last[0]];
+              }
             }
           } catch (e) {
             console.debug('Magnetic snap B notice:', e);
           }
+          const latStr = typeof pos[0] === 'number' && !isNaN(pos[0]) ? pos[0].toFixed(4) : String(pos[0]);
+          const lngStr = typeof pos[1] === 'number' && !isNaN(pos[1]) ? pos[1].toFixed(4) : String(pos[1]);
           return (
             <Marker position={pos} icon={endPinIcon}>
               <Popup>
                 <div style={{ color: '#0f172a', fontSize: '13px' }}>
-                  <strong style={{ display: 'block', color: '#ef4444', marginBottom: '4px' }}>🔴 River End (Point B)</strong>
+                  <strong style={{ display: 'block', color: '#ef4444', marginBottom: '4px' }}>🔴 Waterbody End (Point B)</strong>
                   <div><strong>Location:</strong> {result.end_point.matched_name}</div>
-                  <div><strong>Snapped Coordinates:</strong> {pos[0].toFixed(4)}, {pos[1].toFixed(4)}</div>
+                  <div><strong>Snapped Coordinates:</strong> {latStr}, {lngStr}</div>
                 </div>
               </Popup>
             </Marker>
@@ -162,13 +189,13 @@ export const MapView: React.FC<MapViewProps> = ({ result }) => {
         {result?.start_point && (
           <div className={styles.legendItem}>
             <div className={styles.legendDot} style={{ background: '#10b981' }} />
-            <span>Point A (River Start)</span>
+            <span>Point A (Waterbody Start)</span>
           </div>
         )}
         {result?.end_point && (
           <div className={styles.legendItem}>
             <div className={styles.legendDot} style={{ background: '#ef4444' }} />
-            <span>Point B (River End)</span>
+            <span>Point B (Waterbody End)</span>
           </div>
         )}
         <div className={styles.legendItem}>

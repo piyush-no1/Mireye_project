@@ -1,13 +1,12 @@
 import React, { useMemo } from 'react';
 import { GeoJSON } from 'react-leaflet';
-import { AttainsStatus } from '../../types/assessment';
-import { LocationPoint } from '../../types/assessment';
+import { AttainsStatus, ResolvedLocation } from '../../types/assessment';
 import * as turf from '@turf/turf';
 
 interface AttainsLayersProps {
   attains_status: AttainsStatus[];
-  start_point?: LocationPoint;
-  end_point?: LocationPoint;
+  start_point?: ResolvedLocation;
+  end_point?: ResolvedLocation;
   flowline_geojson?: any;
 }
 

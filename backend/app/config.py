@@ -21,6 +21,10 @@ class Settings(BaseSettings):
     epa_attains_base_url: str = "https://api.epa.gov/attains"
     epa_attains_api_key: str = ""
     epa_echo_base_url: str = "https://echodata.epa.gov/echo"
+    epa_tri_base_url: str = "https://enviro.epa.gov/enviro/efservice/tri_facility"
+    usda_cropscape_base_url: str = "https://nassgeodata.gmu.edu/CropScape/dev"
+    copernicus_client_id: str = ""
+    copernicus_client_secret: str = ""
 
     http_timeout_seconds: int = 15
     http_timeout_seconds_long: int = 30

@@ -56,7 +56,7 @@ async def fetch_mireye_single_point(lat: float, lng: float, headers: dict) -> Di
         }
 
 @tool
-async def get_mireye_land_risk(points: List[Dict[str, float]]) -> List[Dict[str, Any]]:
+async def get_mireye_land_risk(points: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     """Fetches Mireye Earth API land risk parameters (slope, elevation, canopy, NDVI, flood zone) for riparian/coastal points."""
     start_time = time.time()
     inputs = {"points": points}

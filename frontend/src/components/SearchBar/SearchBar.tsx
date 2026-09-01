@@ -45,7 +45,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onSearch, isLoading }) => 
   const handleMapConfirm = (payload: MapSelectionPayload) => {
     setIsMapOpen(false);
     if (payload.mode === 'segment' && payload.start_lat && payload.end_lat) {
-      const segmentQuery = `River Corridor: (${payload.start_lat.toFixed(3)}, ${payload.start_lng?.toFixed(3)}) ➔ (${payload.end_lat.toFixed(3)}, ${payload.end_lng?.toFixed(3)})`;
+      const segmentQuery = `Waterbody Corridor: (${payload.start_lat.toFixed(3)}, ${payload.start_lng?.toFixed(3)}) ➔ (${payload.end_lat.toFixed(3)}, ${payload.end_lng?.toFixed(3)})`;
       setQuery(segmentQuery);
       onSearch({
         query: segmentQuery,
@@ -68,7 +68,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onSearch, isLoading }) => 
         <input
           type="text"
           className={styles.input}
-          placeholder="Enter water body name or click the Map Pin to select a River Corridor (Point A ➔ Point B)..."
+          placeholder="Enter water body name or click the Map Pin to select a Waterbody Corridor (Point A ➔ Point B)..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           disabled={isLoading}
@@ -80,7 +80,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ onSearch, isLoading }) => 
             background: 'transparent', border: 'none', color: 'var(--text-muted)', 
             cursor: 'pointer', padding: '0 8px', display: 'flex', alignItems: 'center', gap: '4px' 
           }}
-          title="Select River Corridor or Location on Map"
+          title="Select Waterbody Corridor or Location on Map"
         >
           <MapPin size={20} style={{ color: '#38bdf8' }} />
         </button>

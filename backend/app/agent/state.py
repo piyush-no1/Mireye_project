@@ -27,6 +27,9 @@ class AssessmentState(BaseModel):
     land_risk_points: List[Dict[str, Any]] = Field(default_factory=list)
     telemetry: List[Dict[str, Any]] = Field(default_factory=list)
     risk_summary: Optional[Dict[str, Any]] = None
+    industrial_analysis: Optional[Dict[str, Any]] = None
+    agricultural_analysis: Optional[Dict[str, Any]] = None
+    master_synthesis: Optional[Dict[str, Any]] = None
     source_attribution: Optional[Dict[str, Any]] = None
     source_investigation_log: List[Dict[str, Any]] = Field(default_factory=list)
     errors: List[Dict[str, str]] = Field(default_factory=list)

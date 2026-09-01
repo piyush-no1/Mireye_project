@@ -1,18 +1,18 @@
 :root {
-  --bg-dark: #0a0f1d;
-  --bg-card: #121929;
-  --bg-card-hover: #1a2336;
-  --border-color: #1e293b;
+  --bg-dark: #081b33;
+  --bg-card: rgba(14, 42, 71, 0.75);
+  --bg-card-hover: rgba(20, 56, 94, 0.85);
+  --border-color: rgba(56, 189, 248, 0.25);
   --border-glow: #38bdf8;
 
-  --primary-blue: #0ea5e9;
-  --primary-cyan: #06b6d4;
+  --primary-blue: #0284c7;
+  --primary-cyan: #38bdf8;
   --primary-emerald: #10b981;
-  --accent-purple: #8b5cf6;
+  --accent-purple: #a855f7;
 
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --text-subtle: #64748b;
+  --text-main: #f0f9ff;
+  --text-muted: #bae6fd;
+  --text-subtle: #7dd3fc;
 
   --risk-low: #10b981;
   --risk-moderate: #f59e0b;
@@ -20,11 +20,11 @@
   --risk-critical: #ef4444;
 
   --font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
 
-  --shadow-glow: 0 0 20px rgba(14, 165, 233, 0.15);
+  --shadow-glow: 0 0 25px rgba(56, 189, 248, 0.25);
 }
 
 * {
@@ -34,12 +34,41 @@
 }
 
 body {
-  background-color: var(--bg-dark);
+  background: radial-gradient(circle at 50% 40%, #0d47a1 0%, #082545 50%, #041021 100%),
+              radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.15) 0%, transparent 40%),
+              radial-gradient(circle at 80% 80%, rgba(2, 132, 199, 0.2) 0%, transparent 40%);
+  background-attachment: fixed;
   color: var(--text-main);
   font-family: var(--font-family);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(186, 230, 253, 0.4), rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 40px 70px, rgba(56, 189, 248, 0.3), rgba(0,0,0,0)),
+    radial-gradient(3px 3px at 90px 40px, rgba(125, 211, 252, 0.5), rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 160px 120px, rgba(224, 242, 254, 0.4), rgba(0,0,0,0)),
+    radial-gradient(3px 3px at 230px 190px, rgba(56, 189, 248, 0.35), rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 310px 250px, rgba(186, 230, 253, 0.3), rgba(0,0,0,0)),
+    radial-gradient(4px 4px at 420px 320px, rgba(14, 165, 233, 0.35), rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 550px 410px, rgba(240, 249, 255, 0.4), rgba(0,0,0,0)),
+    radial-gradient(3px 3px at 680px 490px, rgba(56, 189, 248, 0.4), rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 800px 560px, rgba(186, 230, 253, 0.3), rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 800px 600px;
+  pointer-events: none;
+  opacity: 0.6;
+  z-index: 0;
 }
 
 button {
@@ -68,7 +97,7 @@ button {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-dark);
+  background: #041021;
 }
 ::-webkit-scrollbar-thumb {
   background: var(--border-color);

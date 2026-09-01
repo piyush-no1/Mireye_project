@@ -23,9 +23,12 @@ async def spatial_translation_node(state: AssessmentState) -> AssessmentState:
         c_lat = state.resolved_location.get("lat") if state.resolved_location else None
         c_lng = state.resolved_location.get("lng") if state.resolved_location else None
         translated = simplify_geometry(state.hydrology["flowline_geojson"], center_lat=c_lat, center_lng=c_lng)
+        w_type = translated.get("waterbody_type", "river")
         state.hydrology["bbox"] = translated["bbox"]
-        # Store temporary bank_points in state metadata for Stage 4
+        state.hydrology["waterbody_type"] = w_type
         state.hydrology["_bank_points"] = translated["bank_points"]
+        if state.resolved_location:
+            state.resolved_location["waterbody_type"] = w_type
         
         state.execution_log.append({
             "stage": "Stage 3 — Internal Spatial Translation",

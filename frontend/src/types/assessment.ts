@@ -2,6 +2,7 @@ export interface ResolvedLocation {
   matched_name: string;
   lat: number;
   lng: number;
+  waterbody_type?: string;
 }
 
 import { SourceAttributionData, InvestigationLogEntry } from './sourceAttribution';
@@ -10,7 +11,38 @@ export interface HydrologyData {
   comid: string;
   flowline_geojson: any;
   bbox: [number, number, number, number];
-  _bank_points?: Array<{ lat: number; lng: number }>;
+  waterbody_type?: string;
+  _bank_points?: Array<{ lat: number; lng: number; type?: string }>;
+}
+
+export interface IndustrialAnalysis {
+  risk_score: number;
+  risk_rating: string;
+  high_risk_facilities?: any[];
+  chemical_signature_match?: string;
+  evidence_summary?: string;
+  npdes_violations_summary?: Record<string, any>;
+  tri_releases_summary?: Record<string, any>;
+}
+
+export interface AgriculturalAnalysis {
+  risk_score: number;
+  risk_rating: string;
+  crop_coverage?: Record<string, any>;
+  cafos_in_watershed?: any[];
+  eutrophication_index?: Record<string, any>;
+  nutrient_signature_match?: string;
+  evidence_summary?: string;
+}
+
+export interface MasterSynthesis {
+  overall_rating: string;
+  overall_label: string;
+  dominant_pollution_vector: string;
+  industrial_weight_pct: number;
+  agricultural_weight_pct: number;
+  synthesis_reasoning?: string;
+  remediation_recommendations?: string[];
 }
 
 export interface WaterQualitySample {
@@ -115,6 +147,9 @@ export interface AssessmentResult {
   land_risk_points: LandRiskPoint[] | null;
   telemetry: TelemetryData[] | null;
   risk_summary: RiskSummary | null;
+  industrial_analysis?: IndustrialAnalysis | null;
+  agricultural_analysis?: AgriculturalAnalysis | null;
+  master_synthesis?: MasterSynthesis | null;
   source_attribution?: SourceAttributionData | null;
   source_investigation_log?: InvestigationLogEntry[];
   errors: StageError[];

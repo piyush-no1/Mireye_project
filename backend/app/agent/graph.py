@@ -4,7 +4,9 @@ from app.agent.nodes.geocode_node import geocode_node
 from app.agent.nodes.hydrology_node import hydrology_node
 from app.agent.nodes.spatial_translation_node import spatial_translation_node
 from app.agent.nodes.parallel_fetch_node import parallel_fetch_node
-from app.agent.nodes.aggregate_node import aggregate_node
+from app.agent.nodes.industrial_specialist_node import industrial_specialist_node
+from app.agent.nodes.agricultural_specialist_node import agricultural_specialist_node
+from app.agent.nodes.master_orchestration_node import master_orchestration_node
 from app.agent.nodes.persist_node import persist_node, persist_assessment_node
 from app.agent.nodes.source_attribution_node import source_attribution_node
 
@@ -30,7 +32,9 @@ def create_assessment_graph():
     builder.add_node("hydrology_node", hydrology_node)
     builder.add_node("spatial_translation_node", spatial_translation_node)
     builder.add_node("parallel_fetch_node", parallel_fetch_node)
-    builder.add_node("aggregate_node", aggregate_node)
+    builder.add_node("industrial_specialist_node", industrial_specialist_node)
+    builder.add_node("agricultural_specialist_node", agricultural_specialist_node)
+    builder.add_node("master_orchestration_node", master_orchestration_node)
     builder.add_node("persist_assessment_node", persist_assessment_node)
     builder.add_node("source_attribution_node", source_attribution_node)
     builder.add_node("persist_node", persist_node)
@@ -39,8 +43,10 @@ def create_assessment_graph():
     builder.add_conditional_edges("geocode_node", route_after_geocode)
     builder.add_conditional_edges("hydrology_node", route_after_hydrology)
     builder.add_conditional_edges("spatial_translation_node", route_after_spatial)
-    builder.add_edge("parallel_fetch_node", "aggregate_node")
-    builder.add_edge("aggregate_node", "persist_assessment_node")
+    builder.add_edge("parallel_fetch_node", "industrial_specialist_node")
+    builder.add_edge("industrial_specialist_node", "agricultural_specialist_node")
+    builder.add_edge("agricultural_specialist_node", "master_orchestration_node")
+    builder.add_edge("master_orchestration_node", "persist_assessment_node")
     builder.add_edge("persist_assessment_node", "source_attribution_node")
     builder.add_edge("source_attribution_node", "persist_node")
     builder.add_edge("persist_node", END)

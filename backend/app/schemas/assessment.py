@@ -5,11 +5,13 @@ class ResolvedLocation(BaseModel):
     matched_name: str
     lat: float
     lng: float
+    waterbody_type: Optional[str] = "river"  # "river" (lotic) | "pond_lake" (lentic)
 
 class HydrologyData(BaseModel):
     comid: str
     flowline_geojson: Dict[str, Any]
     bbox: List[float] = Field(default_factory=lambda: [0.0, 0.0, 0.0, 0.0])
+    waterbody_type: Optional[str] = "river"
 
 class WaterQualitySample(BaseModel):
     monitoring_location_id: str
@@ -88,6 +90,33 @@ class StageError(BaseModel):
     tool: str
     message: str
 
+class IndustrialAnalysis(BaseModel):
+    risk_score: int = 0
+    risk_rating: str = "A"
+    high_risk_facilities: List[Dict[str, Any]] = Field(default_factory=list)
+    chemical_signature_match: str = ""
+    evidence_summary: str = ""
+    npdes_violations_summary: Dict[str, Any] = Field(default_factory=dict)
+    tri_releases_summary: Dict[str, Any] = Field(default_factory=dict)
+
+class AgriculturalAnalysis(BaseModel):
+    risk_score: int = 0
+    risk_rating: str = "A"
+    crop_coverage: Dict[str, Any] = Field(default_factory=dict)
+    cafos_in_watershed: List[Dict[str, Any]] = Field(default_factory=list)
+    eutrophication_index: Dict[str, Any] = Field(default_factory=dict)
+    nutrient_signature_match: str = ""
+    evidence_summary: str = ""
+
+class MasterSynthesis(BaseModel):
+    overall_rating: str = "A"
+    overall_label: str = "Low Risk"
+    dominant_pollution_vector: str = "Undetermined"
+    industrial_weight_pct: float = 50.0
+    agricultural_weight_pct: float = 50.0
+    synthesis_reasoning: str = ""
+    remediation_recommendations: List[str] = Field(default_factory=list)
+
 class AssessmentResult(BaseModel):
     run_id: str
     status: str  # completed | failed | needs_clarification
@@ -104,6 +133,9 @@ class AssessmentResult(BaseModel):
     land_risk_points: Optional[List[LandRiskPoint]] = None
     telemetry: Optional[List[TelemetryData]] = None
     risk_summary: Optional[RiskSummary] = None
+    industrial_analysis: Optional[IndustrialAnalysis] = None
+    agricultural_analysis: Optional[AgriculturalAnalysis] = None
+    master_synthesis: Optional[MasterSynthesis] = None
     source_attribution: Optional[Dict[str, Any]] = None
     errors: List[StageError] = Field(default_factory=list)
     execution_log: List[Dict[str, Any]] = Field(default_factory=list)

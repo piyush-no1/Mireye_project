@@ -8,9 +8,9 @@ export const Header: React.FC = () => {
       alignItems: 'center',
       justifyContent: 'space-between',
       padding: '16px 28px',
-      background: 'rgba(18, 25, 41, 0.85)',
-      backdropFilter: 'blur(12px)',
-      borderBottom: '1px solid var(--border-color)',
+      background: 'rgba(8, 27, 51, 0.85)',
+      backdropFilter: 'blur(16px)',
+      borderBottom: '1px solid rgba(56, 189, 248, 0.3)',
       position: 'sticky',
       top: 0,
       zIndex: 1000
@@ -20,16 +20,16 @@ export const Header: React.FC = () => {
           width: '42px',
           height: '42px',
           borderRadius: '12px',
-          background: 'linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%)',
+          background: 'linear-gradient(135deg, #38bdf8 0%, #0284c7 100%)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          boxShadow: '0 0 15px rgba(14, 165, 233, 0.4)'
+          boxShadow: '0 0 20px rgba(56, 189, 248, 0.5)'
         }}>
           <Waves style={{ color: '#fff', width: '24px', height: '24px' }} />
         </div>
         <div>
-          <h1 style={{ fontSize: '20px', fontWeight: 700, letterSpacing: '-0.02em', background: 'linear-gradient(90deg, #38bdf8, #818cf8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+          <h1 style={{ fontSize: '22px', fontWeight: 700, letterSpacing: '-0.02em', color: '#38bdf8' }}>
             AquaTrace
           </h1>
           <p style={{ fontSize: '12px', color: 'var(--text-muted)' }}>
@@ -44,14 +44,14 @@ export const Header: React.FC = () => {
           alignItems: 'center',
           gap: '8px',
           padding: '6px 14px',
-          background: 'rgba(14, 165, 233, 0.1)',
+          background: 'rgba(56, 189, 248, 0.15)',
           borderRadius: '20px',
-          border: '1px solid rgba(14, 165, 233, 0.25)',
+          border: '1px solid rgba(56, 189, 248, 0.35)',
           fontSize: '12px',
-          color: '#38bdf8'
+          color: '#e0f2fe'
         }}>
-          <Droplet style={{ width: '14px', height: '14px' }} />
-          <span>USGS & EPA Live Data</span>
+          <Droplet style={{ width: '14px', height: '14px', color: '#38bdf8' }} />
+          <span>USGS, EPA & Mireye Live Data</span>
         </div>
       </div>
     </header>

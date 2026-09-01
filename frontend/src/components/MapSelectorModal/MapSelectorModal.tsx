@@ -170,7 +170,7 @@ export const MapSelectorModal: React.FC<MapSelectorModalProps> = ({ isOpen, onCl
               Select Assessment Geometry on Map
             </h3>
             <span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
-              Choose a single point or define a custom river corridor (Point A ➔ Point B).
+              Choose a single point or define a custom waterbody corridor (Point A ➔ Point B).
             </span>
           </div>
           <button onClick={onClose} style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}>
@@ -232,8 +232,8 @@ export const MapSelectorModal: React.FC<MapSelectorModalProps> = ({ isOpen, onCl
         }}>
           {mode === 'segment' ? (
             <span>
-              {!startPos && <>👉 <strong>Step 1:</strong> Click on the river to drop 🟢 <strong>Point A (Start)</strong>.</>}
-              {startPos && !endPos && <>👉 <strong>Step 2:</strong> Click downstream on the river to drop 🔴 <strong>Point B (End)</strong>.</>}
+              {!startPos && <>👉 <strong>Step 1:</strong> Click on the waterbody to drop 🟢 <strong>Point A (Start)</strong>.</>}
+              {startPos && !endPos && <>👉 <strong>Step 2:</strong> Click downstream on the waterbody to drop 🔴 <strong>Point B (End)</strong>.</>}
               {startPos && endPos && <>✅ <strong>Corridor Defined:</strong> Point A ({startPos.lat.toFixed(3)}, {startPos.lng.toFixed(3)}) ➔ Point B ({endPos.lat.toFixed(3)}, {endPos.lng.toFixed(3)})</>}
             </span>
           ) : (
@@ -309,7 +309,7 @@ export const MapSelectorModal: React.FC<MapSelectorModalProps> = ({ isOpen, onCl
             }}
           >
             <Check size={16} />
-            {mode === 'segment' ? 'Assess River Corridor' : 'Assess Location'}
+            {mode === 'segment' ? 'Assess Waterbody Corridor' : 'Assess Location'}
           </button>
         </div>
       </div>
