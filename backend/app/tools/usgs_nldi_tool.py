@@ -586,19 +586,13 @@ async def fetch_river_segment_flowline(
     center_lat = (start_lat + end_lat) / 2.0
     center_lng = (start_lng + end_lng) / 2.0
 
-    # Dynamic Spatial Waterbody Type Check: Try fetching Lake/Pond polygon boundary around center, start, or end coordinates
-    poly_geo = await fetch_overpass_polygon_geometry(center_lat, center_lng, query_name)
-    if not poly_geo or not poly_geo.get("features"):
-        poly_geo = await fetch_overpass_polygon_geometry(start_lat, start_lng, query_name)
-    if not poly_geo or not poly_geo.get("features"):
-        poly_geo = await fetch_overpass_polygon_geometry(end_lat, end_lng, query_name)
-
     is_lake_query = bool(query_name and any(w in query_name.lower() for w in ["lake", "pond", "reservoir", "tarn", "sea", "bay", "basin"]))
     
-    if poly_geo and poly_geo.get("features"):
-        return poly_geo
-
+    # If explicitly searching a lake/pond, fetch polygon boundary
     if is_lake_query:
+        poly_geo = await fetch_overpass_polygon_geometry(center_lat, center_lng, query_name)
+        if poly_geo and poly_geo.get("features"):
+            return poly_geo
         return construct_closed_lake_polygon(start_lat, start_lng, end_lat, end_lng, query_name)
 
     buf = max(0.08, dist * 0.8)
